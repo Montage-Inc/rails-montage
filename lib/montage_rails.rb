@@ -26,6 +26,10 @@ module MontageRails
       end
     end
 
+    def cache
+      @cache ||= QueryCache.new
+    end
+
     private
 
     def validate
@@ -45,10 +49,6 @@ module MontageRails
       raise MontageAPIError, "There was a problem authenticating with your username and password for domain #{domain}" unless response.success?
 
       @token = response.token.value
-    end
-
-    def cache
-      @cache ||= QueryCache.new
     end
   end
 end
