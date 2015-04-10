@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+source 'https://1jB4bNjnEKjP4xyR8NNr@gem.fury.io/app35692279_heroku_com/' do
+  gem 'ruby-montage', require: 'montage'
+end
 
 # Declare your gem's dependencies in montage_rails.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and

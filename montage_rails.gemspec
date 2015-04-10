@@ -18,13 +18,14 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   if s.respond_to?(:metadata)
-    s.metadata['allowed_push_host'] = "https://repo.fury.io/EwA3oy8vsnG-bzdB4KPT/me/"
+    s.metadata['allowed_push_host'] = "https://1jB4bNjnEKjP4xyR8NNr@gem.fury.io/app35692279_heroku_com/"
   end
 
   s.add_dependency "rails", "~> 4.2.1"
   s.add_dependency "ruby-montage", "~> 0.1"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus"
+  s.add_dependency "awesome_print"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "bundler", "~> 1.9"
