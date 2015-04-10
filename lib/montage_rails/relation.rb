@@ -133,7 +133,7 @@ module MontageRails
     def to_a
       return @records if loaded?
 
-      ActiveSupport::Notifications.instrument("reql.montage_rails", reql: query) do
+      ActiveSupport::Notifications.instrument("reql.montage_rails", notification_payload) do
         @response = connection.documents(klass.table_name, query: query)
       end
 
@@ -220,10 +220,11 @@ module MontageRails
 
   private
 
-    def with_logging
-      query_string = @query
-      time = Benchmark.measure { yield }
-      puts "Query #{query_string} completed in #{time.real.round(4) * 1000}ms"
+    def notification_payload
+      {
+        reql: @query,
+        name: @klass
+      }
     end
   end
 end
