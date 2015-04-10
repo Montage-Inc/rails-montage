@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/create/
+    body:
+      encoding: UTF-8
+      string: '{"updated_at":null,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rank":4,"rating":2.0,"title":"The
+        Jerk","votes":500,"year":1984}'
+    headers:
+      User-Agent:
+      - Montage Ruby v0.1.0
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      Authorization:
+      - Token fb761e07-a12b-40bb-a42f-2202ecfd1046
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/19.3.0
+      Date:
+      - Fri, 03 Apr 2015 18:53:26 GMT
+      Transfer-Encoding:
+      - chunked
+      Allow:
+      - POST, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept, Host
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"year":1984,"rank":4,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rating":2,"_meta":{"modified":"2015-04-03T18:53:26.710Z","created":"2015-04-03T18:53:26.710Z"},"updated_at":null,"title":"The
+        Jerk","votes":500,"id":"215400e4-1566-4b96-aee0-1d6992ee4223"}}'
+    http_version: 
+  recorded_at: Fri, 03 Apr 2015 18:53:26 GMT
+recorded_with: VCR 2.9.3

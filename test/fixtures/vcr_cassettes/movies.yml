@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Montage Ruby v0.1.0
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      Authorization:
+      - Token fb761e07-a12b-40bb-a42f-2202ecfd1046
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/19.3.0
+      Date:
+      - Fri, 03 Apr 2015 18:52:25 GMT
+      Transfer-Encoding:
+      - chunked
+      Allow:
+      - GET, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept, Host
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"name":"movies","fields":[{"name":"studio_id","datatype":"text","required":true},{"name":"rank","datatype":"integer","required":true},{"name":"rating","datatype":"float","required":true},{"name":"title","datatype":"text","required":true},{"name":"votes","datatype":"integer","required":true},{"name":"year","datatype":"integer","required":true}],"indexes":[],"links":{"query":"http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/","self":"http://testco.dev.montagehot.club/api/v1/schemas/movies/","create_document":"http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/create/"}}'
+    http_version: 
+  recorded_at: Fri, 03 Apr 2015 18:52:25 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Montage Ruby v0.1.0
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      Authorization:
+      - Token fb761e07-a12b-40bb-a42f-2202ecfd1046
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/19.3.0
+      Date:
+      - Thu, 09 Apr 2015 23:54:44 GMT
+      Transfer-Encoding:
+      - chunked
+      Allow:
+      - GET, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept, Host
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"name":"actors","fields":[{"name":"name","datatype":"text","required":true},{"name":"movie_id","datatype":"text","required":false}],"indexes":[],"links":{"query":"http://testco.dev.montagehot.club/api/v1/schemas/actors/documents/","create_document":"http://testco.dev.montagehot.club/api/v1/schemas/actors/documents/create/","self":"http://testco.dev.montagehot.club/api/v1/schemas/actors/"}}'
+    http_version: 
+  recorded_at: Thu, 09 Apr 2015 23:54:45 GMT
+- request:
+    method: post
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/documents/create/
+    body:
+      encoding: UTF-8
+      string: '{"updated_at":null,"name":"Steve Martin","movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"}'
+    headers:
+      User-Agent:
+      - Montage Ruby v0.1.0
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+      Authorization:
+      - Token fb761e07-a12b-40bb-a42f-2202ecfd1046
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Server:
+      - gunicorn/19.3.0
+      Date:
+      - Thu, 09 Apr 2015 23:54:45 GMT
+      Transfer-Encoding:
+      - chunked
+      Allow:
+      - POST, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept, Host
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"97ea1631-096f-44e8-b6b5-9ec508344fc8","movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223","updated_at":null,"_meta":{"created":"2015-04-09T23:54:45.262Z","modified":"2015-04-09T23:54:45.262Z"},"name":"Steve
+        Martin"}}'
+    http_version: 
+  recorded_at: Thu, 09 Apr 2015 23:54:46 GMT
+recorded_with: VCR 2.9.3
