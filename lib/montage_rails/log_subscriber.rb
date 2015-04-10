@@ -32,7 +32,7 @@ module MontageRails
         name = color(name, MAGENTA, true)
       end
 
-      debug "  #{name}  #{ap reql}"
+      debug "  #{name}  #{reql}"
     end
 
     def odd?
