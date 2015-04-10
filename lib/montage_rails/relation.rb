@@ -1,5 +1,6 @@
 require 'json'
 
+
 module MontageRails
   class Relation
     # Currently the Montage wrapper only supports the following operators
@@ -18,7 +19,7 @@ module MontageRails
 
     alias_method :loaded?, :loaded
 
-    delegate :connection, to: MontageRails
+    delegate :connection, :cache, to: MontageRails
     delegate :each, :count, :length, :last, :[], :any?, :map, :each_with_index, to: :to_a
 
     def initialize(klass)
@@ -134,7 +135,7 @@ module MontageRails
       return @records if loaded?
 
       ActiveSupport::Notifications.instrument("reql.montage_rails", notification_payload) do
-        @response = connection.documents(klass.table_name, query: query)
+        @response = cache.get_or_set_query(klass, query) { connection.documents(klass.table_name, query: query) }
       end
 
       # with_logging do
@@ -223,7 +224,7 @@ module MontageRails
     def notification_payload
       {
         reql: @query,
-        name: @klass
+        name: "#{@klass} Load"
       }
     end
   end

@@ -5,6 +5,7 @@ require 'montage/resources'
 require 'montage_rails/version'
 require 'montage_rails/errors'
 require 'montage_rails/base'
+require 'montage_rails/query_cache'
 
 module MontageRails
   class << self
@@ -44,6 +45,10 @@ module MontageRails
       raise MontageAPIError, "There was a problem authenticating with your username and password for domain #{domain}" unless response.success?
 
       @token = response.token.value
+    end
+
+    def cache
+      @cache ||= QueryCache.new
     end
   end
 end
