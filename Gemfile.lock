@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    montage_rails (0.1.8)
+    montage_rails (0.1.9)
       awesome_print
       json (~> 1.8)
       rails (~> 4.2.1)
