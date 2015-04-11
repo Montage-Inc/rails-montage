@@ -1,6 +1,5 @@
 require 'json'
 
-
 module MontageRails
   class Relation
     # Currently the Montage wrapper only supports the following operators
@@ -134,13 +133,7 @@ module MontageRails
     def to_a
       return @records if loaded?
 
-      ActiveSupport::Notifications.instrument("reql.montage_rails", notification_payload) do
-        @response = cache.get_or_set_query(klass, query) { connection.documents(klass.table_name, query: query) }
-      end
-
-      # with_logging do
-      #   @response = connection.documents(klass.table_name, query: query)
-      # end
+      @response = cache.get_or_set_query(klass, query) { connection.documents(klass.table_name, query: query) }
 
       @records = []
 
@@ -217,15 +210,6 @@ module MontageRails
     #
     def to_json
       @query.to_json
-    end
-
-  private
-
-    def notification_payload
-      {
-        reql: @query,
-        name: "#{@klass} Load"
-      }
     end
   end
 end

@@ -71,9 +71,6 @@ module MontageRails
           return [] unless response.schema.respond_to?(:fields)
 
           ary << Column.new("id", "text", false)
-
-
-
           ary << Column.new("created_at", "datetime", false)
           ary << Column.new("updated_at", "datetime", false)
 
@@ -103,7 +100,7 @@ module MontageRails
 
       alias_method :find, :find_by_id
 
-      # Find the record using the given params, or initialize a new on with those params
+      # Find the record using the given params, or initialize a new one with those params
       #
       def find_or_initialize_by(params = {})
         return nil if params.empty?
