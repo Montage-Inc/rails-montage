@@ -24,7 +24,8 @@ module MontageRails
     def notification_payload(query, klass, cached: false)
       {
         reql: query,
-        name: "#{klass} Load#{' (Cache) ' if cached}"
+        name: "#{klass} Load",
+        cached: cached
       }
     end
   end

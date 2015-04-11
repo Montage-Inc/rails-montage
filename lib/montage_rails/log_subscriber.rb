@@ -32,6 +32,10 @@ module MontageRails
         name = color(name, MAGENTA, true)
       end
 
+      if event.payload[:cached]
+        name = "#{name}[CACHE]"
+      end
+
       debug "  #{name}  #{reql}"
     end
 
