@@ -19,7 +19,7 @@ module MontageRails
 
       # Delegate the connection to the base module for ease of reference
       #
-      delegate :connection, to: MontageRails
+      delegate :connection, :cache, to: MontageRails
 
       # Hook into the Rails logger
       #
@@ -89,7 +89,7 @@ module MontageRails
       # Find a record by the id
       #
       def find_by_id(value)
-        response = connection.document(table_name, value)
+        response = cache.get_or_set_query(self, value) { connection.document(table_name, value) }
 
         if response.success?
           new(response.document.attributes.merge(persisted: true))
