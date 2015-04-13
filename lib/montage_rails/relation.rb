@@ -28,13 +28,6 @@ module MontageRails
       @response = {}
     end
 
-    # Clear the query, so that has_many relationships are chainable
-    #
-    def clear
-      to_a
-      clone.tap { |r| r.query.clear.merge!(filter: {}) }
-    end
-
     # Support for WillPaginate, if it is defined. If not, returns self
     #
     def paginate(page: 1, per_page: 25)
