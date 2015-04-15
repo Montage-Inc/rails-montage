@@ -1,4 +1,4 @@
-require '../test_helper'
+require 'test_helper'
 require 'montage_rails/relation'
 require 'montage_rails/base'
 

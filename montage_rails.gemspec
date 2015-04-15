@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency "ruby-montage", "~> 0.1.1"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus"
-  s.add_dependency "awesome_print"
+  s.add_dependency "minitest-reporters"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "bundler", "~> 1.9"

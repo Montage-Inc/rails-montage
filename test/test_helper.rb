@@ -19,9 +19,12 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 # end
 
 require 'minitest/autorun'
+require 'minitest/reporters'
 require 'shoulda-context'
 require 'mocha/setup'
 require 'vcr'
+
+Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => true)]
 
 VCR.configure do |config|
   config.cassette_library_dir = File.expand_path("../../test/fixtures/vcr_cassettes", __FILE__)
