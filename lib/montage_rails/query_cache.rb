@@ -1,7 +1,7 @@
 module MontageRails
   class QueryCache
-    attr_accessor :cache
-    
+    attr_reader :cache
+
     def initialize
       @cache = {}
     end
@@ -17,6 +17,12 @@ module MontageRails
           response
         end
       end
+    end
+
+    # Clear the entire query cache
+    #
+    def clear
+      @cache = {}
     end
 
   private

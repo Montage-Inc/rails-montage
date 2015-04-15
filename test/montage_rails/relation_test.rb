@@ -11,6 +11,42 @@ class MontageRails::RelationTest < Minitest::Test
 
   end
 
+  context "#reset" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
+          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
+        end
+      end
+    end
+
+    should "reset all the values" do
+      @movie.reset
+
+      assert !@movie.loaded?
+    end
+  end
+
+  context "#reload" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
+          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
+        end
+      end
+    end
+
+    should "reset the values and reload the relation" do
+      VCR.use_cassette("query_movies", allow_playback_repeats: true) do
+        VCR.use_cassette("movies", allow_playback_repeats: true) do
+          @movie.reload
+        end
+      end
+
+      assert !@movie.to_a.empty?
+    end
+  end
+
   context "#nillify" do
     setup do
       VCR.use_cassette("movies", allow_playback_repeats: true) do

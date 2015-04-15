@@ -20,7 +20,8 @@ module MontageRails
 
     delegate :connection, to: MontageRails
     delegate :cache, to: :klass
-    delegate :each, :count, :length, :last, :[], :any?, :map, :each_with_index, to: :to_a
+    delegate :count, :length, :last, :[], :any?, :each_with_index, to: :to_a
+    delegate :map, :select, :each, to: :to_a
 
     def initialize(klass)
       @klass = klass
@@ -111,6 +112,8 @@ module MontageRails
       limit(1).to_a.first
     end
 
+    # Utility method to allow viewing of the result set in a console
+    #
     def inspect
       to_a.inspect
     end
@@ -127,7 +130,9 @@ module MontageRails
     def to_a
       return @records if loaded?
 
-      @response = cache.get_or_set_query(klass, query) { connection.documents(klass.table_name, query: query) }
+      @response = cache.get_or_set_query(klass, query) do
+        connection.documents(klass.table_name, query: query)
+      end
 
       @records = []
 
@@ -140,6 +145,23 @@ module MontageRails
       end
 
       @records
+    end
+
+    # Force reload of the record
+    #
+    def reload
+      reset
+      to_a
+      self
+    end
+
+    # Reset the whole shebang
+    #
+    def reset
+      cache.clear
+      @records = []
+      @loaded = nil
+      self
     end
 
     # Will take either an empty string or zero and turn it into a nil object

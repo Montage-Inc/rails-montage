@@ -32,4 +32,19 @@ class QueryCacheTest < Minitest::Test
       end
     end
   end
+
+  context "#clear" do
+    setup do
+      @meth = Struct.new(:foo)
+      @cache = MontageRails::QueryCache.new
+    end
+
+    should "clear the cache" do
+      @meth.stubs(:foo).once.returns("bar")
+      @cache.get_or_set_query("foo", "bar") { @meth.foo }
+      @cache.clear
+
+      assert @cache.cache.empty?
+    end
+  end
 end
