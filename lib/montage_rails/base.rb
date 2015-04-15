@@ -19,7 +19,13 @@ module MontageRails
 
       # Delegate the connection to the base module for ease of reference
       #
-      delegate :connection, :cache, to: MontageRails
+      delegate :connection, to: MontageRails
+
+      # Define a new instance of the query cache
+      #
+      def cache
+        @cache ||= QueryCache.new
+      end
 
       # Hook into the Rails logger
       #

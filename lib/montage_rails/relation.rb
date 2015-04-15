@@ -18,7 +18,8 @@ module MontageRails
 
     alias_method :loaded?, :loaded
 
-    delegate :connection, :cache, to: MontageRails
+    delegate :connection, to: MontageRails
+    delegate :cache, to: :klass
     delegate :each, :count, :length, :last, :[], :any?, :map, :each_with_index, to: :to_a
 
     def initialize(klass)

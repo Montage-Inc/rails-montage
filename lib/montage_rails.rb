@@ -26,11 +26,7 @@ module MontageRails
       end
     end
 
-    def cache
-      @cache ||= QueryCache.new
-    end
-
-    private
+  private
 
     def validate
       raise AttributeMissingError, "You must include a domain" unless domain
