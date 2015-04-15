@@ -3,7 +3,6 @@ PATH
   specs:
     montage_rails (0.1.12)
       json (~> 1.8)
-      minitest-reporters
       rails (~> 4.2.1)
       ruby-montage (~> 0.1.1)
       virtus
@@ -109,6 +108,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -155,7 +156,7 @@ GEM
       simplecov-html (~> 0.9.0)
     simplecov-html (0.9.0)
     slop (3.6.0)
-    sprockets (3.0.0)
+    sprockets (3.0.1)
       rack (~> 1.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
@@ -189,9 +190,10 @@ DEPENDENCIES
   bundler (~> 1.9)
   coveralls
   minitest (~> 5.5.0)
+  minitest-reporters
   mocha (~> 1.1)
   montage_rails!
-  pry
+  pry-rails
   rake (~> 10.0)
   ruby-montage!
   shoulda-context (~> 1.0)
