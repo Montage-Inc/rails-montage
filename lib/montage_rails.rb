@@ -26,6 +26,12 @@ module MontageRails
       end
     end
 
+    def notify(caller, &block)
+      ActiveSupport::Notifications.instrument("reql.montage_rails", caller.payload) do
+        yield
+      end
+    end
+
   private
 
     def validate

@@ -19,7 +19,7 @@ module MontageRails
 
       # Delegate the connection to the base module for ease of reference
       #
-      delegate :connection, to: MontageRails
+      delegate :connection, :notify, to: MontageRails
 
       # Define a new instance of the query cache
       #
@@ -112,7 +112,8 @@ module MontageRails
         return nil if params.empty?
 
         query = relation.where(params)
-        response = connection.documents(table_name, query: query)
+
+        response = cache.get_or_set_query(self, query) { connection.documents(table_name, query: query) }
 
         return new(response.documents.first.attributes.merge(persisted: true)) if response.success? && response.documents.any?
         new(params)
@@ -128,6 +129,17 @@ module MontageRails
       #
       def create(params = {})
         new(params).save
+      end
+
+      # Returns a string like 'Post id:integer, title:string, body:text'
+      #
+      def inspect
+        if self == Base
+          super
+        else
+          attr_list = columns.map { |c| "#{c.name}: #{c.type}" } * ', '
+          "#{super}(#{attr_list})"
+        end
       end
 
       def method_missing(method_name, *args, &block)
@@ -149,11 +161,12 @@ module MontageRails
 
     alias_method :persisted?, :persisted
 
-    delegate :connection, to: MontageRails
+    delegate :connection, :notify, to: MontageRails
 
     def initialize(params = {})
       initialize_columns
       @persisted = params[:persisted] ? params[:persisted] : false
+      @current_method = "Load"
       super(params)
     end
 
@@ -168,9 +181,17 @@ module MontageRails
         return nil unless attributes_valid?
 
         if persisted?
-          response = connection.update_document(self.class.table_name, id, attributes.except(:id, :created_at, :updated_at))
+          @current_method = "Update"
+
+          response = notify(self) do
+            connection.update_document(self.class.table_name, id, updateable_attributes)
+          end
         else
-          response = connection.create_document(self.class.table_name, attributes.except(:id, :created_at, :udpated_at))
+          @current_method = "Save"
+
+          response = notify(self) do
+            connection.create_document(self.class.table_name, updateable_attributes)
+          end
         end
 
         if response.success?
@@ -204,7 +225,7 @@ module MontageRails
     #
     # Returns a copy of self if updating is successful
     #
-    def update_attributes(params)
+    def update_attributes(params = {})
       old_attributes = attributes.clone
 
       params.each do |key, value|
@@ -212,7 +233,12 @@ module MontageRails
       end
 
       if attributes_valid? && !id.nil?
-        response = connection.update_document(self.class.table_name, id, attributes.except(:id, :created_at, :updated_at))
+        @current_method = "Update"
+
+        response = notify(self) do
+          connection.update_document(self.class.table_name, id, updateable_attributes)
+        end
+
         initialize(response.document.attributes)
         @persisted = true
         self
@@ -225,8 +251,29 @@ module MontageRails
     # Destroy the copy of this record from the database
     #
     def destroy
-      connection.delete_document(self.class.table_name, id)
+      @current_method = "Delete"
+      notify(self) { connection.delete_document(self.class.table_name, id) }
+
+      @persisted = false
       self
+    end
+
+    # Reload the current document
+    #
+    def reload
+      @current_method = "Load"
+
+      response = notify(self) do
+        connection.document(self.class.table_name, id)
+      end
+
+      initialize(response.document.attributes)
+      @persisted = true
+      self
+    end
+
+    def new_record?
+      persisted?
     end
 
     # Returns the Column class instance for the attribute passed in
@@ -244,12 +291,74 @@ module MontageRails
       end
     end
 
+    # The attributes used to update the document
+    #
+    def updateable_attributes
+      attributes.except(:id, :created_at, :updated_at)
+    end
+
+    # Required for notifications to work, returns a payload suitable
+    # for the log subscriber
+    #
+    def payload
+      {
+        reql: reql_payload[@current_method],
+        name: "#{self.class.name} #{@current_method}"
+      }
+    end
+
+    # Returns an <tt>#inspect</tt>-like string for the value of the
+    # attribute +attr_name+. String attributes are elided after 50
+    # characters, and Date and Time attributes are returned in the
+    # <tt>:db</tt> format. Other attributes return the value of
+    # <tt>#inspect</tt> without modification.
+    #
+    #   person = Person.create!(:name => "David Heinemeier Hansson " * 3)
+    #
+    #   person.attribute_for_inspect(:name)
+    #   # => '"David Heinemeier Hansson David Heinemeier Hansson D..."'
+    #
+    #   person.attribute_for_inspect(:created_at)
+    #   # => '"2009-01-12 04:48:57"'
+    #
+    def attribute_for_inspect(attr_name)
+      value = attributes[attr_name]
+
+      if value.is_a?(String) && value.length > 50
+        "#{value[0..50]}...".inspect
+      elsif value.is_a?(Date) || value.is_a?(Time)
+        %("#{value.to_s(:db)}")
+      else
+        value.inspect
+      end
+    end
+
+    # Returns the contents of the record as a nicely formatted string.
+    #
+    def inspect
+      attributes_as_nice_string = self.class.column_names.collect { |name|
+        if attributes[name.to_sym] || new_record?
+          "#{name}: #{attribute_for_inspect(name.to_sym)}"
+        end
+      }.compact.join(", ")
+      "#<#{self.class} #{attributes_as_nice_string}>"
+    end
+
   private
 
     def initialize_columns
       self.class.columns.each do |column|
         self.class.__send__(:attribute, column.name.to_sym, Column::TYPE_MAP[column.type])
       end
+    end
+
+    def reql_payload
+      {
+        "Load" => id,
+        "Update" => "#{id}: #{updateable_attributes}",
+        "Create" => updateable_attributes,
+        "Delete" => id
+      }
     end
   end
 end
