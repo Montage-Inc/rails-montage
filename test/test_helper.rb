@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../test/dummy/config/environment.rb",  __FILE__)
 ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../test/dummy/db/migrate", __FILE__)]
 require "rails/test_help"
+require "rails/all"
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.
@@ -23,6 +24,12 @@ require 'minitest/reporters'
 require 'shoulda-context'
 require 'mocha/setup'
 require 'vcr'
+require 'simplecov'
+
+if ENV['COVERAGE']
+  SimpleCov.start do
+  end
+end
 
 Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => true)]
 

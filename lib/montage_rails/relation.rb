@@ -158,7 +158,7 @@ module MontageRails
     # Reset the whole shebang
     #
     def reset
-      cache.clear
+      cache.remove("#{klass}/#{query}")
       @records = []
       @loaded = nil
       self

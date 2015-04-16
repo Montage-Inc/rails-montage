@@ -3,14 +3,6 @@ require 'montage_rails/base'
 require 'montage_rails/relation'
 
 class MontageRails::RelationTest < Minitest::Test
-  class Movie < MontageRails::Base
-
-  end
-
-  context "initialization" do
-
-  end
-
   context "#reset" do
     setup do
       VCR.use_cassette("movies", allow_playback_repeats: true) do
@@ -24,6 +16,17 @@ class MontageRails::RelationTest < Minitest::Test
       @movie.reset
 
       assert !@movie.loaded?
+    end
+
+    should "only remove the query for that relation from the cache" do
+      @movie.cache.get_or_set_query("foo", "bar") do
+        "bar"
+      end
+
+      @movie.reset
+
+      assert_nil @movie.cache.cache["Movie/{:filter=>{:name=>\"The Jerk\"}, :limit=>1}"]
+      assert_equal "bar", @movie.cache.cache["foo/bar"]
     end
   end
 

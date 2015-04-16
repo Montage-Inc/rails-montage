@@ -47,4 +47,22 @@ class QueryCacheTest < Minitest::Test
       assert @cache.cache.empty?
     end
   end
+
+  context "#remove" do
+    setup do
+      @meth = Struct.new(:foo)
+      @meth.stubs(:foo).returns("bar")
+      @cache = MontageRails::QueryCache.new
+      @cache.get_or_set_query("foo", "bar") { @meth.foo }
+    end
+
+    should "remove the cache key and return the cached value if the key exists" do
+      assert_equal "bar", @cache.remove("foo/bar")
+      assert_nil @cache.cache["foo/bar"]
+    end
+
+    should "return nil if the key does not exist" do
+      assert_nil @cache.remove("foobar")
+    end
+  end
 end

@@ -25,6 +25,13 @@ module MontageRails
       @cache = {}
     end
 
+    # Remove a certain key from the cache
+    # Returns the removed value, or nil if nothin was found
+    #
+    def remove(key)
+      cache.delete(key)
+    end
+
   private
 
     def notification_payload(query, klass, cached: false)
