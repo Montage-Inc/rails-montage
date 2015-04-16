@@ -1,3 +1,10 @@
+require 'simplecov'
+
+if ENV['COVERAGE']
+  SimpleCov.start do
+  end
+end
+
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
@@ -24,12 +31,6 @@ require 'minitest/reporters'
 require 'shoulda-context'
 require 'mocha/setup'
 require 'vcr'
-require 'simplecov'
-
-if ENV['COVERAGE']
-  SimpleCov.start do
-  end
-end
 
 Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => true)]
 
