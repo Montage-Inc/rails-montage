@@ -206,7 +206,7 @@ module MontageRails
 
           self
         else
-          nil
+          response
         end
       end
     end
@@ -215,7 +215,7 @@ module MontageRails
     #
     def save!
       unless save
-        raise MontageAPIError, "There was an error saving your document"
+        raise MontageAPIError, response.errors.attributes
       end
     end
 
