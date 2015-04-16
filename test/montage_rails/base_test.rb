@@ -365,5 +365,26 @@ class MontageRails::BaseTest < MiniTest::Test
         assert_equal 500, @movie.votes
       end
     end
+
+    context "when none of the attributes have changed" do
+      should "not update the document" do
+        MontageRails.connection.expects(:update_document).never
+        @movie.update_attributes(rank: 4, rating: 2.0, title: "The Jerk", votes: 500, year: 1984, studio_id: "19442e09-5c2d-4e5d-8f34-675570e81414")
+      end
+    end
+
+    context "when only one, unchanged attribute is passed in" do
+      should "not update the document" do
+        MontageRails.connection.expects(:update_document).never
+        @movie.update_attributes(rank: 4)
+      end
+    end
+
+    context "when two, unchanged attributes are passed in" do
+      should "not update the document" do
+        MontageRails.connection.expects(:update_document).never
+        @movie.update_attributes(rank: 4, rating: 2.0)
+      end
+    end
   end
 end

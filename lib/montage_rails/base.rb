@@ -225,12 +225,14 @@ module MontageRails
     #
     # Returns a copy of self if updating is successful
     #
-    def update_attributes(params = {})
+    def update_attributes(params)
       old_attributes = attributes.clone
 
       params.each do |key, value|
         send("#{key}=", value) if respond_to?(key.to_sym)
       end
+
+      return self if old_attributes == attributes
 
       if attributes_valid? && !id.nil?
         @current_method = "Update"
