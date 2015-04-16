@@ -8,7 +8,7 @@ http_interactions:
       string: '{"filter":{"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"}}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.3
       Content-Type:
       - application/json
       Accept:
@@ -27,34 +27,33 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 10 Apr 2015 18:38:58 GMT
+      - Thu, 16 Apr 2015 19:53:37 GMT
       Transfer-Encoding:
       - chunked
-      Content-Type:
-      - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Allow:
       - GET, POST, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"_meta":{"modified":"2015-04-09T23:54:45.262Z","created":"2015-04-09T23:54:45.262Z"},"name":"Steve
-        Martin","updated_at":null,"id":"97ea1631-096f-44e8-b6b5-9ec508344fc8","movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"}]}'
-    http_version: 
-  recorded_at: Fri, 10 Apr 2015 18:38:58 GMT
+      string: '{"data":[{"name":"Steve Martin","created_at":"2015-04-09T23:54:45.262Z","updated_at":"2015-04-09T23:54:45.262Z","_meta":{"modified":"2015-04-09T23:54:45.262Z","created":"2015-04-09T23:54:45.262Z"},"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223","id":"97ea1631-096f-44e8-b6b5-9ec508344fc8"}]}'
+    http_version:
+  recorded_at: Thu, 16 Apr 2015 19:53:37 GMT
 - request:
     method: post
     uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/documents/
     body:
       encoding: UTF-8
-      string: '{"filter":{"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"}}'
+      string: '{"filter":{"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"},"limit":1}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.3
       Content-Type:
       - application/json
       Accept:
@@ -73,23 +72,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 10 Apr 2015 18:38:59 GMT
+      - Thu, 16 Apr 2015 19:53:38 GMT
       Transfer-Encoding:
       - chunked
-      Content-Type:
-      - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Allow:
       - GET, POST, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Type:
+      - application/json
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"_meta":{"modified":"2015-04-09T23:54:45.262Z","created":"2015-04-09T23:54:45.262Z"},"name":"Steve
-        Martin","updated_at":null,"id":"97ea1631-096f-44e8-b6b5-9ec508344fc8","movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"}]}'
-    http_version: 
-  recorded_at: Fri, 10 Apr 2015 18:38:59 GMT
+      string: '{"data":[{"name":"Steve Martin","created_at":"2015-04-09T23:54:45.262Z","updated_at":"2015-04-09T23:54:45.262Z","_meta":{"modified":"2015-04-09T23:54:45.262Z","created":"2015-04-09T23:54:45.262Z"},"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223","id":"97ea1631-096f-44e8-b6b5-9ec508344fc8"}]}'
+    http_version:
+  recorded_at: Thu, 16 Apr 2015 19:53:38 GMT
 recorded_with: VCR 2.9.3

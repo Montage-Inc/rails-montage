@@ -1,4 +1,5 @@
 require 'json'
+require 'montage/query_parser'
 
 module MontageRails
   class Relation
@@ -103,7 +104,7 @@ module MontageRails
     # Returns a reference to self
     #
     def where(clause)
-      clone.tap { |r| r.query[:filter].merge!(clause.is_a?(String) ? parse_string_clause(clause) : clause) }
+      clone.tap { |r| r.query[:filter].merge!(clause.is_a?(String) ? Montage::QueryParser.new(clause).parse : clause) }
     end
 
     # Just adds a limit of 1 to the query, and forces to return a singular resource
@@ -170,56 +171,6 @@ module MontageRails
     def nillify(value)
       return value unless ["", 0].include?(value)
       nil
-    end
-
-    # Determines if the string value passed in is an integer
-    # Returns true or false
-    #
-    def is_i?(value)
-      /\A\d+\z/ === value
-    end
-
-    # Determines if the string value passed in is a float
-    # Returns true or false
-    #
-    def is_f?(value)
-      /\A\d+\.\d+\z/ === value
-    end
-
-    # Parses the query string value into an integer, float, or string
-    #
-    def parse_value(value)
-      if is_i?(value)
-        value.to_i
-      elsif is_f?(value)
-        value.to_f
-      else
-        value.gsub(/('|\(|\))/, "")
-      end
-    end
-
-    # Parses the SQL string passed into the method
-    #
-    # Raises an exception if it is not a valid query (at least three "words"):
-    #   parse_string_clause("foo bar")
-    #
-    # Raises an exception if the operator given is not a valid operator
-    #   parse_string_clause("foo * 'bar'")
-    #
-    # Returns a hash:
-    #   parse_string_clause("foo <= 1")
-    #   => { foo__lte: 1.0 }
-    #
-    def parse_string_clause(clause)
-      split = clause.split(" ")
-      raise RelationError, "Your relation has an undetermined error" unless split.count >= 3
-
-      operator = OPERATOR_MAP[split[1].downcase]
-      raise RelationError, "The operator you have used is not a valid Montage relation operator" unless operator
-
-      value = parse_value(split.select.with_index { |value, i| i >= 2 }.join(" "))
-
-      { "#{split[0]}#{operator}".to_sym => value }
     end
 
     # Parses the current query hash and returns a JSON string

@@ -1,6 +1,7 @@
 require 'montage/version'
 require 'montage/client'
 require 'montage/resources'
+require 'montage/query_parser'
 
 require 'montage_rails/version'
 require 'montage_rails/errors'

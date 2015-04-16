@@ -273,7 +273,7 @@ module MontageRails
     end
 
     def new_record?
-      persisted?
+      !persisted?
     end
 
     # Returns the Column class instance for the attribute passed in
