@@ -221,6 +221,13 @@ class MontageRails::BaseTest < MiniTest::Test
       VCR.use_cassette("get_studio", allow_playback_repeats: true ) do
         assert_equal @studio.attributes, @movie.studio.attributes
       end
+
+      VCR.use_cassette("update_movie", allow_playback_repeats: true) do
+        @movie.studio = @studio
+        @movie.save
+
+        assert_equal @studio.attributes, @movie.studio.attributes
+      end
     end
   end
 
@@ -292,6 +299,46 @@ class MontageRails::BaseTest < MiniTest::Test
         assert !@movie.persisted?
         assert_equal "Foo", @movie.title
       end
+    end
+  end
+
+  context ".all" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("all_movies", allow_playback_repeats: true) do
+          @movies = Movie.all
+        end
+      end
+    end
+
+    should "fetch all the movies" do
+      refute @movies.empty?
+    end
+  end
+
+  context ".column_names" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        @column_names = Movie.column_names
+      end
+
+      @expected = %w(id created_at updated_at studio_id rank rating title votes year)
+    end
+
+    should "return an array of strings that contains the column names" do
+      assert_equal @expected, @column_names
+    end
+  end
+
+  context "#inspect" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        @inspect = Movie.inspect
+      end
+    end
+
+    should "return a Rails style formatted inspect string" do
+      assert_equal "Movie(id: text, created_at: datetime, updated_at: datetime, studio_id: text, rank: integer, rating: float, title: text, votes: integer, year: integer)", @inspect
     end
   end
 
@@ -384,6 +431,13 @@ class MontageRails::BaseTest < MiniTest::Test
       should "not update the document" do
         MontageRails.connection.expects(:update_document).never
         @movie.update_attributes(rank: 4, rating: 2.0)
+      end
+    end
+
+    context "when data types passed in don't match" do
+      should "not update the document" do
+        MontageRails.connection.expects(:update_document).never
+        @movie.update_attributes(rank: "4", rating: "2.0")
       end
     end
   end

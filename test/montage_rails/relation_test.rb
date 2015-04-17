@@ -1,8 +1,32 @@
 require 'test_helper'
 require 'montage_rails/base'
 require 'montage_rails/relation'
+require 'will_paginate/collection'
 
 class MontageRails::RelationTest < Minitest::Test
+  context "#paginate" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
+          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
+        end
+      end
+    end
+
+    should "return a will paginate collection if it is defined" do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
+          assert_equal "WillPaginate::Collection", @movie.paginate.class.name
+        end
+      end
+    end
+
+    should "return self if it is not defined" do
+      Object.expects(:const_defined?).with("WillPaginate").returns(false)
+      assert_equal @movie, @movie.paginate
+    end
+  end
+
   context "#reset" do
     setup do
       VCR.use_cassette("movies", allow_playback_repeats: true) do
@@ -171,6 +195,22 @@ class MontageRails::RelationTest < Minitest::Test
       end
 
       assert_equal 6, @movies.count
+    end
+  end
+
+  context "#inspect" do
+    setup do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
+          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
+        end
+      end
+    end
+
+    should "call to_a and inspect" do
+      @movie.expects(:to_a).returns(stub(inspect: []))
+
+      @movie.inspect
     end
   end
 end

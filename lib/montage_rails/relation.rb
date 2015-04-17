@@ -119,13 +119,6 @@ module MontageRails
       to_a.inspect
     end
 
-    # Fetch all the documents
-    #
-    def all
-      @query = {}
-      to_a
-    end
-
     # Returns the set of records if they have already been fetched, otherwise gets the records and returns them
     #
     def to_a

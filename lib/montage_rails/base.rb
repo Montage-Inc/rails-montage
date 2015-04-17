@@ -15,7 +15,7 @@ module MontageRails
     class << self
       # Delegates all of the relation methods to the class level object, so they can be called on the base class
       #
-      delegate :limit, :offset, :order, :where, :first, :all, to: :relation
+      delegate :limit, :offset, :order, :where, :first, to: :relation
 
       # Delegate the connection to the base module for ease of reference
       #
@@ -85,11 +85,17 @@ module MontageRails
 
             instance_eval do
               define_singleton_method("find_by_#{field["name"]}") do |value|
-                where("#{field["name"]} = #{value}").first
+                where("#{field["name"]} = '#{value}'").first
               end
             end
           end
         end
+      end
+
+      # Fetch all the documents
+      #
+      def all
+        relation.to_a
       end
 
       # Find a record by the id
