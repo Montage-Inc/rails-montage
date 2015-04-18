@@ -50,7 +50,7 @@ module MontageRails
       def has_many(table_name)
         class_eval do
           define_method(table_name.to_s.tableize.to_sym) do
-            table_name.to_s.singularize.capitalize.constantize.where("#{self.class.name.demodulize.underscore.foreign_key} = #{id}")
+            table_name.to_s.classify.where("#{self.class.name.demodulize.underscore.foreign_key} = #{id}")
           end
         end
       end
@@ -60,7 +60,7 @@ module MontageRails
       def belongs_to(table_name)
         class_eval do
           define_method(table_name.to_s.tableize.singularize.to_sym) do
-            table_name.to_s.singularize.capitalize.constantize.find_by_id(__send__(table_name.to_s.foreign_key))
+            table_name.to_s.classify.find_by_id(__send__(table_name.to_s.foreign_key))
           end
 
           define_method("#{table_name.to_s.tableize.singularize}=") do |record|
