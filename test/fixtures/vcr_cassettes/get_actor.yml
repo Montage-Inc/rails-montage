@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/query/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/query/
     body:
       encoding: UTF-8
-      string: '{"filter":{"title":"The Jerk"}}'
+      string: '{"filter":{"movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c","name":"Steve
+        Martin"},"limit":1}'
     headers:
       User-Agent:
       - Montage Ruby v0.1.5
@@ -27,7 +28,7 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:57 GMT
+      - Sat, 18 Apr 2015 20:16:54 GMT
       Transfer-Encoding:
       - chunked
       Allow:
@@ -42,8 +43,7 @@ http_interactions:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"b9dddf21-a121-4481-86e6-6412fca87f3c","year":1984,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","title":"The
-        Jerk","_meta":{"created":{"created":"2015-04-18T20:16:52.876Z","modified":"2015-04-18T20:16:52.876Z"},"modified":"2015-04-18T20:16:53.156Z"},"rank":4,"votes":600,"rating":2}]}'
+      string: '{"data":[{"name":"Steve Martin","movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c","_meta":{"created":"2015-04-18T20:16:54.202Z","modified":"2015-04-18T20:16:54.202Z"},"id":"2716d505-b620-4024-9411-9c2f054821a3"}]}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:59 GMT
+  recorded_at: Sat, 18 Apr 2015 20:16:56 GMT
 recorded_with: VCR 2.9.3

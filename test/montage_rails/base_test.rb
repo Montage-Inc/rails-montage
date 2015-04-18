@@ -338,7 +338,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "return a Rails style formatted inspect string" do
-      assert_equal "Movie(id: text, created_at: datetime, updated_at: datetime, studio_id: text, rank: integer, rating: float, title: text, votes: integer, year: integer)", @inspect
+      assert_equal "Movie(id: text, created_at: datetime, updated_at: datetime, studio_id: text, rank: numeric, rating: numeric, title: text, votes: numeric, year: numeric)", @inspect
     end
   end
 

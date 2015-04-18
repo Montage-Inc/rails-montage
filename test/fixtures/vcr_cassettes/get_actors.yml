@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/documents/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/query/
     body:
       encoding: UTF-8
-      string: '{"filter":{"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"}}'
+      string: '{"filter":{"movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c"}}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.3
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -27,33 +27,33 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Thu, 16 Apr 2015 19:53:37 GMT
+      - Sat, 18 Apr 2015 20:16:55 GMT
       Transfer-Encoding:
       - chunked
       Allow:
       - GET, POST, HEAD, OPTIONS
-      X-Frame-Options:
-      - SAMEORIGIN
       Content-Type:
       - application/json
+      X-Frame-Options:
+      - SAMEORIGIN
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"name":"Steve Martin","created_at":"2015-04-09T23:54:45.262Z","updated_at":"2015-04-09T23:54:45.262Z","_meta":{"modified":"2015-04-09T23:54:45.262Z","created":"2015-04-09T23:54:45.262Z"},"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223","id":"97ea1631-096f-44e8-b6b5-9ec508344fc8"}]}'
-    http_version:
-  recorded_at: Thu, 16 Apr 2015 19:53:37 GMT
+      string: '{"data":[{"name":"Steve Martin","movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c","_meta":{"created":"2015-04-18T20:16:54.202Z","modified":"2015-04-18T20:16:54.202Z"},"id":"2716d505-b620-4024-9411-9c2f054821a3"}]}'
+    http_version: 
+  recorded_at: Sat, 18 Apr 2015 20:16:56 GMT
 - request:
     method: post
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/documents/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/query/
     body:
       encoding: UTF-8
-      string: '{"filter":{"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223"},"limit":1}'
+      string: '{"filter":{"movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c"},"limit":1}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.3
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -72,22 +72,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Thu, 16 Apr 2015 19:53:38 GMT
+      - Sat, 18 Apr 2015 20:16:55 GMT
       Transfer-Encoding:
       - chunked
       Allow:
       - GET, POST, HEAD, OPTIONS
-      X-Frame-Options:
-      - SAMEORIGIN
       Content-Type:
       - application/json
+      X-Frame-Options:
+      - SAMEORIGIN
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"name":"Steve Martin","created_at":"2015-04-09T23:54:45.262Z","updated_at":"2015-04-09T23:54:45.262Z","_meta":{"modified":"2015-04-09T23:54:45.262Z","created":"2015-04-09T23:54:45.262Z"},"movie_id":"215400e4-1566-4b96-aee0-1d6992ee4223","id":"97ea1631-096f-44e8-b6b5-9ec508344fc8"}]}'
-    http_version:
-  recorded_at: Thu, 16 Apr 2015 19:53:38 GMT
+      string: '{"data":[{"name":"Steve Martin","movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c","_meta":{"created":"2015-04-18T20:16:54.202Z","modified":"2015-04-18T20:16:54.202Z"},"id":"2716d505-b620-4024-9411-9c2f054821a3"}]}'
+    http_version: 
+  recorded_at: Sat, 18 Apr 2015 20:16:56 GMT
 recorded_with: VCR 2.9.3

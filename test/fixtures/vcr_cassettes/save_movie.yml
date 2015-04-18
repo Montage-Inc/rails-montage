@@ -2,14 +2,14 @@
 http_interactions:
 - request:
     method: post
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/create/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/save/
     body:
       encoding: UTF-8
-      string: '{"updated_at":null,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rank":4,"rating":2.0,"title":"The
-        Jerk","votes":500,"year":1984}'
+      string: '[{"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rank":4,"rating":2.0,"title":"The
+        Jerk","votes":500,"year":1984}]'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -28,23 +28,23 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 03 Apr 2015 18:53:26 GMT
+      - Sat, 18 Apr 2015 20:16:52 GMT
       Transfer-Encoding:
       - chunked
       Allow:
       - POST, OPTIONS
-      X-Frame-Options:
-      - SAMEORIGIN
       Content-Type:
       - application/json
+      X-Frame-Options:
+      - SAMEORIGIN
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":{"year":1984,"rank":4,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rating":2,"_meta":{"modified":"2015-04-03T18:53:26.710Z","created":"2015-04-03T18:53:26.710Z"},"updated_at":null,"title":"The
-        Jerk","votes":500,"id":"215400e4-1566-4b96-aee0-1d6992ee4223"}}'
+      string: '{"data":[{"id":"b9dddf21-a121-4481-86e6-6412fca87f3c","year":1984,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","title":"The
+        Jerk","_meta":{"created":"2015-04-18T20:16:52.876Z","modified":"2015-04-18T20:16:52.876Z"},"rank":4,"votes":500,"rating":2}]}'
     http_version: 
-  recorded_at: Fri, 03 Apr 2015 18:53:26 GMT
+  recorded_at: Sat, 18 Apr 2015 20:16:54 GMT
 recorded_with: VCR 2.9.3

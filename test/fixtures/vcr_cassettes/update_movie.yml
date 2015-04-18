@@ -2,14 +2,14 @@
 http_interactions:
 - request:
     method: post
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/215400e4-1566-4b96-aee0-1d6992ee4223/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/movies/save/
     body:
       encoding: UTF-8
-      string: '{"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rank":4,"rating":2.0,"title":"The
-        Jerk","votes":600,"year":1984}'
+      string: '[{"id":"b9dddf21-a121-4481-86e6-6412fca87f3c","studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rank":4,"rating":2,"title":"The
+        Jerk","votes":600,"year":1984}]'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -20,31 +20,1315 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
-      code: 200
-      message: OK
+      code: 500
+      message: INTERNAL SERVER ERROR
     headers:
       Connection:
       - keep-alive
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 03 Apr 2015 19:45:07 GMT
+      - Sat, 18 Apr 2015 20:16:53 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - GET, POST, DELETE, HEAD, OPTIONS
+      Content-Type:
+      - text/html
       X-Frame-Options:
       - SAMEORIGIN
-      Content-Type:
-      - application/json
       Vary:
-      - Accept, Host
+      - Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":{"year":1984,"rank":4,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","rating":2,"_meta":{"modified":"2015-04-03T19:45:07.248Z","created":"2015-04-03T18:53:26.710Z"},"updated_at":null,"title":"The
-        Jerk","votes":600,"id":"215400e4-1566-4b96-aee0-1d6992ee4223"}}'
+      string: "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta http-equiv=\"content-type\"
+        content=\"text/html; charset=utf-8\">\n  <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n
+        \ <title>RqlCompileError at /api/v1/schemas/movies/save/</title>\n  <style
+        type=\"text/css\">\n    html * { padding:0; margin:0; }\n    body * { padding:10px
+        20px; }\n    body * * { padding:0; }\n    body { font:small sans-serif; }\n
+        \   body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal;
+        }\n    h2 { margin-bottom:.8em; }\n    h2 span { font-size:80%; color:#666;
+        font-weight:normal; }\n    h3 { margin:1em 0 .5em 0; }\n    h4 { margin:0
+        0 .5em 0; font-weight: normal; }\n    code, pre { font-size: 100%; white-space:
+        pre-wrap; }\n    table { border:1px solid #ccc; border-collapse: collapse;
+        width:100%; background:white; }\n    tbody td, tbody th { vertical-align:top;
+        padding:2px 3px; }\n    thead th {\n      padding:1px 6px 1px 3px; background:#fefefe;
+        text-align:left;\n      font-weight:normal; font-size:11px; border:1px solid
+        #ddd;\n    }\n    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em;
+        }\n    table.vars { margin:5px 0 2px 40px; }\n    table.vars td, table.req
+        td { font-family:monospace; }\n    table td.code { width:100%; }\n    table
+        td.code pre { overflow:hidden; }\n    table.source th { color:#666; }\n    table.source
+        td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee;
+        }\n    ul.traceback { list-style-type:none; color: #222; }\n    ul.traceback
+        li.frame { padding-bottom:1em; color:#666; }\n    ul.traceback li.user { background-color:#e0e0e0;
+        color:#000 }\n    div.context { padding:10px 0; overflow:hidden; }\n    div.context
+        ol { padding-left:30px; margin:0 10px; list-style-position: inside; }\n    div.context
+        ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer;
+        }\n    div.context ol li pre { display:inline; }\n    div.context ol.context-line
+        li { color:#505050; background-color:#dfdfdf; }\n    div.context ol.context-line
+        li span { position:absolute; right:32px; }\n    .user div.context ol.context-line
+        li { background-color:#bbb; color:#000; }\n    .user div.context ol li { color:#666;
+        }\n    div.commands { margin-left: 40px; }\n    div.commands a { color:#555;
+        text-decoration:none; }\n    .user div.commands a { color: black; }\n    #summary
+        { background: #ffc; }\n    #summary h2 { font-weight: normal; color: #666;
+        }\n    #explanation { background:#eee; }\n    #template, #template-not-exist
+        { background:#f6f6f6; }\n    #template-not-exist ul { margin: 0 0 0 20px;
+        }\n    #unicode-hint { background:#eee; }\n    #traceback { background:#eee;
+        }\n    #requestinfo { background:#f6f6f6; padding-left:120px; }\n    #summary
+        table { border:none; background:transparent; }\n    #requestinfo h2, #requestinfo
+        h3 { position:relative; margin-left:-100px; }\n    #requestinfo h3 { margin-bottom:-1em;
+        }\n    .error { background: #ffc; }\n    .specific { color:#cc3300; font-weight:bold;
+        }\n    h2 span.commands { font-size:.7em;}\n    span.commands a:link {color:#5E5694;}\n
+        \   pre.exception_value { font-family: sans-serif; color: #666; font-size:
+        1.5em; margin: 10px 0 10px 0; }\n  </style>\n  \n  <script type=\"text/javascript\">\n
+        \ //<!--\n    function getElementsByClassName(oElm, strTagName, strClassName){\n
+        \       // Written by Jonathan Snook, http://www.snook.ca/jon; Add-ons by
+        Robert Nyman, http://www.robertnyman.com\n        var arrElements = (strTagName
+        == \"*\" && document.all)? document.all :\n        oElm.getElementsByTagName(strTagName);\n
+        \       var arrReturnElements = new Array();\n        strClassName = strClassName.replace(/\\-/g,
+        \"\\-\");\n        var oRegExp = new RegExp(\"(^|\\s)\" + strClassName + \"(\\s|$)\");\n
+        \       var oElement;\n        for(var i=0; i<arrElements.length; i++){\n
+        \           oElement = arrElements[i];\n            if(oRegExp.test(oElement.className)){\n
+        \               arrReturnElements.push(oElement);\n            }\n        }\n
+        \       return (arrReturnElements)\n    }\n    function hideAll(elems) {\n
+        \     for (var e = 0; e < elems.length; e++) {\n        elems[e].style.display
+        = 'none';\n      }\n    }\n    window.onload = function() {\n      hideAll(getElementsByClassName(document,
+        'table', 'vars'));\n      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));\n
+        \     hideAll(getElementsByClassName(document, 'ol', 'post-context'));\n      hideAll(getElementsByClassName(document,
+        'div', 'pastebin'));\n    }\n    function toggle() {\n      for (var i = 0;
+        i < arguments.length; i++) {\n        var e = document.getElementById(arguments[i]);\n
+        \       if (e) {\n          e.style.display = e.style.display == 'none' ?
+        'block': 'none';\n        }\n      }\n      return false;\n    }\n    function
+        varToggle(link, id) {\n      toggle('v' + id);\n      var s = link.getElementsByTagName('span')[0];\n
+        \     var uarr = String.fromCharCode(0x25b6);\n      var darr = String.fromCharCode(0x25bc);\n
+        \     s.innerHTML = s.innerHTML == uarr ? darr : uarr;\n      return false;\n
+        \   }\n    function switchPastebinFriendly(link) {\n      s1 = \"Switch to
+        copy-and-paste view\";\n      s2 = \"Switch back to interactive view\";\n
+        \     link.innerHTML = link.innerHTML == s1 ? s2: s1;\n      toggle('browserTraceback',
+        'pastebinTraceback');\n      return false;\n    }\n    //-->\n  </script>\n
+        \ \n</head>\n<body>\n<div id=\"summary\">\n  <h1>RqlCompileError at /api/v1/schemas/movies/save/</h1>\n
+        \ <pre class=\"exception_value\">RqlCompileError: Expected 2 or more arguments
+        but found 1. in:\nr.table(u&#39;movies&#39;).get_all()\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>\n
+        \ <table class=\"meta\">\n\n    <tr>\n      <th>Request Method:</th>\n      <td>POST</td>\n
+        \   </tr>\n    <tr>\n      <th>Request URL:</th>\n      <td>http://testco.dev.montagehot.club/api/v1/schemas/movies/save/</td>\n
+        \   </tr>\n\n    <tr>\n      <th>Django Version:</th>\n      <td>1.8c1</td>\n
+        \   </tr>\n\n    <tr>\n      <th>Exception Type:</th>\n      <td>RqlCompileError</td>\n
+        \   </tr>\n\n\n    <tr>\n      <th>Exception Value:</th>\n      <td><pre>RqlCompileError:
+        Expected 2 or more arguments but found 1. in:\nr.table(u&#39;movies&#39;).get_all()\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre></td>\n
+        \   </tr>\n\n\n    <tr>\n      <th>Exception Location:</th>\n      <td>/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py
+        in _check_error_response, line 362</td>\n    </tr>\n\n    <tr>\n      <th>Python
+        Executable:</th>\n      <td>/app/.heroku/python/bin/python</td>\n    </tr>\n
+        \   <tr>\n      <th>Python Version:</th>\n      <td>2.7.9</td>\n    </tr>\n
+        \   <tr>\n      <th>Python Path:</th>\n      <td><pre>[&#39;/app&#39;,\n &#39;/app/.heroku/python/bin&#39;,\n
+        &#39;/app/.heroku/python/lib/python2.7/site-packages/setuptools-11.3.1-py2.7.egg&#39;,\n
+        &#39;/app/.heroku/python/lib/python2.7/site-packages/pip-6.0.6-py2.7.egg&#39;,\n
+        &#39;/app/.heroku/python/lib/python2.7/site-packages/newrelic-2.46.0.37/newrelic/bootstrap&#39;,\n
+        &#39;/app&#39;,\n &#39;/app/.heroku/python/lib/python27.zip&#39;,\n &#39;/app/.heroku/python/lib/python2.7&#39;,\n
+        &#39;/app/.heroku/python/lib/python2.7/plat-linux2&#39;,\n &#39;/app/.heroku/python/lib/python2.7/lib-tk&#39;,\n
+        &#39;/app/.heroku/python/lib/python2.7/lib-old&#39;,\n &#39;/app/.heroku/python/lib/python2.7/lib-dynload&#39;,\n
+        &#39;/app/.heroku/python/lib/python2.7/site-packages&#39;,\n &#39;/app/.heroku/python/lib/python2.7/site-packages/newrelic-2.46.0.37&#39;]</pre></td>\n
+        \   </tr>\n    <tr>\n      <th>Server time:</th>\n      <td>Sat, 18 Apr 2015
+        20:16:53 +0000</td>\n    </tr>\n  </table>\n</div>\n\n\n\n\n<div id=\"traceback\">\n
+        \ <h2>Traceback <span class=\"commands\"><a href=\"#\" onclick=\"return switchPastebinFriendly(this);\">\n
+        \   Switch to copy-and-paste view</a></span>\n  </h2>\n  \n  <div id=\"browserTraceback\">\n
+        \   <ul class=\"traceback\">\n      \n        <li class=\"frame django\">\n
+        \         <code>/app/.heroku/python/lib/python2.7/site-packages/django/core/handlers/base.py</code>
+        in <code>get_response</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587253655384\">\n              \n                <ol start=\"125\"
+        class=\"pre-context\" id=\"pre140587253655384\">\n                \n                  <li
+        onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>                    response
+        = middleware_method(request, callback, callback_args, callback_kwargs)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655384',
+        'post140587253655384')\"><pre>                    if response:</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655384',
+        'post140587253655384')\"><pre>                        break</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre></pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655384',
+        'post140587253655384')\"><pre>            if response is None:</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655384',
+        'post140587253655384')\"><pre>                wrapped_callback = self.make_view_atomic(callback)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655384',
+        'post140587253655384')\"><pre>                try:</pre></li>\n                \n
+        \               </ol>\n              \n              <ol start=\"132\" class=\"context-line\">\n
+        \               <li onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>\n
+        \                               response = wrapped_callback(request, *callback_args,
+        **callback_kwargs)</pre> <span>...</span></li></ol>\n              \n                <ol
+        start='133' class=\"post-context\" id=\"post140587253655384\">\n                  \n
+        \                 <li onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>
+        \               except Exception as e:</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>                    #
+        If the view raised an exception, run it through exception</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>
+        \                   # middleware, and if the exception middleware returns
+        a</pre></li>\n                  \n                  <li onclick=\"toggle('pre140587253655384',
+        'post140587253655384')\"><pre>                    # response, use that. Otherwise,
+        reraise the exception.</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>                    for
+        middleware_method in self._exception_middleware:</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587253655384', 'post140587253655384')\"><pre>
+        \                       response = middleware_method(request, e)</pre></li>\n
+        \                 \n              </ol>\n              \n            </div>\n
+        \         \n\n          \n            <div class=\"commands\">\n                \n
+        \                   <a href=\"#\" onclick=\"return varToggle(this, '140587253655384')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587253655384\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>callback_args</td>\n
+        \                   <td class=\"code\"><pre>()</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>e</td>\n
+        \                   <td class=\"code\"><pre>RqlCompileError(u&#39;Expected
+        2 or more arguments but found 1.&#39;)</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>self</td>\n
+        \                   <td class=\"code\"><pre>&lt;django.core.handlers.wsgi.WSGIHandler
+        object at 0x7fdd0de96450&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>middleware_method</td>\n                    <td
+        class=\"code\"><pre>&lt;bound method CsrfViewMiddleware.process_view of &lt;django.middleware.csrf.CsrfViewMiddleware
+        object at 0x7fdd05695590&gt;&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>resolver_match</td>\n                    <td
+        class=\"code\"><pre>ResolverMatch(func=montage.apps.api.views.DocumentSave,
+        args=(), kwargs={&#39;schema&#39;: u&#39;movies&#39;}, url_name=document-save,
+        app_name=None, namespaces=[&#39;api&#39;])</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>request</td>\n
+        \                   <td class=\"code\"><pre>&quot;&lt;WSGIRequest\\npath:/api/v1/schemas/movies/save/,\\nGET:&lt;QueryDict:
+        {}&gt;,\\nPOST:&lt;QueryDict: {}&gt;,\\nCOOKIES:{},\\nMETA:{&#39;CONTENT_LENGTH&#39;:
+        &#39;161&#39;,\\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\\n u&#39;CSRF_COOKIE&#39;:
+        u&#39;QwxgjmaAWIgT0BX89lyDfgNN7Nbc1xiy&#39;,\\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\\n
+        &#39;HTTP_ACCEPT_ENCODING&#39;: &#39;gzip;q=1.0,deflate;q=0.6,identity;q=0.3&#39;,\\n
+        &#39;HTTP_AUTHORIZATION&#39;: &#39;Token fb761e07-a12b-40bb-a42f-2202ecfd1046&#39;,\\n
+        &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\\n &#39;HTTP_CONNECT_TIME&#39;:
+        &#39;1&#39;,\\n &#39;HTTP_HOST&#39;: &#39;testco.dev.montagehot.club&#39;,\\n
+        &#39;HTTP_TOTAL_ROUTE_TIME&#39;: &#39;0&#39;,\\n &#39;HTTP_USER_AGENT&#39;:
+        &#39;Montage Ruby v0.1.5&#39;,\\n &#39;HTTP_VIA&#39;: &#39;1.1 vegur&#39;,\\n
+        &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;198.189.227.4&#39;,\\n &#39;HTTP_X_FORWARDED_PORT&#39;:
+        &#39;80&#39;,\\n &#39;HTTP_X_FORWARDED_PROTO&#39;: &#39;http&#39;,\\n &#39;HTTP_X_REQUEST_ID&#39;:
+        &#39;8b6a52fe-a60a-4e41-869f-4119d0602b71&#39;,\\n &#39;HTTP_X_REQUEST_START&#39;:
+        &#39;1429388213138&#39;,\\n &#39;PATH_INFO&#39;: u&#39;/api/v1/schemas/movies/save/&#39;,\\n
+        &#39;QUERY_STRING&#39;: &#39;&#39;,\\n &#39;RAW_URI&#39;: &#39;/api/v1/schemas/movies/save/&#39;,\\n
+        &#39;REMOTE_ADDR&#39;: &#39;10.123.196.75&#39;,\\n &#39;REMOTE_PORT&#39;:
+        &#39;44790&#39;,\\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\\n &#39;SCRIPT_NAME&#39;:
+        u&#39;&#39;,\\n &#39;SERVER_NAME&#39;: &#39;0.0.0.0&#39;,\\n &#39;SERVER_PORT&#39;:
+        &#39;16052&#39;,\\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\\n &#39;SERVER_SOFTWARE&#39;:
+        &#39;gunicorn/19.3.0&#39;,\\n &#39;gunicorn.socket&#39;: &lt;socket._socketobject
+        object at 0x7fdd021e1f30&gt;,\\n &#39;wsgi.errors&#39;: &lt;gunicorn.http.wsgi.WSGIErrorsWrapper
+        object at 0x7fdcf3fa7790&gt;,\\n &#39;wsgi.file_wrapper&#39;: &lt;class &#39;gunicorn.http.wsgi.FileWrapper&#39;&gt;,\\n
+        &#39;wsgi.input&#39;: &lt;gunicorn.http.body.Body object at 0x7fdcf3fa7e50&gt;,\\n
+        &#39;wsgi.multiprocess&#39;: True,\\n &#39;wsgi.multithread&#39;: False,\\n
+        &#39;wsgi.run_once&#39;: False,\\n &#39;wsgi.url_scheme&#39;: &#39;http&#39;,\\n
+        &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>callback_kwargs</td>\n
+        \                   <td class=\"code\"><pre>{&#39;schema&#39;: u&#39;movies&#39;}</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>urlconf</td>\n
+        \                   <td class=\"code\"><pre>&#39;montage.apps.project.urls&#39;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>resolver</td>\n
+        \                   <td class=\"code\"><pre>&lt;RegexURLResolver &#39;montage.apps.project.urls&#39;
+        (None:None) ^/&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>response</td>\n                    <td
+        class=\"code\"><pre>None</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>wrapped_callback</td>\n                    <td
+        class=\"code\"><pre>&lt;function DocumentSave at 0x7fdd042a08c0&gt;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>callback</td>\n
+        \                   <td class=\"code\"><pre>&lt;function DocumentSave at 0x7fdd042a08c0&gt;</pre></td>\n
+        \                 </tr>\n                \n              </tbody>\n            </table>\n
+        \         \n        </li>\n      \n        <li class=\"frame django\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/django/views/decorators/csrf.py</code>
+        in <code>wrapped_view</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587253653800\">\n              \n                <ol start=\"51\"
+        class=\"pre-context\" id=\"pre140587253653800\">\n                \n                  <li
+        onclick=\"toggle('pre140587253653800', 'post140587253653800')\"><pre>    &quot;&quot;&quot;</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253653800',
+        'post140587253653800')\"><pre>    Marks a view function as being exempt from
+        the CSRF view protection.</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253653800', 'post140587253653800')\"><pre>    &quot;&quot;&quot;</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253653800',
+        'post140587253653800')\"><pre>    # We could just do view_func.csrf_exempt
+        = True, but decorators</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253653800', 'post140587253653800')\"><pre>    #
+        are nicer if they don&#39;t have side-effects, so we return a new</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253653800',
+        'post140587253653800')\"><pre>    # function.</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253653800', 'post140587253653800')\"><pre>
+        \   def wrapped_view(*args, **kwargs):</pre></li>\n                \n                </ol>\n
+        \             \n              <ol start=\"58\" class=\"context-line\">\n                <li
+        onclick=\"toggle('pre140587253653800', 'post140587253653800')\"><pre>\n                    return
+        view_func(*args, **kwargs)</pre> <span>...</span></li></ol>\n              \n
+        \               <ol start='59' class=\"post-context\" id=\"post140587253653800\">\n
+        \                 \n                  <li onclick=\"toggle('pre140587253653800',
+        'post140587253653800')\"><pre>    wrapped_view.csrf_exempt = True</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253653800',
+        'post140587253653800')\"><pre>    return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)</pre></li>\n
+        \                 \n              </ol>\n              \n            </div>\n
+        \         \n\n          \n            <div class=\"commands\">\n                \n
+        \                   <a href=\"#\" onclick=\"return varToggle(this, '140587253653800')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587253653800\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>kwargs</td>\n
+        \                   <td class=\"code\"><pre>{&#39;schema&#39;: u&#39;movies&#39;}</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>view_func</td>\n
+        \                   <td class=\"code\"><pre>&lt;function DocumentSave at 0x7fdd042a0848&gt;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>args</td>\n
+        \                   <td class=\"code\"><pre>(&lt;WSGIRequest: POST &#39;/api/v1/schemas/movies/save/&#39;&gt;,)</pre></td>\n
+        \                 </tr>\n                \n              </tbody>\n            </table>\n
+        \         \n        </li>\n      \n        <li class=\"frame django\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/django/views/generic/base.py</code>
+        in <code>view</code>\n\n          \n            <div class=\"context\" id=\"c140587253654664\">\n
+        \             \n                <ol start=\"64\" class=\"pre-context\" id=\"pre140587253654664\">\n
+        \               \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre>        def view(request, *args, **kwargs):</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre>            self = cls(**initkwargs)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre>            if hasattr(self, &#39;get&#39;)
+        and not hasattr(self, &#39;head&#39;):</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>                self.head
+        = self.get</pre></li>\n                \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre>            self.request = request</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre>            self.args = args</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>
+        \           self.kwargs = kwargs</pre></li>\n                \n                </ol>\n
+        \             \n              <ol start=\"71\" class=\"context-line\">\n                <li
+        onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>\n                        return
+        self.dispatch(request, *args, **kwargs)</pre> <span>...</span></li></ol>\n
+        \             \n                <ol start='72' class=\"post-context\" id=\"post140587253654664\">\n
+        \                 \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre></pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>        #
+        take name and docstring from class</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>        update_wrapper(view,
+        cls, updated=())</pre></li>\n                  \n                  <li onclick=\"toggle('pre140587253654664',
+        'post140587253654664')\"><pre></pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>        #
+        and possible attributes set by decorators</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587253654664', 'post140587253654664')\"><pre>
+        \       # like csrf_exempt from dispatch</pre></li>\n                  \n
+        \             </ol>\n              \n            </div>\n          \n\n          \n
+        \           <div class=\"commands\">\n                \n                    <a
+        href=\"#\" onclick=\"return varToggle(this, '140587253654664')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587253654664\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>self</td>\n
+        \                   <td class=\"code\"><pre>&lt;montage.apps.api.views.DocumentSave
+        object at 0x7fdd000fca50&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>kwargs</td>\n                    <td
+        class=\"code\"><pre>{&#39;schema&#39;: u&#39;movies&#39;}</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>request</td>\n
+        \                   <td class=\"code\"><pre>&quot;&lt;WSGIRequest\\npath:/api/v1/schemas/movies/save/,\\nGET:&lt;QueryDict:
+        {}&gt;,\\nPOST:&lt;QueryDict: {}&gt;,\\nCOOKIES:{},\\nMETA:{&#39;CONTENT_LENGTH&#39;:
+        &#39;161&#39;,\\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\\n u&#39;CSRF_COOKIE&#39;:
+        u&#39;QwxgjmaAWIgT0BX89lyDfgNN7Nbc1xiy&#39;,\\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\\n
+        &#39;HTTP_ACCEPT_ENCODING&#39;: &#39;gzip;q=1.0,deflate;q=0.6,identity;q=0.3&#39;,\\n
+        &#39;HTTP_AUTHORIZATION&#39;: &#39;Token fb761e07-a12b-40bb-a42f-2202ecfd1046&#39;,\\n
+        &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\\n &#39;HTTP_CONNECT_TIME&#39;:
+        &#39;1&#39;,\\n &#39;HTTP_HOST&#39;: &#39;testco.dev.montagehot.club&#39;,\\n
+        &#39;HTTP_TOTAL_ROUTE_TIME&#39;: &#39;0&#39;,\\n &#39;HTTP_USER_AGENT&#39;:
+        &#39;Montage Ruby v0.1.5&#39;,\\n &#39;HTTP_VIA&#39;: &#39;1.1 vegur&#39;,\\n
+        &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;198.189.227.4&#39;,\\n &#39;HTTP_X_FORWARDED_PORT&#39;:
+        &#39;80&#39;,\\n &#39;HTTP_X_FORWARDED_PROTO&#39;: &#39;http&#39;,\\n &#39;HTTP_X_REQUEST_ID&#39;:
+        &#39;8b6a52fe-a60a-4e41-869f-4119d0602b71&#39;,\\n &#39;HTTP_X_REQUEST_START&#39;:
+        &#39;1429388213138&#39;,\\n &#39;PATH_INFO&#39;: u&#39;/api/v1/schemas/movies/save/&#39;,\\n
+        &#39;QUERY_STRING&#39;: &#39;&#39;,\\n &#39;RAW_URI&#39;: &#39;/api/v1/schemas/movies/save/&#39;,\\n
+        &#39;REMOTE_ADDR&#39;: &#39;10.123.196.75&#39;,\\n &#39;REMOTE_PORT&#39;:
+        &#39;44790&#39;,\\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\\n &#39;SCRIPT_NAME&#39;:
+        u&#39;&#39;,\\n &#39;SERVER_NAME&#39;: &#39;0.0.0.0&#39;,\\n &#39;SERVER_PORT&#39;:
+        &#39;16052&#39;,\\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\\n &#39;SERVER_SOFTWARE&#39;:
+        &#39;gunicorn/19.3.0&#39;,\\n &#39;gunicorn.socket&#39;: &lt;socket._socketobject
+        object at 0x7fdd021e1f30&gt;,\\n &#39;wsgi.errors&#39;: &lt;gunicorn.http.wsgi.WSGIErrorsWrapper
+        object at 0x7fdcf3fa7790&gt;,\\n &#39;wsgi.file_wrapper&#39;: &lt;class &#39;gunicorn.http.wsgi.FileWrapper&#39;&gt;,\\n
+        &#39;wsgi.input&#39;: &lt;gunicorn.http.body.Body object at 0x7fdcf3fa7e50&gt;,\\n
+        &#39;wsgi.multiprocess&#39;: True,\\n &#39;wsgi.multithread&#39;: False,\\n
+        &#39;wsgi.run_once&#39;: False,\\n &#39;wsgi.url_scheme&#39;: &#39;http&#39;,\\n
+        &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>args</td>\n
+        \                   <td class=\"code\"><pre>()</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>initkwargs</td>\n
+        \                   <td class=\"code\"><pre>{}</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>cls</td>\n
+        \                   <td class=\"code\"><pre>&lt;class &#39;montage.apps.api.views.DocumentSave&#39;&gt;</pre></td>\n
+        \                 </tr>\n                \n              </tbody>\n            </table>\n
+        \         \n        </li>\n      \n        <li class=\"frame user\">\n          <code>/app/montage/apps/api/mixins.py</code>
+        in <code>dispatch</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587253657328\">\n              \n                <ol start=\"6\"
+        class=\"pre-context\" id=\"pre140587253657328\">\n                \n                  <li
+        onclick=\"toggle('pre140587253657328', 'post140587253657328')\"><pre>from
+        .serializers import SchemaSerializer</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253657328', 'post140587253657328')\"><pre>from
+        ..schema.models import Schema</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253657328', 'post140587253657328')\"><pre></pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre></pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253657328', 'post140587253657328')\"><pre>class
+        RethinkMixin(object):</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253657328', 'post140587253657328')\"><pre>    def
+        dispatch(self, request, *args, **kwargs):</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253657328', 'post140587253657328')\"><pre>        try:</pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"13\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>\n                        response = super(RethinkMixin,
+        self).dispatch(request, *args, **kwargs)</pre> <span>...</span></li></ol>\n
+        \             \n                <ol start='14' class=\"post-context\" id=\"post140587253657328\">\n
+        \                 \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>        except r.RqlRuntimeError, err:</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>            response = Response({</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>                &#39;errors&#39;: [{</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>                    &#39;detail&#39;: str(err.message),</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>                    &#39;status&#39;: status.HTTP_500_INTERNAL_SERVER_ERROR</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253657328',
+        'post140587253657328')\"><pre>                }]</pre></li>\n                  \n
+        \             </ol>\n              \n            </div>\n          \n\n          \n
+        \           <div class=\"commands\">\n                \n                    <a
+        href=\"#\" onclick=\"return varToggle(this, '140587253657328')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587253657328\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>kwargs</td>\n
+        \                   <td class=\"code\"><pre>{&#39;schema&#39;: u&#39;movies&#39;}</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>request</td>\n
+        \                   <td class=\"code\"><pre>&quot;&lt;WSGIRequest\\npath:/api/v1/schemas/movies/save/,\\nGET:&lt;QueryDict:
+        {}&gt;,\\nPOST:&lt;QueryDict: {}&gt;,\\nCOOKIES:{},\\nMETA:{&#39;CONTENT_LENGTH&#39;:
+        &#39;161&#39;,\\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\\n u&#39;CSRF_COOKIE&#39;:
+        u&#39;QwxgjmaAWIgT0BX89lyDfgNN7Nbc1xiy&#39;,\\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\\n
+        &#39;HTTP_ACCEPT_ENCODING&#39;: &#39;gzip;q=1.0,deflate;q=0.6,identity;q=0.3&#39;,\\n
+        &#39;HTTP_AUTHORIZATION&#39;: &#39;Token fb761e07-a12b-40bb-a42f-2202ecfd1046&#39;,\\n
+        &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\\n &#39;HTTP_CONNECT_TIME&#39;:
+        &#39;1&#39;,\\n &#39;HTTP_HOST&#39;: &#39;testco.dev.montagehot.club&#39;,\\n
+        &#39;HTTP_TOTAL_ROUTE_TIME&#39;: &#39;0&#39;,\\n &#39;HTTP_USER_AGENT&#39;:
+        &#39;Montage Ruby v0.1.5&#39;,\\n &#39;HTTP_VIA&#39;: &#39;1.1 vegur&#39;,\\n
+        &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;198.189.227.4&#39;,\\n &#39;HTTP_X_FORWARDED_PORT&#39;:
+        &#39;80&#39;,\\n &#39;HTTP_X_FORWARDED_PROTO&#39;: &#39;http&#39;,\\n &#39;HTTP_X_REQUEST_ID&#39;:
+        &#39;8b6a52fe-a60a-4e41-869f-4119d0602b71&#39;,\\n &#39;HTTP_X_REQUEST_START&#39;:
+        &#39;1429388213138&#39;,\\n &#39;PATH_INFO&#39;: u&#39;/api/v1/schemas/movies/save/&#39;,\\n
+        &#39;QUERY_STRING&#39;: &#39;&#39;,\\n &#39;RAW_URI&#39;: &#39;/api/v1/schemas/movies/save/&#39;,\\n
+        &#39;REMOTE_ADDR&#39;: &#39;10.123.196.75&#39;,\\n &#39;REMOTE_PORT&#39;:
+        &#39;44790&#39;,\\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\\n &#39;SCRIPT_NAME&#39;:
+        u&#39;&#39;,\\n &#39;SERVER_NAME&#39;: &#39;0.0.0.0&#39;,\\n &#39;SERVER_PORT&#39;:
+        &#39;16052&#39;,\\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\\n &#39;SERVER_SOFTWARE&#39;:
+        &#39;gunicorn/19.3.0&#39;,\\n &#39;gunicorn.socket&#39;: &lt;socket._socketobject
+        object at 0x7fdd021e1f30&gt;,\\n &#39;wsgi.errors&#39;: &lt;gunicorn.http.wsgi.WSGIErrorsWrapper
+        object at 0x7fdcf3fa7790&gt;,\\n &#39;wsgi.file_wrapper&#39;: &lt;class &#39;gunicorn.http.wsgi.FileWrapper&#39;&gt;,\\n
+        &#39;wsgi.input&#39;: &lt;gunicorn.http.body.Body object at 0x7fdcf3fa7e50&gt;,\\n
+        &#39;wsgi.multiprocess&#39;: True,\\n &#39;wsgi.multithread&#39;: False,\\n
+        &#39;wsgi.run_once&#39;: False,\\n &#39;wsgi.url_scheme&#39;: &#39;http&#39;,\\n
+        &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>self</td>\n
+        \                   <td class=\"code\"><pre>&lt;montage.apps.api.views.DocumentSave
+        object at 0x7fdd000fca50&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>args</td>\n                    <td
+        class=\"code\"><pre>()</pre></td>\n                  </tr>\n                \n
+        \             </tbody>\n            </table>\n          \n        </li>\n
+        \     \n        <li class=\"frame user\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/rest_framework/views.py</code>
+        in <code>dispatch</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587253654304\">\n              \n                <ol start=\"445\"
+        class=\"pre-context\" id=\"pre140587253654304\">\n                \n                  <li
+        onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre>                                  self.http_method_not_allowed)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre>            else:</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre>
+        \               handler = self.http_method_not_allowed</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre></pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre>            response = handler(request, *args,
+        **kwargs)</pre></li>\n                \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre></pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre>        except
+        Exception as exc:</pre></li>\n                \n                </ol>\n              \n
+        \             <ol start=\"452\" class=\"context-line\">\n                <li
+        onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre>\n                        response
+        = self.handle_exception(exc)</pre> <span>...</span></li></ol>\n              \n
+        \               <ol start='453' class=\"post-context\" id=\"post140587253654304\">\n
+        \                 \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre></pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre>        self.response
+        = self.finalize_response(request, response, *args, **kwargs)</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre>        return self.response</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587253654304', 'post140587253654304')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre>    def options(self, request, *args, **kwargs):</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253654304',
+        'post140587253654304')\"><pre>        &quot;&quot;&quot;</pre></li>\n                  \n
+        \             </ol>\n              \n            </div>\n          \n\n          \n
+        \           <div class=\"commands\">\n                \n                    <a
+        href=\"#\" onclick=\"return varToggle(this, '140587253654304')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587253654304\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>exc</td>\n
+        \                   <td class=\"code\"><pre>RqlCompileError(u&#39;Expected
+        2 or more arguments but found 1.&#39;)</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>self</td>\n
+        \                   <td class=\"code\"><pre>&lt;montage.apps.api.views.DocumentSave
+        object at 0x7fdd000fca50&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>kwargs</td>\n                    <td
+        class=\"code\"><pre>{&#39;schema&#39;: u&#39;movies&#39;}</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>request</td>\n
+        \                   <td class=\"code\"><pre>&lt;rest_framework.request.Request
+        object at 0x7fdd02199510&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>args</td>\n                    <td
+        class=\"code\"><pre>()</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>handler</td>\n                    <td
+        class=\"code\"><pre>&lt;bound method DocumentSave.post of &lt;montage.apps.api.views.DocumentSave
+        object at 0x7fdd000fca50&gt;&gt;</pre></td>\n                  </tr>\n                \n
+        \             </tbody>\n            </table>\n          \n        </li>\n
+        \     \n        <li class=\"frame user\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/rest_framework/views.py</code>
+        in <code>dispatch</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587253655600\">\n              \n                <ol start=\"442\"
+        class=\"pre-context\" id=\"pre140587253655600\">\n                \n                  <li
+        onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre>            #
+        Get the appropriate handler method</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre>            if
+        request.method.lower() in self.http_method_names:</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre>
+        \               handler = getattr(self, request.method.lower(),</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre>                                  self.http_method_not_allowed)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre>            else:</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre>
+        \               handler = self.http_method_not_allowed</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre></pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"449\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre>\n                        response = handler(request,
+        *args, **kwargs)</pre> <span>...</span></li></ol>\n              \n                <ol
+        start='450' class=\"post-context\" id=\"post140587253655600\">\n                  \n
+        \                 <li onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre>        except Exception as exc:</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre>            response = self.handle_exception(exc)</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre></pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587253655600', 'post140587253655600')\"><pre>        self.response
+        = self.finalize_response(request, response, *args, **kwargs)</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587253655600',
+        'post140587253655600')\"><pre>        return self.response</pre></li>\n                  \n
+        \             </ol>\n              \n            </div>\n          \n\n          \n
+        \           <div class=\"commands\">\n                \n                    <a
+        href=\"#\" onclick=\"return varToggle(this, '140587253655600')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587253655600\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>exc</td>\n
+        \                   <td class=\"code\"><pre>RqlCompileError(u&#39;Expected
+        2 or more arguments but found 1.&#39;)</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>self</td>\n
+        \                   <td class=\"code\"><pre>&lt;montage.apps.api.views.DocumentSave
+        object at 0x7fdd000fca50&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>kwargs</td>\n                    <td
+        class=\"code\"><pre>{&#39;schema&#39;: u&#39;movies&#39;}</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>request</td>\n
+        \                   <td class=\"code\"><pre>&lt;rest_framework.request.Request
+        object at 0x7fdd02199510&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>args</td>\n                    <td
+        class=\"code\"><pre>()</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>handler</td>\n                    <td
+        class=\"code\"><pre>&lt;bound method DocumentSave.post of &lt;montage.apps.api.views.DocumentSave
+        object at 0x7fdd000fca50&gt;&gt;</pre></td>\n                  </tr>\n                \n
+        \             </tbody>\n            </table>\n          \n        </li>\n
+        \     \n        <li class=\"frame user\">\n          <code>/app/montage/apps/api/views.py</code>
+        in <code>post</code>\n\n          \n            <div class=\"context\" id=\"c140587199350760\">\n
+        \             \n                <ol start=\"71\" class=\"pre-context\" id=\"pre140587199350760\">\n
+        \               \n                  <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre>        batch = self.prepare_meta(batch)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre>        reql = self.object.get_table().insert(batch,
+        conflict=&#39;replace&#39;)</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre>        saved
+        = self.object.project.rdb.run(reql)</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre></pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre>        document_ids = [document[&#39;id&#39;]
+        for document in batch if &#39;id&#39; in batch]</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre>
+        \       document_ids.extend(saved.get(&#39;generated_keys&#39;, []))</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre>        reql = self.object.get_table().get_all(*document_ids)</pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"78\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre>\n                    results = self.object.project.rdb.run(reql)</pre>
+        <span>...</span></li></ol>\n              \n                <ol start='79'
+        class=\"post-context\" id=\"post140587199350760\">\n                  \n                  <li
+        onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre>        return Response({</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre>
+        \           &#39;data&#39;: list(results)</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre>
+        \       })</pre></li>\n                  \n                  <li onclick=\"toggle('pre140587199350760',
+        'post140587199350760')\"><pre></pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587199350760', 'post140587199350760')\"><pre></pre></li>\n
+        \                 \n              </ol>\n              \n            </div>\n
+        \         \n\n          \n            <div class=\"commands\">\n                \n
+        \                   <a href=\"#\" onclick=\"return varToggle(this, '140587199350760')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587199350760\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>form</td>\n
+        \                   <td class=\"code\"><pre>&lt;SchemaDataForm bound=True,
+        valid=True, fields=(studio_id;rank;rating;title;votes;year)&gt;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>saved</td>\n
+        \                   <td class=\"code\"><pre>{u&#39;deleted&#39;: 0,\n u&#39;errors&#39;:
+        0,\n u&#39;inserted&#39;: 0,\n u&#39;replaced&#39;: 1,\n u&#39;skipped&#39;:
+        0,\n u&#39;unchanged&#39;: 0}</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>self</td>\n                    <td
+        class=\"code\"><pre>&lt;montage.apps.api.views.DocumentSave object at 0x7fdd000fca50&gt;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>reql</td>\n
+        \                   <td class=\"code\"><pre>&lt;RqlQuery instance: r.table(u&#39;movies&#39;).get_all()
+        &gt;</pre></td>\n                  </tr>\n                \n                  <tr>\n
+        \                   <td>request</td>\n                    <td class=\"code\"><pre>&lt;rest_framework.request.Request
+        object at 0x7fdd02199510&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>document</td>\n                    <td
+        class=\"code\"><pre>{&#39;_meta&#39;: {&#39;created&#39;: {u&#39;created&#39;:
+        datetime.datetime(2015, 4, 18, 20, 16, 52, 876000, tzinfo=&lt;rethinkdb.ast.RqlTzinfo
+        object at 0x7fdcf3fa0e90&gt;),\n                       u&#39;modified&#39;:
+        datetime.datetime(2015, 4, 18, 20, 16, 52, 876000, tzinfo=&lt;rethinkdb.ast.RqlTzinfo
+        object at 0x7fdcf3fa0750&gt;)},\n           &#39;modified&#39;: datetime.datetime(2015,
+        4, 18, 20, 16, 53, 156079, tzinfo=&lt;UTC&gt;)},\n u&#39;id&#39;: u&#39;b9dddf21-a121-4481-86e6-6412fca87f3c&#39;,\n
+        u&#39;rank&#39;: 4,\n u&#39;rating&#39;: 2,\n u&#39;studio_id&#39;: u&#39;19442e09-5c2d-4e5d-8f34-675570e81414&#39;,\n
+        u&#39;title&#39;: u&#39;The Jerk&#39;,\n u&#39;votes&#39;: 600,\n u&#39;year&#39;:
+        1984}</pre></td>\n                  </tr>\n                \n                  <tr>\n
+        \                   <td>schema</td>\n                    <td class=\"code\"><pre>u&#39;movies&#39;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>batch</td>\n
+        \                   <td class=\"code\"><pre>[{&#39;_meta&#39;: {&#39;created&#39;:
+        {u&#39;created&#39;: datetime.datetime(2015, 4, 18, 20, 16, 52, 876000, tzinfo=&lt;rethinkdb.ast.RqlTzinfo
+        object at 0x7fdcf3fa0e90&gt;),\n                        u&#39;modified&#39;:
+        datetime.datetime(2015, 4, 18, 20, 16, 52, 876000, tzinfo=&lt;rethinkdb.ast.RqlTzinfo
+        object at 0x7fdcf3fa0750&gt;)},\n            &#39;modified&#39;: datetime.datetime(2015,
+        4, 18, 20, 16, 53, 156079, tzinfo=&lt;UTC&gt;)},\n  u&#39;id&#39;: u&#39;b9dddf21-a121-4481-86e6-6412fca87f3c&#39;,\n
+        \ u&#39;rank&#39;: 4,\n  u&#39;rating&#39;: 2,\n  u&#39;studio_id&#39;: u&#39;19442e09-5c2d-4e5d-8f34-675570e81414&#39;,\n
+        \ u&#39;title&#39;: u&#39;The Jerk&#39;,\n  u&#39;votes&#39;: 600,\n  u&#39;year&#39;:
+        1984}]</pre></td>\n                  </tr>\n                \n                  <tr>\n
+        \                   <td>errors</td>\n                    <td class=\"code\"><pre>[]</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>body</td>\n
+        \                   <td class=\"code\"><pre>[{&#39;_meta&#39;: {&#39;created&#39;:
+        {u&#39;created&#39;: datetime.datetime(2015, 4, 18, 20, 16, 52, 876000, tzinfo=&lt;rethinkdb.ast.RqlTzinfo
+        object at 0x7fdcf3fa0e90&gt;),\n                        u&#39;modified&#39;:
+        datetime.datetime(2015, 4, 18, 20, 16, 52, 876000, tzinfo=&lt;rethinkdb.ast.RqlTzinfo
+        object at 0x7fdcf3fa0750&gt;)},\n            &#39;modified&#39;: datetime.datetime(2015,
+        4, 18, 20, 16, 53, 156079, tzinfo=&lt;UTC&gt;)},\n  u&#39;id&#39;: u&#39;b9dddf21-a121-4481-86e6-6412fca87f3c&#39;,\n
+        \ u&#39;rank&#39;: 4,\n  u&#39;rating&#39;: 2,\n  u&#39;studio_id&#39;: u&#39;19442e09-5c2d-4e5d-8f34-675570e81414&#39;,\n
+        \ u&#39;title&#39;: u&#39;The Jerk&#39;,\n  u&#39;votes&#39;: 600,\n  u&#39;year&#39;:
+        1984}]</pre></td>\n                  </tr>\n                \n                  <tr>\n
+        \                   <td>document_ids</td>\n                    <td class=\"code\"><pre>[]</pre></td>\n
+        \                 </tr>\n                \n              </tbody>\n            </table>\n
+        \         \n        </li>\n      \n        <li class=\"frame user\">\n          <code>/app/montage/apps/rdb/models.py</code>
+        in <code>run</code>\n\n          \n            <div class=\"context\" id=\"c140587199349104\">\n
+        \             \n                <ol start=\"70\" class=\"pre-context\" id=\"pre140587199349104\">\n
+        \               \n                  <li onclick=\"toggle('pre140587199349104',
+        'post140587199349104')\"><pre>            if not connection.socket is None:</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199349104',
+        'post140587199349104')\"><pre>                connection.reconnect()</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199349104',
+        'post140587199349104')\"><pre></pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199349104', 'post140587199349104')\"><pre>        return
+        connection</pre></li>\n                \n                  <li onclick=\"toggle('pre140587199349104',
+        'post140587199349104')\"><pre></pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199349104', 'post140587199349104')\"><pre>    def
+        run(self, reql):</pre></li>\n                \n                  <li onclick=\"toggle('pre140587199349104',
+        'post140587199349104')\"><pre>        conn = self.get_connection()</pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"77\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587199349104',
+        'post140587199349104')\"><pre>\n                    return reql.run(conn)</pre>
+        <span>...</span></li></ol>\n              \n            </div>\n          \n\n
+        \         \n            <div class=\"commands\">\n                \n                    <a
+        href=\"#\" onclick=\"return varToggle(this, '140587199349104')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587199349104\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>conn</td>\n
+        \                   <td class=\"code\"><pre>&lt;rethinkdb.net.Connection object
+        at 0x7fdd04263790&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>self</td>\n                    <td
+        class=\"code\"><pre>&lt;Cluster: testco-dev&gt;</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>reql</td>\n
+        \                   <td class=\"code\"><pre>&lt;RqlQuery instance: r.table(u&#39;movies&#39;).get_all()
+        &gt;</pre></td>\n                  </tr>\n                \n              </tbody>\n
+        \           </table>\n          \n        </li>\n      \n        <li class=\"frame
+        user\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/ast.py</code>
+        in <code>run</code>\n\n          \n            <div class=\"context\" id=\"c140587199350328\">\n
+        \             \n                <ol start=\"92\" class=\"pre-context\" id=\"pre140587199350328\">\n
+        \               \n                  <li onclick=\"toggle('pre140587199350328',
+        'post140587199350328')\"><pre>    def run(self, c=None, **global_optargs):</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199350328',
+        'post140587199350328')\"><pre>        if not c:</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre>
+        \           if repl.default_connection:</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre>                c
+        = repl.default_connection</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre>            else:</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199350328',
+        'post140587199350328')\"><pre>                raise RqlDriverError(&quot;RqlQuery.run
+        must be given a connection to run on.&quot;)</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre></pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"99\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587199350328',
+        'post140587199350328')\"><pre>\n                    return c._start(self,
+        **global_optargs)</pre> <span>...</span></li></ol>\n              \n                <ol
+        start='100' class=\"post-context\" id=\"post140587199350328\">\n                  \n
+        \                 <li onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199350328',
+        'post140587199350328')\"><pre>    def __str__(self):</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre>
+        \       qp = QueryPrinter(self)</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre>        return
+        qp.print_query()</pre></li>\n                  \n                  <li onclick=\"toggle('pre140587199350328',
+        'post140587199350328')\"><pre></pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587199350328', 'post140587199350328')\"><pre>    def
+        __repr__(self):</pre></li>\n                  \n              </ol>\n              \n
+        \           </div>\n          \n\n          \n            <div class=\"commands\">\n
+        \               \n                    <a href=\"#\" onclick=\"return varToggle(this,
+        '140587199350328')\"><span>&#x25b6;</span> Local vars</a>\n                \n
+        \           </div>\n            <table class=\"vars\" id=\"v140587199350328\">\n
+        \             <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>global_optargs</td>\n
+        \                   <td class=\"code\"><pre>{}</pre></td>\n                  </tr>\n
+        \               \n                  <tr>\n                    <td>c</td>\n
+        \                   <td class=\"code\"><pre>&lt;rethinkdb.net.Connection object
+        at 0x7fdd04263790&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>self</td>\n                    <td
+        class=\"code\"><pre>&lt;RqlQuery instance: r.table(u&#39;movies&#39;).get_all()
+        &gt;</pre></td>\n                  </tr>\n                \n              </tbody>\n
+        \           </table>\n          \n        </li>\n      \n        <li class=\"frame
+        user\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py</code>
+        in <code>_start</code>\n\n          \n            <div class=\"context\" id=\"c140587199351840\">\n
+        \             \n                <ol start=\"288\" class=\"pre-context\" id=\"pre140587199351840\">\n
+        \               \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>            if self.db:</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199351840', 'post140587199351840')\"><pre>
+        \              global_optargs[&#39;db&#39;] = DB(self.db)</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199351840', 'post140587199351840')\"><pre></pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>        # Construct query</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199351840', 'post140587199351840')\"><pre>
+        \       query = Query(pQuery.START, self.next_token, term, global_optargs)</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>        self.next_token += 1</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199351840', 'post140587199351840')\"><pre></pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"295\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>\n                    return self._send_query(query,
+        global_optargs)</pre> <span>...</span></li></ol>\n              \n                <ol
+        start='296' class=\"post-context\" id=\"post140587199351840\">\n                  \n
+        \                 <li onclick=\"toggle('pre140587199351840', 'post140587199351840')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>    def _handle_cursor_response(self, response):</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>        cursor = self.cursor_cache[response.token]</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>        cursor._extend(response)</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre>        cursor.outstanding_requests -= 1</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199351840',
+        'post140587199351840')\"><pre></pre></li>\n                  \n              </ol>\n
+        \             \n            </div>\n          \n\n          \n            <div
+        class=\"commands\">\n                \n                    <a href=\"#\" onclick=\"return
+        varToggle(this, '140587199351840')\"><span>&#x25b6;</span> Local vars</a>\n
+        \               \n            </div>\n            <table class=\"vars\" id=\"v140587199351840\">\n
+        \             <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>global_optargs</td>\n
+        \                   <td class=\"code\"><pre>{&#39;db&#39;: &lt;RqlQuery instance:
+        r.db(u&#39;testco&#39;) &gt;}</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>term</td>\n                    <td
+        class=\"code\"><pre>&lt;RqlQuery instance: r.table(u&#39;movies&#39;).get_all()
+        &gt;</pre></td>\n                  </tr>\n                \n                  <tr>\n
+        \                   <td>self</td>\n                    <td class=\"code\"><pre>&lt;rethinkdb.net.Connection
+        object at 0x7fdd04263790&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>query</td>\n                    <td
+        class=\"code\"><pre>&lt;rethinkdb.net.Query object at 0x7fdd0006b4d0&gt;</pre></td>\n
+        \                 </tr>\n                \n              </tbody>\n            </table>\n
+        \         \n        </li>\n      \n        <li class=\"frame user\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py</code>
+        in <code>_send_query</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587199418952\">\n              \n                <ol start=\"378\"
+        class=\"pre-context\" id=\"pre140587199418952\">\n                \n                  <li
+        onclick=\"toggle('pre140587199418952', 'post140587199418952')\"><pre>        self._sock_sendall(query_header
+        + query_str)</pre></li>\n                \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre></pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199418952', 'post140587199418952')\"><pre>        if
+        async or (&#39;noreply&#39; in opts and opts[&#39;noreply&#39;]):</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>            return None</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199418952', 'post140587199418952')\"><pre></pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>        # Get response</pre></li>\n                \n
+        \                 <li onclick=\"toggle('pre140587199418952', 'post140587199418952')\"><pre>
+        \       response = self._read_response(query.token)</pre></li>\n                \n
+        \               </ol>\n              \n              <ol start=\"385\" class=\"context-line\">\n
+        \               <li onclick=\"toggle('pre140587199418952', 'post140587199418952')\"><pre>\n
+        \                   self._check_error_response(response, query.term)</pre>
+        <span>...</span></li></ol>\n              \n                <ol start='386'
+        class=\"post-context\" id=\"post140587199418952\">\n                  \n                  <li
+        onclick=\"toggle('pre140587199418952', 'post140587199418952')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>        if response.type in [pResponse.SUCCESS_PARTIAL,</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>                            pResponse.SUCCESS_SEQUENCE,</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>                            pResponse.SUCCESS_ATOM_FEED,</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>                            pResponse.SUCCESS_FEED]:</pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199418952',
+        'post140587199418952')\"><pre>            # Sequence responses</pre></li>\n
+        \                 \n              </ol>\n              \n            </div>\n
+        \         \n\n          \n            <div class=\"commands\">\n                \n
+        \                   <a href=\"#\" onclick=\"return varToggle(this, '140587199418952')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587199418952\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>opts</td>\n
+        \                   <td class=\"code\"><pre>{&#39;db&#39;: &lt;RqlQuery instance:
+        r.db(u&#39;testco&#39;) &gt;}</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>query_str</td>\n                    <td
+        class=\"code\"><pre>&#39;[1, [78, [[15, [&quot;movies&quot;]]]], {&quot;db&quot;:
+        [14, [&quot;testco&quot;]]}]&#39;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>self</td>\n                    <td
+        class=\"code\"><pre>&lt;rethinkdb.net.Connection object at 0x7fdd04263790&gt;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>query_header</td>\n
+        \                   <td class=\"code\"><pre>&#39;S\\x00\\x00\\x00\\x00\\x00\\x00\\x007\\x00\\x00\\x00&#39;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>query</td>\n
+        \                   <td class=\"code\"><pre>&lt;rethinkdb.net.Query object
+        at 0x7fdd0006b4d0&gt;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>async</td>\n                    <td
+        class=\"code\"><pre>False</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>response</td>\n                    <td
+        class=\"code\"><pre>&lt;rethinkdb.net.Response object at 0x7fdd000a0610&gt;</pre></td>\n
+        \                 </tr>\n                \n              </tbody>\n            </table>\n
+        \         \n        </li>\n      \n        <li class=\"frame user\">\n          <code>/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py</code>
+        in <code>_check_error_response</code>\n\n          \n            <div class=\"context\"
+        id=\"c140587199420248\">\n              \n                <ol start=\"355\"
+        class=\"pre-context\" id=\"pre140587199420248\">\n                \n                  <li
+        onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre>        if
+        response.type == pResponse.RUNTIME_ERROR:</pre></li>\n                \n                  <li
+        onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre>            message
+        = response.data[0]</pre></li>\n                \n                  <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>            frames = response.backtrace</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>            raise RqlRuntimeError(message, term,
+        frames)</pre></li>\n                \n                  <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>        elif response.type == pResponse.COMPILE_ERROR:</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>            message = response.data[0]</pre></li>\n
+        \               \n                  <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>            frames = response.backtrace</pre></li>\n
+        \               \n                </ol>\n              \n              <ol
+        start=\"362\" class=\"context-line\">\n                <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>\n                        raise RqlCompileError(message,
+        term, frames)</pre> <span>...</span></li></ol>\n              \n                <ol
+        start='363' class=\"post-context\" id=\"post140587199420248\">\n                  \n
+        \                 <li onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre>
+        \       elif response.type == pResponse.CLIENT_ERROR:</pre></li>\n                  \n
+        \                 <li onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre>
+        \           message = response.data[0]</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre>            frames
+        = response.backtrace</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre>            raise
+        RqlClientError(message, term, frames)</pre></li>\n                  \n                  <li
+        onclick=\"toggle('pre140587199420248', 'post140587199420248')\"><pre></pre></li>\n
+        \                 \n                  <li onclick=\"toggle('pre140587199420248',
+        'post140587199420248')\"><pre>    def _send_query(self, query, opts={}, async=False):</pre></li>\n
+        \                 \n              </ol>\n              \n            </div>\n
+        \         \n\n          \n            <div class=\"commands\">\n                \n
+        \                   <a href=\"#\" onclick=\"return varToggle(this, '140587199420248')\"><span>&#x25b6;</span>
+        Local vars</a>\n                \n            </div>\n            <table class=\"vars\"
+        id=\"v140587199420248\">\n              <thead>\n                <tr>\n                  <th>Variable</th>\n
+        \                 <th>Value</th>\n                </tr>\n              </thead>\n
+        \             <tbody>\n                \n                  <tr>\n                    <td>message</td>\n
+        \                   <td class=\"code\"><pre>u&#39;Expected 2 or more arguments
+        but found 1.&#39;</pre></td>\n                  </tr>\n                \n
+        \                 <tr>\n                    <td>response</td>\n                    <td
+        class=\"code\"><pre>&lt;rethinkdb.net.Response object at 0x7fdd000a0610&gt;</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>term</td>\n
+        \                   <td class=\"code\"><pre>&lt;RqlQuery instance: r.table(u&#39;movies&#39;).get_all()
+        &gt;</pre></td>\n                  </tr>\n                \n                  <tr>\n
+        \                   <td>frames</td>\n                    <td class=\"code\"><pre>[]</pre></td>\n
+        \                 </tr>\n                \n                  <tr>\n                    <td>self</td>\n
+        \                   <td class=\"code\"><pre>&lt;rethinkdb.net.Connection object
+        at 0x7fdd04263790&gt;</pre></td>\n                  </tr>\n                \n
+        \             </tbody>\n            </table>\n          \n        </li>\n
+        \     \n    </ul>\n  </div>\n  \n  <form action=\"http://dpaste.com/\" name=\"pasteform\"
+        id=\"pasteform\" method=\"post\">\n\n  <div id=\"pastebinTraceback\" class=\"pastebin\">\n
+        \   <input type=\"hidden\" name=\"language\" value=\"PythonConsole\">\n    <input
+        type=\"hidden\" name=\"title\"\n      value=\"RqlCompileError at /api/v1/schemas/movies/save/\">\n
+        \   <input type=\"hidden\" name=\"source\" value=\"Django Dpaste Agent\">\n
+        \   <input type=\"hidden\" name=\"poster\" value=\"Django\">\n    <textarea
+        name=\"content\" id=\"traceback_area\" cols=\"140\" rows=\"25\">\nEnvironment:\n\n\nRequest
+        Method: POST\nRequest URL: http://testco.dev.montagehot.club/api/v1/schemas/movies/save/\n\nDjango
+        Version: 1.8c1\nPython Version: 2.7.9\nInstalled Applications:\n[&#39;django.contrib.admin&#39;,\n
+        &#39;django.contrib.auth&#39;,\n &#39;django.contrib.contenttypes&#39;,\n
+        &#39;django.contrib.humanize&#39;,\n &#39;django.contrib.messages&#39;,\n
+        &#39;django.contrib.sessions&#39;,\n &#39;django.contrib.sites&#39;,\n &#39;django.contrib.staticfiles&#39;,\n
+        &#39;admin_honeypot&#39;,\n &#39;django_extensions&#39;,\n &#39;django_gravatar&#39;,\n
+        &#39;floppyforms&#39;,\n &#39;rest_framework&#39;,\n &#39;subdomains&#39;,\n
+        &#39;montage.apps.account&#39;,\n &#39;montage.apps.api&#39;,\n &#39;montage.apps.invite&#39;,\n
+        &#39;montage.apps.keyring&#39;,\n &#39;montage.apps.membership&#39;,\n &#39;montage.apps.project&#39;,\n
+        &#39;montage.apps.rdb&#39;,\n &#39;montage.apps.roles&#39;,\n &#39;montage.apps.schema&#39;,\n
+        &#39;montage.utils&#39;]\nInstalled Middleware:\n[&#39;sslify.middleware.SSLifyMiddleware&#39;,\n
+        &#39;subdomains.middleware.SubdomainURLRoutingMiddleware&#39;,\n &#39;htmlmin.middleware.HtmlMinifyMiddleware&#39;,\n
+        &#39;htmlmin.middleware.MarkRequestMiddleware&#39;,\n &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,\n
+        &#39;django.middleware.common.CommonMiddleware&#39;,\n &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,\n
+        &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,\n &#39;django.contrib.auth.middleware.SessionAuthenticationMiddleware&#39;,\n
+        &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,\n &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,\n
+        &#39;montage.apps.project.middleware.ProjectRequestMiddleware&#39;,\n &#39;django.middleware.security.SecurityMiddleware&#39;]\n\n\nTraceback:\nFile
+        \"/app/.heroku/python/lib/python2.7/site-packages/django/core/handlers/base.py\"
+        in get_response\n  132.                     response = wrapped_callback(request,
+        *callback_args, **callback_kwargs)\nFile \"/app/.heroku/python/lib/python2.7/site-packages/django/views/decorators/csrf.py\"
+        in wrapped_view\n  58.         return view_func(*args, **kwargs)\nFile \"/app/.heroku/python/lib/python2.7/site-packages/django/views/generic/base.py\"
+        in view\n  71.             return self.dispatch(request, *args, **kwargs)\nFile
+        \"/app/montage/apps/api/mixins.py\" in dispatch\n  13.             response
+        = super(RethinkMixin, self).dispatch(request, *args, **kwargs)\nFile \"/app/.heroku/python/lib/python2.7/site-packages/rest_framework/views.py\"
+        in dispatch\n  452.             response = self.handle_exception(exc)\nFile
+        \"/app/.heroku/python/lib/python2.7/site-packages/rest_framework/views.py\"
+        in dispatch\n  449.             response = handler(request, *args, **kwargs)\nFile
+        \"/app/montage/apps/api/views.py\" in post\n  78.         results = self.object.project.rdb.run(reql)\nFile
+        \"/app/montage/apps/rdb/models.py\" in run\n  77.         return reql.run(conn)\nFile
+        \"/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/ast.py\" in run\n
+        \ 99.         return c._start(self, **global_optargs)\nFile \"/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py\"
+        in _start\n  295.         return self._send_query(query, global_optargs)\nFile
+        \"/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py\" in _send_query\n
+        \ 385.         self._check_error_response(response, query.term)\nFile \"/app/.heroku/python/lib/python2.7/site-packages/rethinkdb/net.py\"
+        in _check_error_response\n  362.             raise RqlCompileError(message,
+        term, frames)\n\nException Type: RqlCompileError at /api/v1/schemas/movies/save/\nException
+        Value: RqlCompileError: Expected 2 or more arguments but found 1. in:\nr.table(u&#39;movies&#39;).get_all()\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n</textarea>\n
+        \ <br><br>\n  <input type=\"submit\" value=\"Share this traceback on a public
+        Web site\">\n  </div>\n</form>\n</div>\n\n\n\n<div id=\"requestinfo\">\n  <h2>Request
+        information</h2>\n\n\n  <h3 id=\"get-info\">GET</h3>\n  \n    <p>No GET data</p>\n
+        \ \n\n  <h3 id=\"post-info\">POST</h3>\n  \n    <p>No POST data</p>\n  \n
+        \ <h3 id=\"files-info\">FILES</h3>\n  \n    <p>No FILES data</p>\n  \n\n\n
+        \ <h3 id=\"cookie-info\">COOKIES</h3>\n  \n    <p>No cookie data</p>\n  \n\n
+        \ <h3 id=\"meta-info\">META</h3>\n  <table class=\"req\">\n    <thead>\n      <tr>\n
+        \       <th>Variable</th>\n        <th>Value</th>\n      </tr>\n    </thead>\n
+        \   <tbody>\n      \n        <tr>\n          <td>wsgi.multiprocess</td>\n
+        \         <td class=\"code\"><pre>True</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>CONTENT_LENGTH</td>\n          <td class=\"code\"><pre>&#39;161&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>RAW_URI</td>\n          <td
+        class=\"code\"><pre>&#39;/api/v1/schemas/movies/save/&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>HTTP_X_REQUEST_ID</td>\n          <td
+        class=\"code\"><pre>&#39;8b6a52fe-a60a-4e41-869f-4119d0602b71&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SERVER_SOFTWARE</td>\n
+        \         <td class=\"code\"><pre>&#39;gunicorn/19.3.0&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>HTTP_CONNECT_TIME</td>\n          <td
+        class=\"code\"><pre>&#39;1&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>HTTP_X_FORWARDED_FOR</td>\n          <td class=\"code\"><pre>&#39;198.189.227.4&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>gunicorn.socket</td>\n
+        \         <td class=\"code\"><pre>&lt;socket._socketobject object at 0x7fdd021e1f30&gt;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>HTTP_TOTAL_ROUTE_TIME</td>\n
+        \         <td class=\"code\"><pre>&#39;0&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>REMOTE_ADDR</td>\n          <td class=\"code\"><pre>&#39;10.123.196.75&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>HTTP_ACCEPT</td>\n          <td
+        class=\"code\"><pre>&#39;*/*&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>SERVER_PROTOCOL</td>\n          <td class=\"code\"><pre>&#39;HTTP/1.1&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>wsgi.run_once</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>CONTENT_TYPE</td>\n          <td class=\"code\"><pre>&#39;application/json&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>wsgi.multithread</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>QUERY_STRING</td>\n          <td class=\"code\"><pre>&#39;&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>HTTP_AUTHORIZATION</td>\n
+        \         <td class=\"code\"><pre>&#39;Token fb761e07-a12b-40bb-a42f-2202ecfd1046&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CSRF_COOKIE</td>\n          <td
+        class=\"code\"><pre>u&#39;QwxgjmaAWIgT0BX89lyDfgNN7Nbc1xiy&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>wsgi.version</td>\n          <td
+        class=\"code\"><pre>(1, 0)</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>PATH_INFO</td>\n          <td class=\"code\"><pre>u&#39;/api/v1/schemas/movies/save/&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>HTTP_X_REQUEST_START</td>\n
+        \         <td class=\"code\"><pre>&#39;1429388213138&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>wsgi.input</td>\n          <td class=\"code\"><pre>&lt;gunicorn.http.body.Body
+        object at 0x7fdcf3fa7e50&gt;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>HTTP_USER_AGENT</td>\n          <td class=\"code\"><pre>&#39;Montage
+        Ruby v0.1.5&#39;</pre></td>\n        </tr>\n      \n        <tr>\n          <td>wsgi.errors</td>\n
+        \         <td class=\"code\"><pre>&lt;gunicorn.http.wsgi.WSGIErrorsWrapper
+        object at 0x7fdcf3fa7790&gt;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>HTTP_X_FORWARDED_PORT</td>\n          <td class=\"code\"><pre>&#39;80&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SERVER_PORT</td>\n          <td
+        class=\"code\"><pre>&#39;16052&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>REMOTE_PORT</td>\n          <td class=\"code\"><pre>&#39;44790&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>wsgi.file_wrapper</td>\n
+        \         <td class=\"code\"><pre>&#39;&#39;</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SERVER_NAME</td>\n          <td class=\"code\"><pre>&#39;0.0.0.0&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>HTTP_HOST</td>\n          <td
+        class=\"code\"><pre>&#39;testco.dev.montagehot.club&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>REQUEST_METHOD</td>\n          <td class=\"code\"><pre>&#39;POST&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SCRIPT_NAME</td>\n          <td
+        class=\"code\"><pre>u&#39;&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>HTTP_VIA</td>\n          <td class=\"code\"><pre>&#39;1.1 vegur&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>HTTP_CONNECTION</td>\n
+        \         <td class=\"code\"><pre>&#39;close&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>HTTP_ACCEPT_ENCODING</td>\n          <td
+        class=\"code\"><pre>&#39;gzip;q=1.0,deflate;q=0.6,identity;q=0.3&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>wsgi.url_scheme</td>\n
+        \         <td class=\"code\"><pre>&#39;http&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>HTTP_X_FORWARDED_PROTO</td>\n          <td
+        class=\"code\"><pre>&#39;http&#39;</pre></td>\n        </tr>\n      \n    </tbody>\n
+        \ </table>\n\n\n  <h3 id=\"settings-info\">Settings</h3>\n  <h4>Using settings
+        module <code>montage.settings.heroku</code></h4>\n  <table class=\"req\">\n
+        \   <thead>\n      <tr>\n        <th>Setting</th>\n        <th>Value</th>\n
+        \     </tr>\n    </thead>\n    <tbody>\n      \n        <tr>\n          <td>WSGI_APPLICATION</td>\n
+        \         <td class=\"code\"><pre>&#39;montage.wsgi.application&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_COOKIE_PATH</td>\n
+        \         <td class=\"code\"><pre>&#39;/&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>TEST_NON_SERIALIZED_APPS</td>\n          <td
+        class=\"code\"><pre>[]</pre></td>\n        </tr>\n      \n        <tr>\n          <td>DEFAULT_CHARSET</td>\n
+        \         <td class=\"code\"><pre>&#39;utf-8&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>PROJECT_DIR</td>\n          <td class=\"code\"><pre>Path(&#39;/app/montage&#39;)</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>GRAVATAR_DEFAULT_SECURE</td>\n
+        \         <td class=\"code\"><pre>True</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>LANGUAGE_CODE</td>\n          <td class=\"code\"><pre>&#39;en-us&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CSRF_COOKIE_AGE</td>\n
+        \         <td class=\"code\"><pre>31449600</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SECURE_CONTENT_TYPE_NOSNIFF</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>LOCALE_PATHS</td>\n          <td class=\"code\"><pre>()</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>AUTHENTICATION_BACKENDS</td>\n
+        \         <td class=\"code\"><pre>(&#39;montage.apps.project.backends.ProjectPermissionsBackend&#39;,\n
+        &#39;django.contrib.auth.backends.ModelBackend&#39;)</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>TEMPLATE_CONTEXT_PROCESSORS</td>\n          <td
+        class=\"code\"><pre>(&#39;django.contrib.auth.context_processors.auth&#39;,\n
+        &#39;django.template.context_processors.debug&#39;,\n &#39;django.template.context_processors.i18n&#39;,\n
+        &#39;django.template.context_processors.media&#39;,\n &#39;django.template.context_processors.static&#39;,\n
+        &#39;django.template.context_processors.tz&#39;,\n &#39;django.contrib.messages.context_processors.messages&#39;)</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>AWS_STORAGE_BUCKET_NAME</td>\n
+        \         <td class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>STATICFILES_DIRS</td>\n          <td class=\"code\"><pre>[Path(&#39;/app/dist&#39;),
+        Path(&#39;/app/montage/static&#39;)]</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>LOGOUT_URL</td>\n          <td class=\"code\"><pre>&#39;/accounts/logout/&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_CACHE_ALIAS</td>\n
+        \         <td class=\"code\"><pre>&#39;default&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>SHORT_DATE_FORMAT</td>\n          <td
+        class=\"code\"><pre>&#39;m/d/Y&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>APPEND_SLASH</td>\n          <td class=\"code\"><pre>True</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MIGRATION_MODULES</td>\n
+        \         <td class=\"code\"><pre>{}</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>MEDIA_ROOT</td>\n          <td class=\"code\"><pre>&#39;&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>BASE_DIR</td>\n          <td
+        class=\"code\"><pre>Path(&#39;/app&#39;)</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>LOGGING</td>\n          <td class=\"code\"><pre>{}</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>STATICFILES_FINDERS</td>\n
+        \         <td class=\"code\"><pre>(&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;,\n
+        &#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;)</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DISALLOWED_USER_AGENTS</td>\n
+        \         <td class=\"code\"><pre>()</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>CSRF_COOKIE_HTTPONLY</td>\n          <td class=\"code\"><pre>False</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_SERIALIZER</td>\n
+        \         <td class=\"code\"><pre>&#39;django.contrib.sessions.serializers.JSONSerializer&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CACHE_MIDDLEWARE_ALIAS</td>\n
+        \         <td class=\"code\"><pre>&#39;default&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>THOUSAND_SEPARATOR</td>\n          <td
+        class=\"code\"><pre>&#39;,&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>DJANGO_DEBUG_TOOLBAR</td>\n          <td class=\"code\"><pre>False</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>TIME_ZONE</td>\n          <td
+        class=\"code\"><pre>&#39;UTC&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>X_FRAME_OPTIONS</td>\n          <td class=\"code\"><pre>&#39;SAMEORIGIN&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SECURE_REDIRECT_EXEMPT</td>\n
+        \         <td class=\"code\"><pre>[]</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>LOGIN_URL</td>\n          <td class=\"code\"><pre>&#39;auth:login&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>GRAVATAR_DEFAULT_IMAGE</td>\n
+        \         <td class=\"code\"><pre>&#39;retro&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>FILE_UPLOAD_TEMP_DIR</td>\n          <td
+        class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>SECURE_PROXY_SSL_HEADER</td>\n          <td class=\"code\"><pre>(&#39;HTTP_X_FORWARDED_PROTO&#39;,
+        &#39;https&#39;)</pre></td>\n        </tr>\n      \n        <tr>\n          <td>AWS_QUERYSTRING_EXPIRE</td>\n
+        \         <td class=\"code\"><pre>900</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SESSION_FILE_PATH</td>\n          <td class=\"code\"><pre>None</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>LANGUAGE_COOKIE_DOMAIN</td>\n
+        \         <td class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>EMAIL_BACKEND</td>\n          <td class=\"code\"><pre>&#39;django.core.mail.backends.smtp.EmailBackend&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DEFAULT_FROM_EMAIL</td>\n
+        \         <td class=\"code\"><pre>&#39;webmaster@localhost&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_COOKIE_AGE</td>\n
+        \         <td class=\"code\"><pre>1209600</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>MAILGUN_API_KEY</td>\n          <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DECIMAL_SEPARATOR</td>\n
+        \         <td class=\"code\"><pre>&#39;.&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>PROJECT_STORAGE_URL</td>\n          <td
+        class=\"code\"><pre>&#39;https://montage-dev-storage.s3.amazonaws.com/&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>UNDERMINER_MAX_CONNECTIONS</td>\n
+        \         <td class=\"code\"><pre>20</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>LANGUAGE_COOKIE_NAME</td>\n          <td class=\"code\"><pre>&#39;django_language&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>USE_L10N</td>\n          <td
+        class=\"code\"><pre>True</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>\n          <td class=\"code\"><pre>&#39;django.views.debug.SafeExceptionReporterFilter&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FORMAT_MODULE_PATH</td>\n
+        \         <td class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>EMAIL_SUBJECT_PREFIX</td>\n          <td class=\"code\"><pre>&#39;[Django]
+        &#39;</pre></td>\n        </tr>\n      \n        <tr>\n          <td>AWS_ACCESS_KEY_ID</td>\n
+        \         <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>\n
+        \         <td class=\"code\"><pre>2621440</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SECURE_SSL_HOST</td>\n          <td class=\"code\"><pre>None</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DATABASES</td>\n          <td
+        class=\"code\"><pre>{&#39;default&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,\n
+        \            &#39;AUTOCOMMIT&#39;: True,\n             &#39;CONN_MAX_AGE&#39;:
+        60,\n             &#39;ENGINE&#39;: &#39;django.db.backends.postgresql_psycopg2&#39;,\n
+        \            &#39;HOST&#39;: &#39;ec2-23-23-181-213.compute-1.amazonaws.com&#39;,\n
+        \            &#39;NAME&#39;: &#39;d5so9ik2bt2d0n&#39;,\n             &#39;OPTIONS&#39;:
+        {},\n             &#39;PASSWORD&#39;: u&#39;********************&#39;,\n             &#39;PORT&#39;:
+        5472,\n             &#39;TEST&#39;: {&#39;CHARSET&#39;: None,\n                      &#39;COLLATION&#39;:
+        None,\n                      &#39;MIRROR&#39;: None,\n                      &#39;NAME&#39;:
+        None},\n             &#39;TIME_ZONE&#39;: &#39;UTC&#39;,\n             &#39;USER&#39;:
+        &#39;u9b8i6nkl7jorv&#39;}}</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>TEMPLATE_STRING_IF_INVALID</td>\n          <td class=\"code\"><pre>&#39;&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CSRF_COOKIE_SECURE</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>DEBUG</td>\n          <td class=\"code\"><pre>True</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CSRF_COOKIE_PATH</td>\n
+        \         <td class=\"code\"><pre>&#39;/&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>RETHINKDB_POOL_SIZE</td>\n          <td
+        class=\"code\"><pre>5</pre></td>\n        </tr>\n      \n        <tr>\n          <td>ALLOWED_HOSTS</td>\n
+        \         <td class=\"code\"><pre>[]</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>USE_I18N</td>\n          <td class=\"code\"><pre>True</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SIGNING_BACKEND</td>\n
+        \         <td class=\"code\"><pre>&#39;django.core.signing.TimestampSigner&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>PROJECT_STORAGE_CLASS</td>\n
+        \         <td class=\"code\"><pre>&#39;montage.apps.project.storage.S3ProjectStorage&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SUBDOMAIN_URLCONFS</td>\n
+        \         <td class=\"code\"><pre>{None: &#39;montage.urls&#39;}</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>EMAIL_HOST_USER</td>\n
+        \         <td class=\"code\"><pre>&#39;postmaster@app27260cab04624becb317b90e1244e9dc.mailgun.org&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>TIME_INPUT_FORMATS</td>\n
+        \         <td class=\"code\"><pre>(&#39;%H:%M:%S&#39;, &#39;%H:%M:%S.%f&#39;,
+        &#39;%H:%M&#39;)</pre></td>\n        </tr>\n      \n        <tr>\n          <td>YEAR_MONTH_FORMAT</td>\n
+        \         <td class=\"code\"><pre>&#39;F Y&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>EMAIL_PORT</td>\n          <td class=\"code\"><pre>587</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>ALLOWED_INCLUDE_ROOTS</td>\n
+        \         <td class=\"code\"><pre>()</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>SESSION_COOKIE_DOMAIN</td>\n          <td class=\"code\"><pre>&#39;.dev.montagehot.club&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MAILGUN_SMTP_LOGIN</td>\n
+        \         <td class=\"code\"><pre>&#39;postmaster@app27260cab04624becb317b90e1244e9dc.mailgun.org&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>LANGUAGES</td>\n          <td
+        class=\"code\"><pre>((&#39;af&#39;, &#39;Afrikaans&#39;),\n (&#39;ar&#39;,
+        &#39;Arabic&#39;),\n (&#39;ast&#39;, &#39;Asturian&#39;),\n (&#39;az&#39;,
+        &#39;Azerbaijani&#39;),\n (&#39;bg&#39;, &#39;Bulgarian&#39;),\n (&#39;be&#39;,
+        &#39;Belarusian&#39;),\n (&#39;bn&#39;, &#39;Bengali&#39;),\n (&#39;br&#39;,
+        &#39;Breton&#39;),\n (&#39;bs&#39;, &#39;Bosnian&#39;),\n (&#39;ca&#39;, &#39;Catalan&#39;),\n
+        (&#39;cs&#39;, &#39;Czech&#39;),\n (&#39;cy&#39;, &#39;Welsh&#39;),\n (&#39;da&#39;,
+        &#39;Danish&#39;),\n (&#39;de&#39;, &#39;German&#39;),\n (&#39;el&#39;, &#39;Greek&#39;),\n
+        (&#39;en&#39;, &#39;English&#39;),\n (&#39;en-au&#39;, &#39;Australian English&#39;),\n
+        (&#39;en-gb&#39;, &#39;British English&#39;),\n (&#39;eo&#39;, &#39;Esperanto&#39;),\n
+        (&#39;es&#39;, &#39;Spanish&#39;),\n (&#39;es-ar&#39;, &#39;Argentinian Spanish&#39;),\n
+        (&#39;es-mx&#39;, &#39;Mexican Spanish&#39;),\n (&#39;es-ni&#39;, &#39;Nicaraguan
+        Spanish&#39;),\n (&#39;es-ve&#39;, &#39;Venezuelan Spanish&#39;),\n (&#39;et&#39;,
+        &#39;Estonian&#39;),\n (&#39;eu&#39;, &#39;Basque&#39;),\n (&#39;fa&#39;,
+        &#39;Persian&#39;),\n (&#39;fi&#39;, &#39;Finnish&#39;),\n (&#39;fr&#39;,
+        &#39;French&#39;),\n (&#39;fy&#39;, &#39;Frisian&#39;),\n (&#39;ga&#39;, &#39;Irish&#39;),\n
+        (&#39;gl&#39;, &#39;Galician&#39;),\n (&#39;he&#39;, &#39;Hebrew&#39;),\n
+        (&#39;hi&#39;, &#39;Hindi&#39;),\n (&#39;hr&#39;, &#39;Croatian&#39;),\n (&#39;hu&#39;,
+        &#39;Hungarian&#39;),\n (&#39;ia&#39;, &#39;Interlingua&#39;),\n (&#39;id&#39;,
+        &#39;Indonesian&#39;),\n (&#39;io&#39;, &#39;Ido&#39;),\n (&#39;is&#39;, &#39;Icelandic&#39;),\n
+        (&#39;it&#39;, &#39;Italian&#39;),\n (&#39;ja&#39;, &#39;Japanese&#39;),\n
+        (&#39;ka&#39;, &#39;Georgian&#39;),\n (&#39;kk&#39;, &#39;Kazakh&#39;),\n
+        (&#39;km&#39;, &#39;Khmer&#39;),\n (&#39;kn&#39;, &#39;Kannada&#39;),\n (&#39;ko&#39;,
+        &#39;Korean&#39;),\n (&#39;lb&#39;, &#39;Luxembourgish&#39;),\n (&#39;lt&#39;,
+        &#39;Lithuanian&#39;),\n (&#39;lv&#39;, &#39;Latvian&#39;),\n (&#39;mk&#39;,
+        &#39;Macedonian&#39;),\n (&#39;ml&#39;, &#39;Malayalam&#39;),\n (&#39;mn&#39;,
+        &#39;Mongolian&#39;),\n (&#39;mr&#39;, &#39;Marathi&#39;),\n (&#39;my&#39;,
+        &#39;Burmese&#39;),\n (&#39;nb&#39;, &#39;Norwegian Bokmal&#39;),\n (&#39;ne&#39;,
+        &#39;Nepali&#39;),\n (&#39;nl&#39;, &#39;Dutch&#39;),\n (&#39;nn&#39;, &#39;Norwegian
+        Nynorsk&#39;),\n (&#39;os&#39;, &#39;Ossetic&#39;),\n (&#39;pa&#39;, &#39;Punjabi&#39;),\n
+        (&#39;pl&#39;, &#39;Polish&#39;),\n (&#39;pt&#39;, &#39;Portuguese&#39;),\n
+        (&#39;pt-br&#39;, &#39;Brazilian Portuguese&#39;),\n (&#39;ro&#39;, &#39;Romanian&#39;),\n
+        (&#39;ru&#39;, &#39;Russian&#39;),\n (&#39;sk&#39;, &#39;Slovak&#39;),\n (&#39;sl&#39;,
+        &#39;Slovenian&#39;),\n (&#39;sq&#39;, &#39;Albanian&#39;),\n (&#39;sr&#39;,
+        &#39;Serbian&#39;),\n (&#39;sr-latn&#39;, &#39;Serbian Latin&#39;),\n (&#39;sv&#39;,
+        &#39;Swedish&#39;),\n (&#39;sw&#39;, &#39;Swahili&#39;),\n (&#39;ta&#39;,
+        &#39;Tamil&#39;),\n (&#39;te&#39;, &#39;Telugu&#39;),\n (&#39;th&#39;, &#39;Thai&#39;),\n
+        (&#39;tr&#39;, &#39;Turkish&#39;),\n (&#39;tt&#39;, &#39;Tatar&#39;),\n (&#39;udm&#39;,
+        &#39;Udmurt&#39;),\n (&#39;uk&#39;, &#39;Ukrainian&#39;),\n (&#39;ur&#39;,
+        &#39;Urdu&#39;),\n (&#39;vi&#39;, &#39;Vietnamese&#39;),\n (&#39;zh-cn&#39;,
+        &#39;Simplified Chinese&#39;),\n (&#39;zh-hans&#39;, &#39;Simplified Chinese&#39;),\n
+        (&#39;zh-hant&#39;, &#39;Traditional Chinese&#39;),\n (&#39;zh-tw&#39;, &#39;Traditional
+        Chinese&#39;))</pre></td>\n        </tr>\n      \n        <tr>\n          <td>DATE_FORMAT</td>\n
+        \         <td class=\"code\"><pre>&#39;N j, Y&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>AWS_SECRET_ACCESS_KEY</td>\n          <td
+        class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>LANGUAGE_COOKIE_PATH</td>\n          <td
+        class=\"code\"><pre>&#39;/&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>USE_X_FORWARDED_HOST</td>\n          <td class=\"code\"><pre>False</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_COOKIE_SECURE</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SERVER_EMAIL</td>\n          <td class=\"code\"><pre>&#39;root@localhost&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CSRF_COOKIE_NAME</td>\n
+        \         <td class=\"code\"><pre>&#39;csrftoken&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>LANGUAGE_COOKIE_AGE</td>\n          <td
+        class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>DEFAULT_CONTENT_TYPE</td>\n          <td class=\"code\"><pre>&#39;text/html&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_COOKIE_HTTPONLY</td>\n
+        \         <td class=\"code\"><pre>True</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>DATETIME_FORMAT</td>\n          <td class=\"code\"><pre>&#39;N
+        j, Y, P&#39;</pre></td>\n        </tr>\n      \n        <tr>\n          <td>DEFAULT_FILE_STORAGE</td>\n
+        \         <td class=\"code\"><pre>&#39;django.core.files.storage.FileSystemStorage&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SITE_ID</td>\n          <td
+        class=\"code\"><pre>1</pre></td>\n        </tr>\n      \n        <tr>\n          <td>DEBUG_PROPAGATE_EXCEPTIONS</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>MANAGERS</td>\n          <td class=\"code\"><pre>()</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>USE_THOUSAND_SEPARATOR</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>CACHES</td>\n          <td class=\"code\"><pre>{&#39;default&#39;:
+        {&#39;BACKEND&#39;: &#39;django_pylibmc.memcached.PyLibMCCache&#39;,\n             &#39;BINARY&#39;:
+        True,\n             &#39;LOCATION&#39;: &#39;mc4.dev.ec2.memcachier.com:11211&#39;,\n
+        \            &#39;OPTIONS&#39;: {&#39;ketama&#39;: True, &#39;tcp_nodelay&#39;:
+        True},\n             &#39;TIMEOUT&#39;: 500},\n u&#39;locmem&#39;: {u&#39;BACKEND&#39;:
+        u&#39;django.core.cache.backends.locmem.LocMemCache&#39;}}</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>SECURE_HSTS_INCLUDE_SUBDOMAINS</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>EMAIL_SSL_KEYFILE</td>\n          <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>STATICFILES_STORAGE</td>\n
+        \         <td class=\"code\"><pre>&#39;django.contrib.staticfiles.storage.StaticFilesStorage&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MEDIA_URL</td>\n          <td
+        class=\"code\"><pre>&#39;&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>GRAVATAR_DEFAULT_RATING</td>\n          <td class=\"code\"><pre>&#39;pg&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>TEMPLATES</td>\n          <td
+        class=\"code\"><pre>[{&#39;APP_DIRS&#39;: True,\n  &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,\n
+        \ &#39;DIRS&#39;: [Path(&#39;/app/montage/templates&#39;)],\n  &#39;OPTIONS&#39;:
+        {&#39;context_processors&#39;: [&#39;django.template.context_processors.debug&#39;,\n
+        \                                    &#39;django.template.context_processors.request&#39;,\n
+        \                                    &#39;django.contrib.auth.context_processors.auth&#39;,\n
+        \                                    &#39;django.contrib.messages.context_processors.messages&#39;,\n
+        \                                    &#39;montage.utils.context_processors.common_context&#39;]}}]</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>EMAIL_USE_SSL</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>SESSION_ENGINE</td>\n          <td class=\"code\"><pre>&#39;django.contrib.sessions.backends.db&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SECURE_HSTS_SECONDS</td>\n
+        \         <td class=\"code\"><pre>0</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>CSRF_COOKIE_DOMAIN</td>\n          <td class=\"code\"><pre>None</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>LANGUAGES_BIDI</td>\n          <td
+        class=\"code\"><pre>(&#39;he&#39;, &#39;ar&#39;, &#39;fa&#39;, &#39;ur&#39;)</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>TEMPLATE_LOADERS</td>\n
+        \         <td class=\"code\"><pre>(&#39;django.template.loaders.filesystem.Loader&#39;,\n
+        &#39;django.template.loaders.app_directories.Loader&#39;)</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>CSRF_FAILURE_VIEW</td>\n          <td
+        class=\"code\"><pre>&#39;django.views.csrf.csrf_failure&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>TEMPLATE_DEBUG</td>\n          <td
+        class=\"code\"><pre>True</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>AUTH_USER_MODEL</td>\n          <td class=\"code\"><pre>&#39;account.User&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>STATIC_ROOT</td>\n          <td
+        class=\"code\"><pre>Path(&#39;/app/public/static&#39;)</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>SHORT_DATETIME_FORMAT</td>\n          <td
+        class=\"code\"><pre>&#39;m/d/Y P&#39;</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>USE_ETAGS</td>\n          <td class=\"code\"><pre>False</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MESSAGE_STORAGE</td>\n
+        \         <td class=\"code\"><pre>&#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DATETIME_INPUT_FORMATS</td>\n
+        \         <td class=\"code\"><pre>(&#39;%Y-%m-%d %H:%M:%S&#39;,\n &#39;%Y-%m-%d
+        %H:%M:%S.%f&#39;,\n &#39;%Y-%m-%d %H:%M&#39;,\n &#39;%Y-%m-%d&#39;,\n &#39;%m/%d/%Y
+        %H:%M:%S&#39;,\n &#39;%m/%d/%Y %H:%M:%S.%f&#39;,\n &#39;%m/%d/%Y %H:%M&#39;,\n
+        &#39;%m/%d/%Y&#39;,\n &#39;%m/%d/%y %H:%M:%S&#39;,\n &#39;%m/%d/%y %H:%M:%S.%f&#39;,\n
+        &#39;%m/%d/%y %H:%M&#39;,\n &#39;%m/%d/%y&#39;)</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>EMAIL_HOST</td>\n          <td class=\"code\"><pre>&#39;smtp.mailgun.org&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FILE_UPLOAD_DIRECTORY_PERMISSIONS</td>\n
+        \         <td class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>TEMPLATE_DIRS</td>\n          <td class=\"code\"><pre>()</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_SAVE_EVERY_REQUEST</td>\n
+        \         <td class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>DEFAULT_INDEX_TABLESPACE</td>\n          <td class=\"code\"><pre>&#39;&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SESSION_COOKIE_NAME</td>\n
+        \         <td class=\"code\"><pre>&#39;sessionid&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>CACHE_MIDDLEWARE_SECONDS</td>\n          <td
+        class=\"code\"><pre>600</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>REST_FRAMEWORK</td>\n          <td class=\"code\"><pre>{&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;:
+        (&#39;montage.apps.api.authentication.TokenAuthentication&#39;,\n                                    &#39;rest_framework.authentication.SessionAuthentication&#39;),\n
+        &#39;DEFAULT_PARSER_CLASSES&#39;: (&#39;rest_framework.parsers.JSONParser&#39;,),\n
+        &#39;DEFAULT_PERMISSION_CLASSES&#39;: (&#39;montage.apps.api.permissions.MontagePermissions&#39;,),\n
+        &#39;DEFAULT_RENDERER_CLASSES&#39;: (&#39;rest_framework.renderers.JSONRenderer&#39;,\n
+        \                             &#39;rest_framework.renderers.BrowsableAPIRenderer&#39;)}</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DEFAULT_TABLESPACE</td>\n
+        \         <td class=\"code\"><pre>&#39;&#39;</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>MIDDLEWARE_CLASSES</td>\n          <td class=\"code\"><pre>[&#39;sslify.middleware.SSLifyMiddleware&#39;,\n
+        &#39;subdomains.middleware.SubdomainURLRoutingMiddleware&#39;,\n &#39;htmlmin.middleware.HtmlMinifyMiddleware&#39;,\n
+        &#39;htmlmin.middleware.MarkRequestMiddleware&#39;,\n &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,\n
+        &#39;django.middleware.common.CommonMiddleware&#39;,\n &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,\n
+        &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,\n &#39;django.contrib.auth.middleware.SessionAuthenticationMiddleware&#39;,\n
+        &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,\n &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,\n
+        &#39;montage.apps.project.middleware.ProjectRequestMiddleware&#39;,\n &#39;django.middleware.security.SecurityMiddleware&#39;]</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MONTH_DAY_FORMAT</td>\n
+        \         <td class=\"code\"><pre>&#39;F j&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>TEST_RUNNER</td>\n          <td class=\"code\"><pre>&#39;django.test.runner.DiscoverRunner&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FILE_UPLOAD_HANDLERS</td>\n
+        \         <td class=\"code\"><pre>(&#39;django.core.files.uploadhandler.MemoryFileUploadHandler&#39;,\n
+        &#39;django.core.files.uploadhandler.TemporaryFileUploadHandler&#39;)</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MAILGUN_SMTP_SERVER</td>\n
+        \         <td class=\"code\"><pre>&#39;smtp.mailgun.org&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>PASSWORD_HASHERS</td>\n
+        \         <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>ROOT_URLCONF</td>\n          <td
+        class=\"code\"><pre>&#39;montage.apps.project.urls&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>CANONICAL_DOMAIN</td>\n          <td class=\"code\"><pre>&#39;dev.montagehot.club&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>USE_TZ</td>\n          <td
+        class=\"code\"><pre>True</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>PROJECT_STORAGE_DIR</td>\n          <td class=\"code\"><pre>Path(&#39;/app/public/storage&#39;)</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>MAILGUN_SMTP_PASSWORD</td>\n
+        \         <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>\n
+        \         <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FORCE_SCRIPT_NAME</td>\n
+        \         <td class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>FIXTURE_DIRS</td>\n          <td class=\"code\"><pre>()</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>EMAIL_HOST_PASSWORD</td>\n
+        \         <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>PASSWORD_RESET_TIMEOUT_DAYS</td>\n
+        \         <td class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>PREPEND_WWW</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>LOGIN_REDIRECT_URL</td>\n          <td class=\"code\"><pre>&#39;/&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>EMAIL_USE_TLS</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>ABSOLUTE_URL_OVERRIDES</td>\n          <td class=\"code\"><pre>{}</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>EMAIL_TIMEOUT</td>\n          <td
+        class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>TIME_FORMAT</td>\n          <td class=\"code\"><pre>&#39;P&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>INTERNAL_IPS</td>\n          <td
+        class=\"code\"><pre>()</pre></td>\n        </tr>\n      \n        <tr>\n          <td>ADMINS</td>\n
+        \         <td class=\"code\"><pre>()</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>EMAIL_SSL_CERTFILE</td>\n          <td class=\"code\"><pre>None</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FILE_CHARSET</td>\n          <td
+        class=\"code\"><pre>&#39;utf-8&#39;</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>FIRST_DAY_OF_WEEK</td>\n          <td class=\"code\"><pre>0</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>STATIC_URL</td>\n          <td
+        class=\"code\"><pre>&#39;/static/&#39;</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>DATABASE_ROUTERS</td>\n          <td class=\"code\"><pre>[]</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SILENCED_SYSTEM_CHECKS</td>\n
+        \         <td class=\"code\"><pre>[]</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>AWS_PROJECT_BUCKET_NAME</td>\n          <td class=\"code\"><pre>&#39;montage-dev-storage&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>INSTALLED_APPS</td>\n          <td
+        class=\"code\"><pre>[&#39;django.contrib.admin&#39;,\n &#39;django.contrib.auth&#39;,\n
+        &#39;django.contrib.contenttypes&#39;,\n &#39;django.contrib.humanize&#39;,\n
+        &#39;django.contrib.messages&#39;,\n &#39;django.contrib.sessions&#39;,\n
+        &#39;django.contrib.sites&#39;,\n &#39;django.contrib.staticfiles&#39;,\n
+        &#39;admin_honeypot&#39;,\n &#39;django_extensions&#39;,\n &#39;django_gravatar&#39;,\n
+        &#39;floppyforms&#39;,\n &#39;rest_framework&#39;,\n &#39;subdomains&#39;,\n
+        &#39;montage.apps.account&#39;,\n &#39;montage.apps.api&#39;,\n &#39;montage.apps.invite&#39;,\n
+        &#39;montage.apps.keyring&#39;,\n &#39;montage.apps.membership&#39;,\n &#39;montage.apps.project&#39;,\n
+        &#39;montage.apps.rdb&#39;,\n &#39;montage.apps.roles&#39;,\n &#39;montage.apps.schema&#39;,\n
+        &#39;montage.utils&#39;]</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>LOGGING_CONFIG</td>\n          <td class=\"code\"><pre>&#39;logging.config.dictConfig&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>FILE_UPLOAD_PERMISSIONS</td>\n
+        \         <td class=\"code\"><pre>None</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>SETTINGS_MODULE</td>\n          <td class=\"code\"><pre>&#39;montage.settings.heroku&#39;</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>NUMBER_GROUPING</td>\n
+        \         <td class=\"code\"><pre>0</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>MAILGUN_SMTP_PORT</td>\n          <td class=\"code\"><pre>587</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>SECRET_KEY</td>\n          <td
+        class=\"code\"><pre>u&#39;********************&#39;</pre></td>\n        </tr>\n
+        \     \n        <tr>\n          <td>SECURE_SSL_REDIRECT</td>\n          <td
+        class=\"code\"><pre>False</pre></td>\n        </tr>\n      \n        <tr>\n
+        \         <td>SECURE_BROWSER_XSS_FILTER</td>\n          <td class=\"code\"><pre>False</pre></td>\n
+        \       </tr>\n      \n        <tr>\n          <td>DATE_INPUT_FORMATS</td>\n
+        \         <td class=\"code\"><pre>(&#39;%Y-%m-%d&#39;,\n &#39;%m/%d/%Y&#39;,\n
+        &#39;%m/%d/%y&#39;,\n &#39;%b %d %Y&#39;,\n &#39;%b %d, %Y&#39;,\n &#39;%d
+        %b %Y&#39;,\n &#39;%d %b, %Y&#39;,\n &#39;%B %d %Y&#39;,\n &#39;%B %d, %Y&#39;,\n
+        &#39;%d %B %Y&#39;,\n &#39;%d %B, %Y&#39;)</pre></td>\n        </tr>\n      \n
+        \       <tr>\n          <td>IGNORABLE_404_URLS</td>\n          <td class=\"code\"><pre>()</pre></td>\n
+        \       </tr>\n      \n    </tbody>\n  </table>\n\n</div>\n\n  <div id=\"explanation\">\n
+        \   <p>\n      You're seeing this error because you have <code>DEBUG = True</code>
+        in your\n      Django settings file. Change that to <code>False</code>, and
+        Django will\n      display a standard page generated by the handler for this
+        status code.\n    </p>\n  </div>\n\n</body>\n</html>\n"
     http_version: 
-  recorded_at: Fri, 03 Apr 2015 19:45:07 GMT
+  recorded_at: Sat, 18 Apr 2015 20:16:55 GMT
 recorded_with: VCR 2.9.3

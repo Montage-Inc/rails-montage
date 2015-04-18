@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -27,33 +27,33 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 03 Apr 2015 18:50:15 GMT
+      - Sat, 18 Apr 2015 20:16:55 GMT
       Transfer-Encoding:
       - chunked
       Allow:
       - GET, HEAD, OPTIONS
-      X-Frame-Options:
-      - SAMEORIGIN
       Content-Type:
       - application/json
+      X-Frame-Options:
+      - SAMEORIGIN
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"name":"studios","fields":[{"name":"name","datatype":"text","required":true}],"indexes":[],"links":{"query":"http://testco.dev.montagehot.club/api/v1/schemas/studios/documents/","self":"http://testco.dev.montagehot.club/api/v1/schemas/studios/","create_document":"http://testco.dev.montagehot.club/api/v1/schemas/studios/documents/create/"}}'
+      string: '{"name":"studios","fields":[{"name":"name","datatype":"text","indexed":false,"required":true}],"links":{"create_document":"http://testco.dev.montagehot.club/api/v1/schemas/studios/save/","self":"http://testco.dev.montagehot.club/api/v1/schemas/studios/","query":"http://testco.dev.montagehot.club/api/v1/schemas/studios/query/"}}'
     http_version: 
-  recorded_at: Fri, 03 Apr 2015 18:50:15 GMT
+  recorded_at: Sat, 18 Apr 2015 20:16:57 GMT
 - request:
     method: post
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/studios/documents/create/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/studios/save/
     body:
       encoding: UTF-8
-      string: '{"updated_at":null,"name":"Universal"}'
+      string: '[{"name":"Universal"}]'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -72,22 +72,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 03 Apr 2015 18:50:15 GMT
+      - Sat, 18 Apr 2015 20:16:56 GMT
       Transfer-Encoding:
       - chunked
       Allow:
       - POST, OPTIONS
-      X-Frame-Options:
-      - SAMEORIGIN
       Content-Type:
       - application/json
+      X-Frame-Options:
+      - SAMEORIGIN
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":{"_meta":{"modified":"2015-04-03T18:50:15.295Z","created":"2015-04-03T18:50:15.295Z"},"name":"Universal","updated_at":null,"id":"19442e09-5c2d-4e5d-8f34-675570e81414"}}'
+      string: '{"data":[{"name":"Universal","_meta":{"created":"2015-04-18T20:16:56.142Z","modified":"2015-04-18T20:16:56.142Z"},"id":"795e2260-503d-4a67-aef3-984640f9dd38"}]}'
     http_version: 
-  recorded_at: Fri, 03 Apr 2015 18:50:15 GMT
+  recorded_at: Sat, 18 Apr 2015 20:16:57 GMT
 recorded_with: VCR 2.9.3

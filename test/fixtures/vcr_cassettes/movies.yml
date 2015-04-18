@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Montage Ruby v0.1.0
+      - Montage Ruby v0.1.5
       Content-Type:
       - application/json
       Accept:
@@ -27,22 +27,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Fri, 03 Apr 2015 18:52:25 GMT
+      - Sat, 18 Apr 2015 20:16:52 GMT
       Transfer-Encoding:
       - chunked
       Allow:
       - GET, HEAD, OPTIONS
-      X-Frame-Options:
-      - SAMEORIGIN
       Content-Type:
       - application/json
+      X-Frame-Options:
+      - SAMEORIGIN
       Vary:
       - Accept, Host
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"name":"movies","fields":[{"name":"studio_id","datatype":"text","required":true},{"name":"rank","datatype":"integer","required":true},{"name":"rating","datatype":"float","required":true},{"name":"title","datatype":"text","required":true},{"name":"votes","datatype":"integer","required":true},{"name":"year","datatype":"integer","required":true}],"indexes":[],"links":{"query":"http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/","self":"http://testco.dev.montagehot.club/api/v1/schemas/movies/","create_document":"http://testco.dev.montagehot.club/api/v1/schemas/movies/documents/create/"}}'
+      string: '{"name":"movies","fields":[{"name":"studio_id","datatype":"text","indexed":false,"required":false},{"name":"rank","datatype":"numeric","indexed":false,"required":true},{"name":"rating","datatype":"numeric","indexed":false,"required":true},{"name":"title","datatype":"text","indexed":false,"required":true},{"name":"votes","datatype":"numeric","indexed":false,"required":true},{"name":"year","datatype":"numeric","indexed":false,"required":true}],"links":{"create_document":"http://testco.dev.montagehot.club/api/v1/schemas/movies/save/","self":"http://testco.dev.montagehot.club/api/v1/schemas/movies/","query":"http://testco.dev.montagehot.club/api/v1/schemas/movies/query/"}}'
     http_version: 
-  recorded_at: Fri, 03 Apr 2015 18:52:25 GMT
+  recorded_at: Sat, 18 Apr 2015 20:16:54 GMT
 recorded_with: VCR 2.9.3

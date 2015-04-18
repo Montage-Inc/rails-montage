@@ -190,22 +190,22 @@ module MontageRails
           @current_method = "Update"
 
           response = notify(self) do
-            connection.update_document(self.class.table_name, id, updateable_attributes)
+            connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: true)])
           end
         else
-          @current_method = "Save"
+          @current_method = "Create"
 
           response = notify(self) do
-            connection.create_document(self.class.table_name, updateable_attributes)
+            connection.create_or_update_documents(self.class.table_name, [updateable_attributes])
           end
         end
 
         if response.success?
           if persisted?
-            initialize(response.document.attributes)
+            initialize(response.document.first.attributes)
           else
             run_callbacks :create do
-              initialize(response.document.attributes)
+              initialize(response.document.first.attributes)
               @persisted = true
             end
           end
@@ -244,10 +244,10 @@ module MontageRails
         @current_method = "Update"
 
         response = notify(self) do
-          connection.update_document(self.class.table_name, id, updateable_attributes)
+          connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: true)])
         end
 
-        initialize(response.document.attributes)
+        initialize(response.documents.first.attributes)
         @persisted = true
         self
       else
@@ -301,8 +301,8 @@ module MontageRails
 
     # The attributes used to update the document
     #
-    def updateable_attributes
-      attributes.except(:id, :created_at, :updated_at)
+    def updateable_attributes(include_id: false)
+      include_id ? attributes.except(:created_at, :updated_at) : attributes.except(:created_at, :updated_at, :id)
     end
 
     # Required for notifications to work, returns a payload suitable
@@ -363,9 +363,10 @@ module MontageRails
     def reql_payload
       {
         "Load" => id,
-        "Update" => "#{id}: #{updateable_attributes}",
+        "Update" => "#{id}: #{updateable_attributes(include_id: true)}",
         "Create" => updateable_attributes,
-        "Delete" => id
+        "Delete" => id,
+        "Save" => updateable_attributes
       }
     end
   end
