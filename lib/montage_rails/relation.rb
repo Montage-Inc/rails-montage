@@ -89,7 +89,7 @@ module MontageRails
         direction = "asc" unless %w(asc desc).include?(direction)
       end
 
-      clone.tap{ |r| r.query.merge!(order: nillify("#{field} #{direction}".strip)) }
+      clone.tap{ |r| r.query.merge!(order_by: field, ordering: direction)) }
     end
 
     # Adds a where clause to the query filter hash
