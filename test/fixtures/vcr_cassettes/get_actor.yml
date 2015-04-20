@@ -5,11 +5,11 @@ http_interactions:
     uri: http://testco.dev.montagehot.club/api/v1/schemas/actors/query/
     body:
       encoding: UTF-8
-      string: '{"filter":{"movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c","name":"Steve
+      string: '{"filter":{"movie_id":"69cc93af-1f0e-43bc-ac9a-19117111978e","name":"Steve
         Martin"},"limit":1}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -28,22 +28,23 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:54 GMT
+      - Mon, 20 Apr 2015 18:39:54 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - GET, POST, HEAD, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"name":"Steve Martin","movie_id":"b9dddf21-a121-4481-86e6-6412fca87f3c","_meta":{"created":"2015-04-18T20:16:54.202Z","modified":"2015-04-18T20:16:54.202Z"},"id":"2716d505-b620-4024-9411-9c2f054821a3"}]}'
+      string: '{"data":[{"id":"2b427e93-4809-425b-a587-e309a4715e8f","_meta":{"modified":"2015-04-20T18:39:53.628Z","created":"2015-04-20T18:39:53.628Z"},"movie_id":"69cc93af-1f0e-43bc-ac9a-19117111978e","name":"Steve
+        Martin"}],"cursors":{"previous":null,"next":null}}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:56 GMT
+  recorded_at: Mon, 20 Apr 2015 18:39:54 GMT
 recorded_with: VCR 2.9.3

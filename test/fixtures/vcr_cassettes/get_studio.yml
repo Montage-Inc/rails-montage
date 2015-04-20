@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://testco.dev.montagehot.club/api/v1/schemas/studios/19442e09-5c2d-4e5d-8f34-675570e81414/
+    uri: http://testco.dev.montagehot.club/api/v1/schemas/studios/54535b2e-cf80-4abb-8bd9-8429e55d173a/
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -27,22 +27,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:56 GMT
+      - Mon, 20 Apr 2015 18:42:49 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - GET, POST, DELETE, HEAD, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - GET, POST, DELETE, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":{"name":"Universal","_meta":{"created":"2015-04-03T18:50:15.295Z","modified":"2015-04-03T18:50:15.295Z"},"id":"19442e09-5c2d-4e5d-8f34-675570e81414","updated_at":null}}'
+      string: '{"data":{"id":"54535b2e-cf80-4abb-8bd9-8429e55d173a","_meta":{"modified":"2015-04-20T18:39:51.394Z","created":"2015-04-20T18:39:51.394Z"},"name":"Universal"}}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:58 GMT
+  recorded_at: Mon, 20 Apr 2015 18:42:49 GMT
 recorded_with: VCR 2.9.3

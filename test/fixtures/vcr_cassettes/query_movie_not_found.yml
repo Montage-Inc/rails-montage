@@ -8,7 +8,7 @@ http_interactions:
       string: '{"filter":{"title":"Foo"}}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -27,22 +27,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:58 GMT
+      - Mon, 20 Apr 2015 18:39:52 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - GET, POST, HEAD, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[]}'
+      string: '{"data":[],"cursors":{"previous":null,"next":null}}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:59 GMT
+  recorded_at: Mon, 20 Apr 2015 18:39:52 GMT
 recorded_with: VCR 2.9.3

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -27,24 +27,24 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:55 GMT
+      - Mon, 20 Apr 2015 18:39:51 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - GET, HEAD, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - GET, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"name":"studios","fields":[{"name":"name","datatype":"text","indexed":false,"required":true}],"links":{"create_document":"http://testco.dev.montagehot.club/api/v1/schemas/studios/save/","self":"http://testco.dev.montagehot.club/api/v1/schemas/studios/","query":"http://testco.dev.montagehot.club/api/v1/schemas/studios/query/"}}'
+      string: '{"name":"studios","fields":[{"name":"name","datatype":"text","indexed":false,"required":true}],"links":{"self":"http://testco.dev.montagehot.club/api/v1/schemas/studios/","query":"http://testco.dev.montagehot.club/api/v1/schemas/studios/query/","create_document":"http://testco.dev.montagehot.club/api/v1/schemas/studios/save/"}}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:57 GMT
+  recorded_at: Mon, 20 Apr 2015 18:39:51 GMT
 - request:
     method: post
     uri: http://testco.dev.montagehot.club/api/v1/schemas/studios/save/
@@ -53,7 +53,7 @@ http_interactions:
       string: '[{"name":"Universal"}]'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -72,22 +72,22 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:56 GMT
+      - Mon, 20 Apr 2015 18:39:51 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - POST, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - POST, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"name":"Universal","_meta":{"created":"2015-04-18T20:16:56.142Z","modified":"2015-04-18T20:16:56.142Z"},"id":"795e2260-503d-4a67-aef3-984640f9dd38"}]}'
+      string: '{"data":[{"id":"54535b2e-cf80-4abb-8bd9-8429e55d173a","_meta":{"modified":"2015-04-20T18:39:51.394Z","created":"2015-04-20T18:39:51.394Z"},"name":"Universal"}]}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:57 GMT
+  recorded_at: Mon, 20 Apr 2015 18:39:51 GMT
 recorded_with: VCR 2.9.3

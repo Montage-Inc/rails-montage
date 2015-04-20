@@ -207,8 +207,10 @@ class MontageRails::BaseTest < MiniTest::Test
 
   context ".belongs_to" do
     should "define an instance method for the given table name" do
-      VCR.use_cassette("get_movie", allow_playback_repeats: true) do
-        @movie = Movie.find_by_title("The Jerk")
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        VCR.use_cassette("get_movie", allow_playback_repeats: true) do
+          @movie = Movie.find_by_title("The Jerk")
+        end
       end
 
       VCR.use_cassette("create_studio", allow_playback_repeats: true) do
@@ -226,7 +228,9 @@ class MontageRails::BaseTest < MiniTest::Test
         @movie.studio = @studio
         @movie.save
 
-        assert_equal @studio.attributes, @movie.studio.attributes
+        VCR.use_cassette("get_studio", allow_playback_repeats: true) do
+          assert_equal @studio.attributes, @movie.studio.attributes
+        end
       end
     end
   end
@@ -283,7 +287,7 @@ class MontageRails::BaseTest < MiniTest::Test
         assert_equal 4, @movie.rank
         assert_equal 2.0, @movie.rating
         assert_equal "The Jerk", @movie.title
-        assert_equal 500, @movie.votes
+        assert_equal 600, @movie.votes
         assert_equal 1984, @movie.year
       end
     end

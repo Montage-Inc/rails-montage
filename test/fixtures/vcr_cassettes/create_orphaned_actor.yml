@@ -8,7 +8,7 @@ http_interactions:
       string: '[{"movie_id":null,"name":"Mark Hamill"}]'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -27,22 +27,23 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:54 GMT
+      - Mon, 20 Apr 2015 18:39:54 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - POST, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - POST, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"name":"Mark Hamill","movie_id":"","_meta":{"created":"2015-04-18T20:16:54.508Z","modified":"2015-04-18T20:16:54.508Z"},"id":"356bb38d-25cf-402d-a2f4-48a371be239a"}]}'
+      string: '{"data":[{"id":"d8332c5b-71a9-423d-8bc8-9d956e7257a4","_meta":{"modified":"2015-04-20T18:39:53.962Z","created":"2015-04-20T18:39:53.962Z"},"movie_id":"","name":"Mark
+        Hamill"}]}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:56 GMT
+  recorded_at: Mon, 20 Apr 2015 18:39:54 GMT
 recorded_with: VCR 2.9.3

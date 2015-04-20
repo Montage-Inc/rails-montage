@@ -104,7 +104,7 @@ module MontageRails
         response = cache.get_or_set_query(self, value) { connection.document(table_name, value) }
 
         if response.success?
-          new(response.document.attributes.merge(persisted: true))
+          new(response.document.items.merge(persisted: true))
         else
           nil
         end
@@ -235,7 +235,10 @@ module MontageRails
       old_attributes = attributes.clone
 
       params.each do |key, value|
-        send("#{key}=", value) if respond_to?(key.to_sym)
+        if respond_to?(key.to_sym)
+          coerced_value = column_for(key.to_s).coerce(value)
+          send("#{key}=", coerced_value)
+        end
       end
 
       return self if old_attributes == attributes

@@ -8,7 +8,7 @@ http_interactions:
       string: '{"filter":{"title":"The Jerk"}}'
     headers:
       User-Agent:
-      - Montage Ruby v0.1.5
+      - Montage Ruby v0.1.6
       Content-Type:
       - application/json
       Accept:
@@ -27,23 +27,23 @@ http_interactions:
       Server:
       - gunicorn/19.3.0
       Date:
-      - Sat, 18 Apr 2015 20:16:57 GMT
+      - Mon, 20 Apr 2015 18:39:53 GMT
       Transfer-Encoding:
       - chunked
-      Allow:
-      - GET, POST, HEAD, OPTIONS
       Content-Type:
       - application/json
-      X-Frame-Options:
-      - SAMEORIGIN
       Vary:
       - Accept, Host
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      X-Frame-Options:
+      - SAMEORIGIN
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"b9dddf21-a121-4481-86e6-6412fca87f3c","year":1984,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414","title":"The
-        Jerk","_meta":{"created":{"created":"2015-04-18T20:16:52.876Z","modified":"2015-04-18T20:16:52.876Z"},"modified":"2015-04-18T20:16:53.156Z"},"rank":4,"votes":600,"rating":2}]}'
+      string: '{"data":[{"votes":600,"_meta":{"modified":"2015-04-20T18:39:50.095Z","created":{"modified":"2015-04-20T18:39:47.751Z","created":"2015-04-20T18:39:47.751Z"}},"rating":2,"year":1984,"id":"69cc93af-1f0e-43bc-ac9a-19117111978e","title":"The
+        Jerk","rank":4,"studio_id":"19442e09-5c2d-4e5d-8f34-675570e81414"}],"cursors":{"previous":null,"next":null}}'
     http_version: 
-  recorded_at: Sat, 18 Apr 2015 20:16:59 GMT
+  recorded_at: Mon, 20 Apr 2015 18:39:53 GMT
 recorded_with: VCR 2.9.3

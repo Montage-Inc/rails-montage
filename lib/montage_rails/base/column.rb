@@ -7,7 +7,8 @@ module MontageRails
         "text" => String,
         "date" => Date,
         "time" => Time,
-        "datetime" => DateTime
+        "datetime" => DateTime,
+        "numeric" => Numeric
       }
 
       attr_accessor :name, :type, :required
@@ -22,6 +23,34 @@ module MontageRails
 
       def value_valid?(value)
         !(required? && value.nil?)
+      end
+
+      # Determines if the string value passed in is an integer
+      # Returns true or false
+      #
+      def is_i?(value)
+        /\A\d+\z/ =~ value
+      end
+
+      # Determines if the string value passed in is a float
+      # Returns true or false
+      #
+      def is_f?(value)
+        /\A\d+\.\d+\z/ =~ value
+      end
+
+      def coerce(value)
+        return value if value.is_a?(TYPE_MAP[type])
+
+        if is_i?(value)
+          coerce_to = Integer
+        elsif is_f?(value)
+          coerce_to = Float
+        else
+          coerce_to = TYPE_MAP[type]
+        end
+
+        Virtus::Attribute.build(coerce_to).coerce(value)
       end
     end
   end
