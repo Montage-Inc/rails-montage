@@ -140,7 +140,7 @@ class MontageRails::RelationTest < Minitest::Test
         @relation = MontageRails::Relation.new(Movie)
       end
 
-      @expected = { filter: {}, order: "foobar asc" }
+      @expected = { filter: {}, order_by: "foobar", ordering: "asc" }
     end
 
     should "append the order attribute to the relation body" do
@@ -152,7 +152,7 @@ class MontageRails::RelationTest < Minitest::Test
     end
 
     should "set the default to nil" do
-      assert_equal({ filter: {}, order: nil }, @relation.order.query)
+      assert_equal({ filter: {}, order_by: "", ordering: "" }, @relation.order.query)
     end
 
     should "accept and properly parse a hash" do
@@ -168,7 +168,7 @@ class MontageRails::RelationTest < Minitest::Test
     end
 
     should "parse the relation to a json format" do
-      assert_equal "{\"filter\":{\"foo\":1.0,\"bar__gt\":2},\"order\":\"created_at desc\",\"limit\":10}", @relation.where(foo: 1.0).where("bar > 2").order(created_at: :desc).limit(10).to_json
+      assert_equal "{\"filter\":{\"foo\":1.0,\"bar__gt\":2},\"order_by\":\"created_at\",\"ordering\":\"desc\",\"limit\":10}", @relation.where(foo: 1.0).where("bar > 2").order(created_at: :desc).limit(10).to_json
     end
   end
 
@@ -194,7 +194,7 @@ class MontageRails::RelationTest < Minitest::Test
         end
       end
 
-      assert_equal 6, @movies.count
+      assert_equal 4, @movies.count
     end
   end
 
