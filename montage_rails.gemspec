@@ -21,8 +21,8 @@ Gem::Specification.new do |s|
     s.metadata['allowed_push_host'] = "https://1jB4bNjnEKjP4xyR8NNr@gem.fury.io/app35692279_heroku_com/"
   end
 
-  s.add_dependency "rails", ">= 4.0"
-  s.add_dependency "ruby-montage", ">= 0.1.7"
+  s.add_dependency "rails", "~> 4.0", ">= 4.0"
+  s.add_dependency "ruby-montage", "~> 0.1", ">= 0.1.7"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 0.0", ">= 1.0"
 
