@@ -45,6 +45,20 @@ class MontageRails::BaseTest < MiniTest::Test
     end
   end
 
+  context "class setup" do
+    setup do
+      class FooBar < MontageRails::Base
+        self.table_name = "movies"
+      end
+    end
+
+    should "allow the table_name to be overriden" do
+      VCR.use_cassette("movies", allow_playback_repeats: true) do
+        assert_equal "movies", FooBar.table_name
+      end
+    end
+  end
+
   context "callbacks" do
     should "respond to the before_save callback and before_create callback when it's not persisted" do
       VCR.use_cassette("movies", allow_playback_repeats: true) do

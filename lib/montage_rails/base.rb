@@ -21,6 +21,8 @@ module MontageRails
       #
       delegate :connection, :notify, to: MontageRails
 
+      cattr_accessor :table_name
+
       # Define a new instance of the query cache
       #
       def cache
@@ -33,12 +35,6 @@ module MontageRails
         @logger ||= Rails.logger
       end
 
-      # The pluralized table name used in API requests
-      #
-      def table_name
-        self.name.demodulize.underscore.pluralize
-      end
-
       # Setup a class level instance of the MontageRails::Relation object
       #
       def relation
@@ -47,29 +43,50 @@ module MontageRails
 
       # Define a has_many relationship
       #
-      def has_many(table_name)
+      def has_many(table)
         class_eval do
-          define_method(table_name.to_s.tableize.to_sym) do
-            table_name.to_s.classify.constantize.where("#{self.class.name.demodulize.underscore.foreign_key} = #{id}")
+          define_method(table.to_s.tableize.to_sym) do
+            table.to_s.classify.constantize.where("#{self.class.name.demodulize.underscore.foreign_key} = #{id}")
           end
         end
       end
 
       # Define a belongs_to relationship
       #
-      def belongs_to(table_name)
+      def belongs_to(table)
         class_eval do
-          define_method(table_name.to_s.tableize.singularize.to_sym) do
-            table_name.to_s.classify.constantize.find_by_id(__send__(table_name.to_s.foreign_key))
+          define_method(table.to_s.tableize.singularize.to_sym) do
+            table.to_s.classify.constantize.find_by_id(__send__(table.to_s.foreign_key))
           end
 
-          define_method("#{table_name.to_s.tableize.singularize}=") do |record|
-            self.__send__("#{table_name.to_s.foreign_key}=", record.id)
+          define_method("#{table.to_s.tableize.singularize}=") do |record|
+            self.__send__("#{table.to_s.foreign_key}=", record.id)
             self
           end
         end
       end
 
+      # The pluralized table name used in API requests
+      #
+      def table_name
+        self.name.demodulize.underscore.pluralize
+      end
+
+      # Redefine the table name
+      #
+      def set_table_name(value)
+        instance_eval do
+          define_singleton_method(:table_name) do
+            value
+          end
+        end
+        # define_attr_method :table_name, value, &block
+      end
+
+      alias_method :table_name=, :set_table_name
+
+      # Returns an array of MontageRails::Base::Column's for the schema
+      #
       def columns
         @columns ||= [].tap do |ary|
           response = connection.schema(table_name)
