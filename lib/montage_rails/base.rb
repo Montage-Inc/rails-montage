@@ -138,8 +138,11 @@ module MontageRails
 
         response = cache.get_or_set_query(self, query) { connection.documents(table_name, query: query) }
 
-        return new(response.documents.first.attributes.merge(persisted: true)) if response.success? && response.documents.any?
-        new(params)
+        if response.success? && response.documents.any?
+          new(attributes_from_response(response).merge(persisted: true))
+        else
+          new(params)
+        end
       end
 
       # Returns an array of the column names for the table
@@ -178,6 +181,14 @@ module MontageRails
       def respond_to_missing?(method_name, include_private = false)
         __send__(:column_names).include?(method_name.to_s.split("_").first) || super(method_name, include_private)
       end
+
+      def attributes_from_response(response)
+        if response.documents.is_a?(Montage::Documents)
+          response.documents.first.attributes
+        else
+          response.documents.attributes
+        end
+      end
     end
 
     attr_accessor :persisted
@@ -185,6 +196,7 @@ module MontageRails
     alias_method :persisted?, :persisted
 
     delegate :connection, :notify, to: MontageRails
+    delegate :attributes_from_response, to: "self.class"
 
     def initialize(params = {})
       initialize_columns
@@ -219,10 +231,10 @@ module MontageRails
 
         if response.success?
           if persisted?
-            initialize(response.document.first.attributes)
+            initialize(attributes_from_response(response))
           else
             run_callbacks :create do
-              initialize(response.document.first.attributes)
+              initialize(attributes_from_response(response))
               @persisted = true
             end
           end
@@ -267,7 +279,7 @@ module MontageRails
           connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: true)])
         end
 
-        initialize(response.documents.first.attributes)
+        initialize(attributes_from_response(response))
         @persisted = true
         self
       else
@@ -295,7 +307,7 @@ module MontageRails
         connection.document(self.class.table_name, id)
       end
 
-      initialize(response.document.attributes)
+      initialize(attributes_from_response(response))
       @persisted = true
       self
     end
@@ -373,6 +385,7 @@ module MontageRails
     end
 
   private
+
 
     def initialize_columns
       self.class.columns.each do |column|
