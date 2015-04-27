@@ -185,8 +185,8 @@ module MontageRails
         case response.members
         when Montage::Documents then response.documents.first.attributes
         when Montage::Document then response.document.attributes
-        when Montage::Errors then response.errors.first.attributes
-        when Montage::Error then response.error.attributes
+        when Montage::Errors then raise MontageAPIError, "There was an error with the Montage API: #{response.errors.attributes}"
+        when Montage::Error then raise MontageAPIError, "There was an error with the Montage API: #{response.error.attributes}"
         else raise MontageAPIError, "There was an error with the Montage API, please try again."
         end
       end
