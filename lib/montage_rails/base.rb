@@ -80,7 +80,6 @@ module MontageRails
             value
           end
         end
-        # define_attr_method :table_name, value, &block
       end
 
       alias_method :table_name=, :set_table_name
@@ -183,10 +182,12 @@ module MontageRails
       end
 
       def attributes_from_response(response)
-        if response.documents.is_a?(Montage::Documents)
-          response.documents.first.attributes
-        else
-          response.documents.attributes
+        case response.members
+        when Montage::Documents then response.documents.first.attributes
+        when Montage::Document then response.document.attributes
+        when Montage::Errors then response.errors.first.attributes
+        when Montage::Error then response.error.attributes
+        else raise MontageAPIError, "There was an error with the Montage API, please try again."
         end
       end
     end
