@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-source 'https://1jB4bNjnEKjP4xyR8NNr@gem.fury.io/app35692279_heroku_com/' do
+source 'https://1jB4bNjnEKjP4xyR8NNr@repo.fury.io/editllc/' do
   gem 'ruby-montage', require: 'montage'
 end
 

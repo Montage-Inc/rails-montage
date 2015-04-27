@@ -46,7 +46,7 @@ module MontageRails
       def has_many(table)
         class_eval do
           define_method(table.to_s.tableize.to_sym) do
-            table.to_s.classify.constantize.where("#{self.class.name.demodulize.underscore.foreign_key} = #{id}")
+            table.to_s.classify.constantize.where("#{self.class.table_name.demodulize.underscore.foreign_key} = #{id}")
           end
         end
       end

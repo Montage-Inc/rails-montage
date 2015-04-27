@@ -217,6 +217,26 @@ class MontageRails::BaseTest < MiniTest::Test
         end
       end
     end
+
+    context "when the table name has been overridden" do
+      setup do
+        class TestClass < MontageRails::Base
+          self.table_name = "movies"
+
+          has_many :actors
+        end
+
+        VCR.use_cassette("movies", allow_playback_repeats: true) do
+          VCR.use_cassette("query_movie_found", allow_playback_repeats: true) do
+            @test = TestClass.where(title: "The Jerk").first
+          end
+        end
+      end
+
+      should "use the new table name to define the methods" do
+        assert_equal "Steve Martin", @test.actors.first.name
+      end
+    end
   end
 
   context ".belongs_to" do

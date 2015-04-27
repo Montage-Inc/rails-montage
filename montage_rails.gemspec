@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency "rails", "~> 4", ">= 4.0"
-  s.add_dependency "ruby-montage", "~> 0.2", ">= 0.2.0"
+  s.add_dependency "ruby-montage", "~> 0.3", ">= 0.3.0"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"
 
@@ -39,4 +39,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-rails", "~> 0.0"
   s.add_development_dependency "minitest-reporters", "~> 1.0"
   s.add_development_dependency "will_paginate", "~> 3.0", ">= 3.0"
+  s.add_development_dependency "vendorise"
 end
