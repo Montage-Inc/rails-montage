@@ -46,7 +46,7 @@ module MontageRails
       def has_many(table)
         class_eval do
           define_method(table.to_s.tableize.to_sym) do
-            table.to_s.classify.constantize.where("#{self.class.table_name.demodulize.underscore.foreign_key} = #{id}")
+            table.to_s.classify.constantize.where("#{self.class.table_name.demodulize.underscore.singularize.foreign_key} = #{id}")
           end
         end
       end
@@ -273,8 +273,8 @@ module MontageRails
 
       return self if old_attributes == attributes
 
-      if attributes_valid? && !id.nil?
-        @current_method = "Update"
+      if attributes_valid?
+        @current_method = id.nil? ? "Create" : "Update"
 
         response = notify(self) do
           connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: true)])

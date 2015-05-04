@@ -4,7 +4,7 @@ PATH
     montage_rails (0.2.9)
       json (~> 1.8)
       rails (~> 4, >= 4.0)
-      ruby-montage (~> 0.3, >= 0.3.3)
+      ruby-montage (~> 0.3, >= 0.3.5)
       virtus (~> 1.0, >= 1.0)
 
 GEM
@@ -141,7 +141,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    ruby-montage (0.3.3)
+    ruby-montage (0.3.5)
       faraday (~> 0.9)
       faraday_middleware (~> 0.9)
       json (~> 1.8)

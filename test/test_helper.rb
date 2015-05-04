@@ -20,21 +20,177 @@ Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
-# Load fixtures from the engine
-# if ActiveSupport::TestCase.respond_to?(:fixture_path=)
-#   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
-#   ActiveSupport::TestCase.fixtures :all
-# end
+# Load resource helpers
+Dir[File.join(File.dirname(__FILE__), 'resources', '**', '*.rb')].each do |file|
+  require file
+end
 
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'shoulda-context'
 require 'mocha/setup'
-require 'vcr'
+require 'webmock/minitest'
 
 Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => true)]
 
-VCR.configure do |config|
-  config.cassette_library_dir = File.expand_path("../../test/fixtures/vcr_cassettes", __FILE__)
-  config.hook_into :webmock
+class MiniTest::Test
+  @@default_headers = {
+    'Accept' => '*/*',
+    'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+    'Authorization' => 'Token fb761e07-a12b-40bb-a42f-2202ecfd1046',
+    'Content-Type' => 'application/json',
+    'User-Agent' => "Montage Ruby v#{Montage::VERSION}"
+  }
+
+  def setup
+    # Stub the request for getting the movie schema definition
+    #
+    stub_request(:get, "http://testco.dev.montagehot.club/api/v1/schemas/movies/")
+      .with(headers: @@default_headers).to_return(
+        status: 200,
+        body: MontageRails::MovieResource.schema_definition.to_json,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      )
+
+    # Stub the save movie request
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/save/").
+      with(body: [ MontageRails::MovieResource.to_hash ].to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.save_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the save movie request
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/save/").
+      with(body: [ MontageRails::MovieResource.save_with_update_hash ].to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.save_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the update movie request
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/save/").
+      with(body: MontageRails::MovieResource.update_body.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.update_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the request for getting the actor schema definition
+    #
+    stub_request(:get, "http://testco.dev.montagehot.club/api/v1/schemas/actors/")
+      .with(headers: @@default_headers).to_return(
+        status: 200,
+        body: MontageRails::ActorResource.schema_definition.to_json,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      )
+
+    # Stub the creation of Steve Martin
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/actors/save/").
+      with(body: [ MontageRails::ActorResource.steve_martin ].to_json, headers: @@default_headers).to_return(
+        body: MontageRails::ActorResource.save_steve_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the creation of Mark Hamill
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/actors/save/").
+      with(body: [ MontageRails::ActorResource.mark_hamill ].to_json, headers: @@default_headers).to_return(
+        body: MontageRails::ActorResource.save_mark_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the actor query
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/actors/query/").
+      with(body: MontageRails::ActorResource.query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::ActorResource.query_result.to_json,
+        headers: { 'Content-Type' => 'application/json'}
+      )
+
+    # Stub the movie query
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/query/").
+      with(body: MontageRails::MovieResource.movie_query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.query_result.to_json,
+        headers: { 'Content-Type' => 'application/json'}
+      )
+
+    # Stub the movie relation query for actors
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/actors/query/").
+      with(body: MontageRails::ActorResource.relation_query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::ActorResource.relation_response.to_json,
+        headers: { 'Content-Type' => 'application/json'}
+      )
+
+    # Stub the movie relation query for getting the first actor
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/actors/query/").
+      with(body: MontageRails::ActorResource.relation_first_query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::ActorResource.relation_response.to_json,
+        headers: { 'Content-Type' => 'application/json'}
+      )
+
+    # Stub the schema definition request for studios
+    #
+    stub_request(:get, "http://testco.dev.montagehot.club/api/v1/schemas/studios/").
+      with(headers: @@default_headers).to_return(
+        body: MontageRails::StudioResource.schema_definition.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the save studio action
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/studios/save/").
+      with(body: [ MontageRails::StudioResource.to_hash ].to_json, headers: @@default_headers).to_return(
+        body: MontageRails::StudioResource.save_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the get studio response
+    #
+    stub_request(:get, "http://testco.dev.montagehot.club/api/v1/schemas/studios/19442e09-5c2d-4e5d-8f34-675570e81414/").
+      with(headers: @@default_headers).to_return(
+        body: MontageRails::StudioResource.get_studio_response.to_json,
+        headers: { 'Content-Type' => 'applicaiton/json' }
+      )
+
+    # Stub the find by query for movies
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/query/").
+      with(body: MontageRails::MovieResource.find_movie_query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.query_result.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the find by query for movies that returns no results
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/query/").
+      with(body: MontageRails::MovieResource.movie_not_found_query.to_json, headers: @@default_headers).to_return(
+        body: { data: [] }.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the all query for movies
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/query/").
+      with(body: MontageRails::MovieResource.all_movies_query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.query_result.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
+    # Stub the greater than relation
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/query/").
+      with(body: MontageRails::MovieResource.gt_query.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.query_result.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+  end
 end

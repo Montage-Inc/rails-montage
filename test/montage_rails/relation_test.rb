@@ -6,19 +6,11 @@ require 'will_paginate/collection'
 class MontageRails::RelationTest < Minitest::Test
   context "#paginate" do
     setup do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
-        end
-      end
+      @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)
     end
 
     should "return a will paginate collection if it is defined" do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          assert_equal "WillPaginate::Collection", @movie.paginate.class.name
-        end
-      end
+      assert_equal "WillPaginate::Collection", @movie.paginate.class.name
     end
 
     should "return self if it is not defined" do
@@ -29,11 +21,7 @@ class MontageRails::RelationTest < Minitest::Test
 
   context "#reset" do
     setup do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
-        end
-      end
+      @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)
     end
 
     should "reset all the values" do
@@ -49,26 +37,18 @@ class MontageRails::RelationTest < Minitest::Test
 
       @movie.reset
 
-      assert_nil @movie.cache.cache["Movie/{:filter=>{:name=>\"The Jerk\"}, :limit=>1}"]
+      assert_nil @movie.cache.cache["Movie/{:filter=>{:title=>\"The Jerk\"}, :limit=>1}"]
       assert_equal "bar", @movie.cache.cache["foo/bar"]
     end
   end
 
   context "#reload" do
     setup do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
-        end
-      end
+      @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)
     end
 
     should "reset the values and reload the relation" do
-      VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-        VCR.use_cassette("movies", allow_playback_repeats: true) do
-          @movie.reload
-        end
-      end
+      @movie.reload
 
       assert !@movie.to_a.empty?
     end
@@ -76,9 +56,7 @@ class MontageRails::RelationTest < Minitest::Test
 
   context "#to_json" do
     setup do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        @relation = MontageRails::Relation.new(Movie)
-      end
+      @relation = MontageRails::Relation.new(Movie)
     end
 
     should "parse the relation to a json format" do
@@ -88,37 +66,24 @@ class MontageRails::RelationTest < Minitest::Test
 
   context "#to_a" do
     should "return the record set without a query if the records have already been fetched" do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        @relation = MontageRails::Relation.new(Movie)
+      @relation = MontageRails::Relation.new(Movie)
 
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          @r = @relation.where("votes > 900000")
-          @r.to_a
-        end
-      end
+      @r = @relation.where("votes > 900000")
+      @r.to_a
 
       assert @r.loaded?
     end
 
     should "query the remote db and return the record set if the records have not already been fetched" do
+      @movies = MontageRails::Relation.new(Movie).where("votes > 900000").to_a
 
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          @movies = MontageRails::Relation.new(Movie).where("votes > 900000").to_a
-        end
-      end
-
-      assert_equal 4, @movies.count
+      assert_equal 1, @movies.count
     end
   end
 
   context "#inspect" do
     setup do
-      VCR.use_cassette("movies", allow_playback_repeats: true) do
-        VCR.use_cassette("query_movies", allow_playback_repeats: true) do
-          @movie = MontageRails::Relation.new(Movie).where(name: "The Jerk").limit(1)
-        end
-      end
+      @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)
     end
 
     should "call to_a and inspect" do
