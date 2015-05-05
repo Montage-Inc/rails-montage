@@ -277,7 +277,7 @@ module MontageRails
         @current_method = id.nil? ? "Create" : "Update"
 
         response = notify(self) do
-          connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: true)])
+          connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: !id.nil?)])
         end
 
         initialize(attributes_from_response(response))
