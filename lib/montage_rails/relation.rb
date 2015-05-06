@@ -9,7 +9,7 @@ module MontageRails
     delegate :connection, to: MontageRails
     delegate :cache, to: :klass
     delegate :count, :length, :last, :[], :any?, :each_with_index, to: :to_a
-    delegate :map, :select, :each, to: :to_a
+    delegate :map, :select, :each, :sort_by, to: :to_a
 
     def initialize(klass)
       super()
