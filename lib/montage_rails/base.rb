@@ -183,8 +183,8 @@ module MontageRails
 
       def attributes_from_response(response)
         case response.members
-        when Montage::Documents then response.documents.first.attributes
-        when Montage::Document then response.document.attributes
+        when Montage::Documents then response.documents.first.attributes.merge(persisted: true)
+        when Montage::Document then response.document.attributes.merge(persisted: true)
         when Montage::Errors then raise MontageAPIError, "There was an error with the Montage API: #{response.errors.attributes}"
         when Montage::Error then raise MontageAPIError, "There was an error with the Montage API: #{response.error.attributes}"
         else raise MontageAPIError, "There was an error with the Montage API, please try again."
@@ -215,7 +215,6 @@ module MontageRails
     def save
       run_callbacks :save do
         return nil unless attributes_valid?
-        @new_record = false
 
         if persisted?
           @current_method = "Update"
@@ -225,7 +224,6 @@ module MontageRails
           end
         else
           @current_method = "Create"
-          @new_record = true
 
           response = notify(self) do
             connection.create_or_update_documents(self.class.table_name, [updateable_attributes])
@@ -233,12 +231,11 @@ module MontageRails
         end
 
         if response.success?
-          if !@new_record
+          if persisted?
             initialize(attributes_from_response(response))
           else
             run_callbacks :create do
               initialize(attributes_from_response(response))
-              @persisted = true
             end
           end
 

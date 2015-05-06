@@ -216,7 +216,7 @@ class MontageRails::BaseTest < MiniTest::Test
       assert_equal 4, @movie.rank
       assert_equal 2.0, @movie.rating
       assert_equal "The Jerk", @movie.title
-      assert_equal 500, @movie.votes
+      assert_equal 600, @movie.votes
       assert_equal 1983, @movie.year
     end
   end
@@ -340,14 +340,14 @@ class MontageRails::BaseTest < MiniTest::Test
       should "not update any attributes and return false" do
         assert !@movie.update_attributes(votes: nil)
 
-        assert_equal 500, @movie.votes
+        assert_equal 600, @movie.votes
       end
     end
 
     context "when none of the attributes have changed" do
       should "not update the document" do
         MontageRails.connection.expects(:update_document).never
-        @movie.update_attributes(MontageRails::MovieResource.to_hash)
+        @movie.update_attributes(MontageRails::MovieResource.update_body.shift)
       end
     end
 

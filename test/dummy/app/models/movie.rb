@@ -24,5 +24,7 @@ class Movie < MontageRails::Base
 
   def do_stuff_after_create
     @after_create_var = "AFTER CREATE"
+    self.votes = 600
+    save!
   end
 end
