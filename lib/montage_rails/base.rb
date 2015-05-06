@@ -215,6 +215,7 @@ module MontageRails
     def save
       run_callbacks :save do
         return nil unless attributes_valid?
+        @new_record = false
 
         if persisted?
           @current_method = "Update"
@@ -224,6 +225,7 @@ module MontageRails
           end
         else
           @current_method = "Create"
+          @new_record = true
 
           response = notify(self) do
             connection.create_or_update_documents(self.class.table_name, [updateable_attributes])
@@ -231,7 +233,7 @@ module MontageRails
         end
 
         if response.success?
-          if persisted?
+          if !@new_record
             initialize(attributes_from_response(response))
           else
             run_callbacks :create do
