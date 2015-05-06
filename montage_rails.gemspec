@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency "rails", "~> 4", ">= 4.0"
-  s.add_dependency "ruby-montage", "~> 0.3", ">= 0.3.5"
+  s.add_dependency "ruby-montage", "~> 0.3", ">= 0.3.6"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"
 
