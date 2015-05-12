@@ -1,7 +1,6 @@
 require 'test_helper'
 require 'montage_rails/base'
 require 'montage_rails/relation'
-require 'will_paginate/collection'
 
 class MontageRails::RelationTest < Minitest::Test
   context "#paginate" do
@@ -9,13 +8,33 @@ class MontageRails::RelationTest < Minitest::Test
       @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)
     end
 
-    should "return a will paginate collection if it is defined" do
-      assert_equal "WillPaginate::Collection", @movie.paginate.class.name
+    context "when will paginate is defined" do
+      setup do
+        require 'will_paginate/collection'
+        Object.send(:remove_const, :Kaminari) if Object.const_defined?("Kaminari")
+      end
+
+      should "return a will paginate collection" do
+        assert_equal "WillPaginate::Collection", @movie.paginate.class.name
+      end
     end
 
-    should "return self if it is not defined" do
-      Object.expects(:const_defined?).with("WillPaginate").returns(false)
-      assert_equal @movie, @movie.paginate
+    context "when kaminari is defined" do
+      setup do
+        require 'kaminari'
+        Kaminari::Hooks.init
+        Object.send(:remove_const, :WillPaginate) if Object.const_defined?("WillPaginate")
+      end
+
+      should "return a Kaminari collection" do
+        assert_equal "Kaminari::PaginatableArray", @movie.paginate.class.name
+      end
+    end
+
+    context "when no paginator is defined" do
+      should "return self" do
+        assert_equal @movie.first.attributes, @movie.paginate.first.attributes
+      end
     end
   end
 

@@ -25,6 +25,8 @@ module MontageRails
         WillPaginate::Collection.create(page, per_page, count) do |pager|
           pager.replace(self[pager.offset, pager.per_page]).to_a
         end
+      elsif Object.const_defined?("Kaminari")
+        Kaminari.paginate_array(self).page(page).per(per_page)
       else
         self
       end
