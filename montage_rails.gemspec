@@ -1,5 +1,10 @@
 $:.push File.expand_path("../lib", __FILE__)
 
+# Helper to be able to test against multiple Rails versions
+def rails_version
+  "= " + ENV['RAILS_VERSION'] || "4.2.1"
+end
+
 # Maintain your gem's version:
 require "montage_rails/version"
 
@@ -17,7 +22,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4", ">= 4.0"
+  s.add_dependency "rails", rails_version
   s.add_dependency "ruby-montage", "~> 0.4", ">= 0.4.2"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"

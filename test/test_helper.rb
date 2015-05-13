@@ -53,7 +53,7 @@ class MiniTest::Test
         status: 200,
         body: MontageRails::MovieResource.schema_definition.to_json,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type' => 'application/json'
         }
       )
 
@@ -88,7 +88,7 @@ class MiniTest::Test
         status: 200,
         body: MontageRails::ActorResource.schema_definition.to_json,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type' => 'application/json'
         }
       )
 
