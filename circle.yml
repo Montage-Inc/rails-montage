@@ -3,34 +3,34 @@ dependencies:
     - >
       case $CIRCLE_NODE_INDEX in
         0)
-          - 'RAILS_VERSION=4.2.1 rvm-exec 1.9.3-p551 bundle install'
-          - 'RAILS_VERSION=4.2.1 rvm-exec 2.0.0-p598 bundle install'
-          - 'RAILS_VERSION=4.2.1 rvm-exec 2.1.5 bundle install'
-          - 'RAILS_VERSION=4.2.1 rvm-exec 2.2.0 bundle install'
+          RAILS_VERSION=4.2.1 rvm-exec 1.9.3-p551 bundle install;\
+            RAILS_VERSION=4.2.1 rvm-exec 2.0.0-p598 bundle install;\
+            RAILS_VERSION=4.2.1 rvm-exec 2.1.5 bundle install;\
+            RAILS_VERSION=4.2.1 rvm-exec 2.2.0 bundle install
           ;;
         1)
-          - 'RAILS_VERSION=4.1.10 rvm-exec 1.9.3-p551 bundle install'
-          - 'RAILS_VERSION=4.1.10 rvm-exec 2.0.0-p598 bundle install'
-          - 'RAILS_VERSION=4.1.10 rvm-exec 2.1.5 bundle install'
-          - 'RAILS_VERSION=4.1.10 rvm-exec 2.2.0 bundle install'
+          RAILS_VERSION=4.1.10 rvm-exec 1.9.3-p551 bundle install';\
+            RAILS_VERSION=4.1.10 rvm-exec 2.0.0-p598 bundle install';\
+            RAILS_VERSION=4.1.10 rvm-exec 2.1.5 bundle install';\
+            RAILS_VERSION=4.1.10 rvm-exec 2.2.0 bundle install'
           ;;
         2)
-          - 'RAILS_VERSION=4.0.13 rvm-exec 1.9.3-p551 bundle install'
-          - 'RAILS_VERSION=4.0.13 rvm-exec 2.0.0-p598 bundle install'
-          - 'RAILS_VERSION=4.0.13 rvm-exec 2.1.5 bundle install'
-          - 'RAILS_VERSION=4.0.13 rvm-exec 2.2.0 bundle install'
+          RAILS_VERSION=4.0.13 rvm-exec 1.9.3-p551 bundle install;\
+            RAILS_VERSION=4.0.13 rvm-exec 2.0.0-p598 bundle install;\
+            RAILS_VERSION=4.0.13 rvm-exec 2.1.5 bundle install;\
+            RAILS_VERSION=4.0.13 rvm-exec 2.2.0 bundle install
           ;;
         3)
-          - 'RAILS_VERSION=3.2.21 rvm-exec 1.9.3-p551 bundle install'
-          - 'RAILS_VERSION=3.2.21 rvm-exec 2.0.0-p598 bundle install'
-          - 'RAILS_VERSION=3.2.21 rvm-exec 2.1.5 bundle install'
-          - 'RAILS_VERSION=3.2.21 rvm-exec 2.2.0 bundle install'
+          RAILS_VERSION=3.2.21 rvm-exec 1.9.3-p551 bundle install;\
+            RAILS_VERSION=3.2.21 rvm-exec 2.0.0-p598 bundle install;\
+            RAILS_VERSION=3.2.21 rvm-exec 2.1.5 bundle install;\
+            RAILS_VERSION=3.2.21 rvm-exec 2.2.0 bundle install
           ;;
         4)
-          - 'RAILS_VERSION=3.1.12 rvm-exec 1.9.3-p551 bundle install'
-          - 'RAILS_VERSION=3.1.12 rvm-exec 2.0.0-p598 bundle install'
-          - 'RAILS_VERSION=3.1.12 rvm-exec 2.1.5 bundle install'
-          - 'RAILS_VERSION=3.1.12 rvm-exec 2.2.0 bundle install'
+          RAILS_VERSION=3.1.12 rvm-exec 1.9.3-p551 bundle install;\
+            RAILS_VERSION=3.1.12 rvm-exec 2.0.0-p598 bundle install;\
+            RAILS_VERSION=3.1.12 rvm-exec 2.1.5 bundle install;\
+            RAILS_VERSION=3.1.12 rvm-exec 2.2.0 bundle install
           ;;
       esac
 
@@ -39,34 +39,34 @@ test:
     - >
       case $CIRCLE_NODE_INDEX in
         0)
-          - 'CI=true RAILS_VERSION=4.2.1 rvm-exec 1.9.3-p551 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.2.1 rvm-exec 2.0.0-p598 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.2.1 rvm-exec 2.1.5 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.2.1 rvm-exec 2.2.0 bundle exec rake'
+          CI=true RAILS_VERSION=4.2.1 rvm-exec 1.9.3-p551 bundle exec rake;\
+            CI=true RAILS_VERSION=4.2.1 rvm-exec 2.0.0-p598 bundle exec rake;\
+            CI=true RAILS_VERSION=4.2.1 rvm-exec 2.1.5 bundle exec rake;\
+            CI=true RAILS_VERSION=4.2.1 rvm-exec 2.2.0 bundle exec rake
           ;;
         1)
-          - 'CI=true RAILS_VERSION=4.1.10 rvm-exec 1.9.3-p551 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.1.10 rvm-exec 2.0.0-p598 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.1.10 rvm-exec 2.1.5 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.1.10 rvm-exec 2.2.0 bundle exec rake'
+          CI=true RAILS_VERSION=4.1.10 rvm-exec 1.9.3-p551 bundle exec rake;\
+            CI=true RAILS_VERSION=4.1.10 rvm-exec 2.0.0-p598 bundle exec rake;\
+            CI=true RAILS_VERSION=4.1.10 rvm-exec 2.1.5 bundle exec rake;\
+            CI=true RAILS_VERSION=4.1.10 rvm-exec 2.2.0 bundle exec rake
           ;;
         2)
-          - 'CI=true RAILS_VERSION=4.0.13 rvm-exec 1.9.3-p551 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.0.13 rvm-exec 2.0.0-p598 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.0.13 rvm-exec 2.1.5 bundle exec rake'
-          - 'CI=true RAILS_VERSION=4.0.13 rvm-exec 2.2.0 bundle exec rake'
+          CI=true RAILS_VERSION=4.0.13 rvm-exec 1.9.3-p551 bundle exec rake;\
+            CI=true RAILS_VERSION=4.0.13 rvm-exec 2.0.0-p598 bundle exec rake;\
+            CI=true RAILS_VERSION=4.0.13 rvm-exec 2.1.5 bundle exec rake;\
+            CI=true RAILS_VERSION=4.0.13 rvm-exec 2.2.0 bundle exec rake
           ;;
         3)
-          - 'CI=true RAILS_VERSION=3.2.21 rvm-exec 1.9.3-p551 bundle exec rake'
-          - 'CI=true RAILS_VERSION=3.2.21 rvm-exec 2.0.0-p598 bundle exec rake'
-          - 'CI=true RAILS_VERSION=3.2.21 rvm-exec 2.1.5 bundle exec rake'
-          - 'CI=true RAILS_VERSION=3.2.21 rvm-exec 2.2.0 bundle exec rake'
+          CI=true RAILS_VERSION=3.2.21 rvm-exec 1.9.3-p551 bundle exec rake;\
+            CI=true RAILS_VERSION=3.2.21 rvm-exec 2.0.0-p598 bundle exec rake;\
+            CI=true RAILS_VERSION=3.2.21 rvm-exec 2.1.5 bundle exec rake;\
+            CI=true RAILS_VERSION=3.2.21 rvm-exec 2.2.0 bundle exec rake
           ;;
         4)
-          - 'CI=true RAILS_VERSION=3.1.12 rvm-exec 1.9.3-p551 bundle exec rake'
-          - 'CI=true RAILS_VERSION=3.1.12 rvm-exec 2.0.0-p598 bundle exec rake'
-          - 'CI=true RAILS_VERSION=3.1.12 rvm-exec 2.1.5 bundle exec rake'
-          - 'CI=true RAILS_VERSION=3.1.12 rvm-exec 2.2.0 bundle exec rake'
+          CI=true RAILS_VERSION=3.1.12 rvm-exec 1.9.3-p551 bundle exec rake;\
+            CI=true RAILS_VERSION=3.1.12 rvm-exec 2.0.0-p598 bundle exec rake;\
+            CI=true RAILS_VERSION=3.1.12 rvm-exec 2.1.5 bundle exec rake;\
+            CI=true RAILS_VERSION=3.1.12 rvm-exec 2.2.0 bundle exec rake
           ;;
       esac
 
