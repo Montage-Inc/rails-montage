@@ -17,12 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  if s.respond_to?(:metadata)
-    s.metadata['allowed_push_host'] = "https://1jB4bNjnEKjP4xyR8NNr@gem.fury.io/app35692279_heroku_com/"
-  end
-
   s.add_dependency "rails", "~> 4", ">= 4.0"
-  s.add_dependency "ruby-montage", "~> 0.3", ">= 0.3.6"
+  s.add_dependency "ruby-montage", "~> 0.4", ">= 0.4.2"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"
 
@@ -33,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda-context", "~> 1.0"
   s.add_development_dependency "mocha", "~> 1.1"
   s.add_development_dependency "simplecov", "~> 0.10"
-  s.add_development_dependency "coveralls", "~> 0.0"
+  s.add_development_dependency "codecov", "~> 0.0"
   s.add_development_dependency "vcr", "~> 2.9"
   s.add_development_dependency "webmock", "~> 1.0"
   s.add_development_dependency "pry-rails", "~> 0.0"

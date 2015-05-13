@@ -52,7 +52,7 @@ module MontageRails
       return @records if loaded?
 
       @response = cache.get_or_set_query(klass, query) do
-        connection.documents(klass.table_name, query: query)
+        connection.documents(klass.table_name, query)
       end
 
       @records = []

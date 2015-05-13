@@ -1,7 +1,9 @@
 require 'simplecov'
 
-if ENV['COVERAGE']
-  SimpleCov.start do
+SimpleCov.start do
+  if ENV['CI']=='true'
+    require 'codecov'
+    SimpleCov.formatter = SimpleCov::Formatter::Codecov
   end
 end
 
@@ -31,6 +33,7 @@ require 'shoulda-context'
 require 'mocha/setup'
 require 'webmock/minitest'
 
+WebMock.disable_net_connect!(:allow => "codecov.io")
 Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => true)]
 
 class MiniTest::Test

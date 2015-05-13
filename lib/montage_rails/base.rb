@@ -135,7 +135,7 @@ module MontageRails
 
         query = relation.where(params)
 
-        response = cache.get_or_set_query(self, query) { connection.documents(table_name, query: query) }
+        response = cache.get_or_set_query(self, query) { connection.documents(table_name, query) }
 
         if response.success? && response.documents.any?
           new(attributes_from_response(response).merge(persisted: true))

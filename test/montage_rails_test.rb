@@ -83,7 +83,7 @@ class MontageRailsTest < ActiveSupport::TestCase
 
       Montage::Client.expects(:new).returns(c)
 
-      c.expects(:auth).returns(Montage::Response.new(404, {}))
+      c.expects(:auth).returns(Montage::Response.new(404, { "data" => [] }))
 
       assert_raises(MontageRails::MontageAPIError, "There was a problem authenticating with your username and password for domain foo") do
         MontageRails.configure do |c|
