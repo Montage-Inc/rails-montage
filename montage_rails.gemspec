@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"
 
   s.add_development_dependency "sqlite3", "~> 1.3"
-  s.add_development_dependency "bundler", "~> 1.9"
+  s.add_development_dependency "bundler", "~> 1.7"
   s.add_development_dependency "rake", "~> 10.0"
   s.add_development_dependency "minitest", "~> 5.5", ">= 5.5.0"
   s.add_development_dependency "shoulda-context", "~> 1.0"
