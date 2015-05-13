@@ -8,7 +8,7 @@ module MontageRails
 
     def get_or_set_query(klass, query)
       cached = cache.keys.include?("#{klass}/#{query}")
-      ActiveSupport::Notifications.instrument("reql.montage_rails", notification_payload(query, klass, cached: cached)) do
+      ActiveSupport::Notifications.instrument("reql.montage_rails", notification_payload(query, klass, cached)) do
         if cached
           cache["#{klass}/#{query}"]
         else
@@ -34,7 +34,7 @@ module MontageRails
 
   private
 
-    def notification_payload(query, klass, cached: false)
+    def notification_payload(query, klass, cached = false)
       {
         reql: query,
         name: cached ? "#{klass} Load [CACHE]" : "#{klass} Load"
