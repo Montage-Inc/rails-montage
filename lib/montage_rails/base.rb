@@ -220,7 +220,7 @@ module MontageRails
           @current_method = "Update"
 
           response = notify(self) do
-            connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: true)])
+            connection.create_or_update_documents(self.class.table_name, [updateable_attributes(true)])
           end
         else
           @current_method = "Create"
@@ -276,7 +276,7 @@ module MontageRails
         @current_method = id.nil? ? "Create" : "Update"
 
         response = notify(self) do
-          connection.create_or_update_documents(self.class.table_name, [updateable_attributes(include_id: !id.nil?)])
+          connection.create_or_update_documents(self.class.table_name, [updateable_attributes(!id.nil?)])
         end
 
         initialize(attributes_from_response(response))
@@ -333,7 +333,7 @@ module MontageRails
 
     # The attributes used to update the document
     #
-    def updateable_attributes(include_id: false)
+    def updateable_attributes(include_id = false)
       include_id ? attributes.except(:created_at, :updated_at) : attributes.except(:created_at, :updated_at, :id)
     end
 
@@ -396,7 +396,7 @@ module MontageRails
     def reql_payload
       {
         "Load" => id,
-        "Update" => "#{id}: #{updateable_attributes(include_id: true)}",
+        "Update" => "#{id}: #{updateable_attributes(true)}",
         "Create" => updateable_attributes,
         "Delete" => id,
         "Save" => updateable_attributes

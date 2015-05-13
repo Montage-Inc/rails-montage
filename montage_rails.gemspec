@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "mocha", "~> 1.1"
   s.add_development_dependency "simplecov", "~> 0.10"
   s.add_development_dependency "codecov", "~> 0.0"
-  s.add_development_dependency "vcr", "~> 2.9"
   s.add_development_dependency "webmock", "~> 1.0"
   s.add_development_dependency "pry-rails", "~> 0.0"
   s.add_development_dependency "will_paginate", "~> 3.0", ">= 3.0"
