@@ -37,7 +37,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "vcr", "~> 2.9"
   s.add_development_dependency "webmock", "~> 1.0"
   s.add_development_dependency "pry-rails", "~> 0.0"
-  s.add_development_dependency "minitest-reporters", "~> 1.0"
   s.add_development_dependency "will_paginate", "~> 3.0", ">= 3.0"
   s.add_development_dependency "kaminari", "~> 0.16"
 end
