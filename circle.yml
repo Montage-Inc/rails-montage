@@ -12,7 +12,7 @@ dependencies:
           RAILS_VERSION=4.1.10 rvm-exec 1.9.3-p551 bundle install;\
             RAILS_VERSION=4.1.10 rvm-exec 2.0.0-p598 bundle install;\
             RAILS_VERSION=4.1.10 rvm-exec 2.1.5 bundle install;\
-            RAILS_VERSION=4.1.10 rvm-exec 2.2.0 bundle install'
+            RAILS_VERSION=4.1.10 rvm-exec 2.2.0 bundle install
           ;;
         2)
           RAILS_VERSION=4.0.13 rvm-exec 1.9.3-p551 bundle install;\
