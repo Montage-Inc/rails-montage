@@ -69,8 +69,6 @@ test:
           - 'CI=true RAILS_VERSION=3.1.12 rvm-exec 2.2.0 bundle exec rake'
           ;;
         esac
-    parallel: true
-
 
 database:
   override:
