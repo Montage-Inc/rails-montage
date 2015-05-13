@@ -37,7 +37,6 @@ WebMock.disable_net_connect!(:allow => "codecov.io")
 class MiniTest::Test
   @@default_headers = {
     'Accept' => '*/*',
-    'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
     'Authorization' => 'Token fb761e07-a12b-40bb-a42f-2202ecfd1046',
     'Content-Type' => 'application/json',
     'User-Agent' => "Montage Ruby v#{Montage::VERSION}"

@@ -226,7 +226,7 @@ module MontageRails
           @current_method = "Create"
 
           response = notify(self) do
-            connection.create_or_update_documents(self.class.table_name, [updateable_attributes])
+            connection.create_or_update_documents(self.class.table_name, [updateable_attributes(false)])
           end
         end
 
