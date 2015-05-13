@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 # Helper to be able to test against multiple Rails versions
 def rails_version
-  "= " + ENV['RAILS_VERSION'] || "4.2.1"
+  "= " + (ENV['RAILS_VERSION'] || "4.2.1")
 end
 
 # Maintain your gem's version:

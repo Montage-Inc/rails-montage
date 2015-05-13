@@ -20,7 +20,7 @@ module MontageRails
 
     # Support for WillPaginate, if it is defined. If not, returns self
     #
-    def paginate(page: 1, per_page: 25)
+    def paginate(page = 1, per_page = 25)
       if Object.const_defined?("WillPaginate")
         WillPaginate::Collection.create(page, per_page, count) do |pager|
           pager.replace(self[pager.offset, pager.per_page]).to_a

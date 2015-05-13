@@ -28,13 +28,11 @@ Dir[File.join(File.dirname(__FILE__), 'resources', '**', '*.rb')].each do |file|
 end
 
 require 'minitest/autorun'
-require 'minitest/reporters'
 require 'shoulda-context'
 require 'mocha/setup'
 require 'webmock/minitest'
 
 WebMock.disable_net_connect!(:allow => "codecov.io")
-Minitest::Reporters.use! [Minitest::Reporters::ProgressReporter.new(:color => true)]
 
 class MiniTest::Test
   @@default_headers = {
