@@ -52,7 +52,10 @@ module MontageRails
       return @records if loaded?
 
       @response = cache.get_or_set_query(klass, query) do
-        connection.documents(klass.table_name, query)
+        puts "Query object in to_a method: #{query.inspect}"
+        resp = connection.documents(klass.table_name, query)
+        puts "Raw Montage reponse in to_a method: #{resp.inspect}"
+        resp
       end
 
       @records = []
@@ -83,12 +86,6 @@ module MontageRails
       @records = []
       @loaded = nil
       self
-    end
-
-    # Parses the current query hash and returns a JSON string
-    #
-    def to_json
-      @query.to_json
     end
   end
 end
