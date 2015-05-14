@@ -52,10 +52,7 @@ module MontageRails
       return @records if loaded?
 
       @response = cache.get_or_set_query(klass, query) do
-        puts "Query object in to_a method: #{query.inspect}"
-        resp = connection.documents(klass.table_name, query)
-        puts "Raw Montage reponse in to_a method: #{resp.inspect}"
-        resp
+        connection.documents(klass.table_name, query)
       end
 
       @records = []
