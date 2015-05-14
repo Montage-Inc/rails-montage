@@ -10,3 +10,4 @@ test/dummy/.sass-cache
 coverage
 .env
 Gemfile.lock
+montage_rails-*.gem
