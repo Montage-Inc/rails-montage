@@ -11,3 +11,4 @@ coverage
 .env
 Gemfile.lock
 montage_rails-*.gem
+build/
