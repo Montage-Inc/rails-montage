@@ -154,7 +154,7 @@ user.new_record?
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/montage_rails/fork )
+1. Fork it ( https://github.com/EditLLC/montage_rails/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Be sure to include tests for all your new features
 4. Commit your changes (`git commit -am 'Add some feature'`)
