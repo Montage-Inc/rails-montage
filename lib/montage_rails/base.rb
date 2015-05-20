@@ -15,7 +15,7 @@ module MontageRails
     class << self
       # Delegates all of the relation methods to the class level object, so they can be called on the base class
       #
-      delegate :limit, :offset, :order, :where, :first, to: :relation
+      delegate :limit, :offset, :order, :where, :first, :select, :pluck, to: :relation
 
       # Delegate the connection to the base module for ease of reference
       #
