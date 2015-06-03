@@ -144,6 +144,33 @@ user = User.first
 user.destroy
 ```
 
+### Callbacks
+
+MontageRails supports all ActiveModel callbacks:
+
+```ruby
+class User
+  before_create :digest_password
+end
+```
+### Validations
+
+MontageRails supports all ActiveModel validations, and will add validation
+errors to the `error` object on each model instance:
+
+```ruby
+class User
+  validates :email, presence: true
+end
+
+user = User.new
+user.save
+puts user.errors.full_messages.first
+=> "Email can't be blank"
+puts user.persisted?
+=> false
+```
+
 ### Other
 
 ```ruby

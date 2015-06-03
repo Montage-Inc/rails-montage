@@ -7,6 +7,7 @@ require 'virtus'
 module MontageRails
   class Base
     extend ActiveModel::Callbacks
+    extend ActiveModel::Naming
     include ActiveModel::Model
     include Virtus.model
 
@@ -192,7 +193,7 @@ module MontageRails
       end
     end
 
-    attr_accessor :persisted
+    attr_reader :persisted
 
     alias_method :persisted?, :persisted
 
@@ -203,6 +204,7 @@ module MontageRails
       initialize_columns
       @persisted = params[:persisted] ? params[:persisted] : false
       @current_method = "Load"
+      @errors = ActiveModel::Errors.new(self)
       super(params)
     end
 
@@ -214,7 +216,7 @@ module MontageRails
     #
     def save
       run_callbacks :save do
-        return nil unless attributes_valid?
+        return nil unless valid? && attributes_valid?
 
         if persisted?
           @current_method = "Update"
@@ -250,7 +252,7 @@ module MontageRails
     #
     def save!
       unless save
-        raise MontageAPIError, response.errors.attributes
+        raise MontageAPIError, "There was an error saving your data"
       end
     end
 
@@ -272,7 +274,7 @@ module MontageRails
 
       return self if old_attributes == attributes
 
-      if attributes_valid?
+      if valid? && attributes_valid?
         @current_method = id.nil? ? "Create" : "Update"
 
         response = notify(self) do

@@ -10,6 +10,8 @@ class Movie < MontageRails::Base
   after_save :do_stuff_after_save
   after_create :do_stuff_after_create
 
+  validates :title, presence: true
+
   def do_stuff
     @before_save_var = "FOO"
   end

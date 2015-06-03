@@ -3,6 +3,17 @@ require 'montage_rails/relation'
 require 'montage_rails/base'
 
 class MontageRails::BaseTest < MiniTest::Test
+  context "validation" do
+    setup do
+      @movie = Movie.new
+    end
+
+    should "not save if a title is not present" do
+      assert !@movie.save
+      assert_equal "Title can't be blank", @movie.errors.full_messages.first
+    end
+  end
+
   context "initialization" do
     should "initialize all the variables with nil when nothing is passed in" do
       @movie = Movie.new
