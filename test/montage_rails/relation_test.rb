@@ -38,6 +38,16 @@ class MontageRails::RelationTest < Minitest::Test
     end
   end
 
+  context "#exists?" do
+    should "return false if the record does not exist" do
+      refute MontageRails::Relation.new(Movie).where(title: "Foo").exists?
+    end
+
+    should "return true if the record does exist" do
+      assert MontageRails::Relation.new(Movie).where(title: "The Jerk").exists?
+    end
+  end
+
   context "#reset" do
     setup do
       @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)

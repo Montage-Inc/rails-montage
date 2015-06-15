@@ -39,6 +39,12 @@ module MontageRails
       limit(1).to_a.first
     end
 
+    # Check if a record within the current scope exists
+    #
+    def exists?
+      to_a.any?
+    end
+
     # Utility method to allow viewing of the result set in a console
     #
     def inspect
