@@ -44,10 +44,19 @@ module MontageRails
 
       # Define a has_many relationship
       #
-      def has_many(table)
+      def has_many(table, options = {})
         class_eval do
-          define_method(table.to_s.tableize.to_sym) do
-            table.to_s.classify.constantize.where("#{self.class.table_name.demodulize.underscore.singularize.foreign_key} = #{id}")
+          if options[:as]
+            define_method(table.to_s.tableize.to_sym) do
+              table.to_s.classify.constantize.where(
+                "#{options[:as]}_id".to_sym => id,
+                "#{options[:as]}_type".to_sym => self.class.name.demodulize
+              )
+            end
+          else
+            define_method(table.to_s.tableize.to_sym) do
+              table.to_s.classify.constantize.where("#{self.class.table_name.demodulize.underscore.singularize.foreign_key} = #{id}")
+            end
           end
         end
       end

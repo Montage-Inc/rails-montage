@@ -183,6 +183,22 @@ class MontageRails::BaseTest < MiniTest::Test
         assert_equal "Steve Martin", @test.actors.first.name
       end
     end
+
+    context "when a polymorphic relationship is defined" do
+      setup do
+        class TestClass < MontageRails::Base
+          self.table_name = "movies"
+
+          has_many :actors, as: :subject
+        end
+
+        @movie = TestClass.where(title: "The Jerk").first
+      end
+
+      should "lookup the id and type using the name given" do
+        assert_equal({:filter => {:subject_id => "69cc93af-1f0e-43bc-ac9a-19117111978e", :subject_type => "TestClass"}}, @movie.actors.query)
+      end
+    end
   end
 
   context ".belongs_to" do
