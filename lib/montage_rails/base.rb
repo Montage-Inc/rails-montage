@@ -230,39 +230,42 @@ module MontageRails
         if persisted?
           @current_method = "Update"
 
-          response = notify(self) do
+          @response = notify(self) do
             connection.create_or_update_documents(self.class.table_name, [updateable_attributes(true)])
           end
+
+          initialize(attributes_from_response(@response))
         else
-          @current_method = "Create"
+          run_callbacks :create do
+            @current_method = "Create"
 
-          response = notify(self) do
-            connection.create_or_update_documents(self.class.table_name, [updateable_attributes(false)])
-          end
-        end
+            @response = notify(self) do
+              connection.create_or_update_documents(self.class.table_name, [updateable_attributes(false)])
+            end
 
-        if response.success?
-          if persisted?
-            initialize(attributes_from_response(response))
-          else
-            run_callbacks :create do
-              initialize(attributes_from_response(response))
+            if @response.success?
+              @persisted = true
+              initialize(attributes_from_response(@response))
+            else
+              break
             end
           end
-
-          self
-        else
-          response
         end
       end
+
+      @response.success?
     end
 
     # The bang method for save, which will raise an exception if saving is not successful
     #
     def save!
-      unless save
+      response = save
+
+      unless response
         raise MontageAPIError, "There was an error saving your data"
       end
+
+      response
     end
 
     # Update the given attributes for the document
