@@ -121,6 +121,14 @@ class MiniTest::Test
         headers: { 'Content-Type' => 'application/json'}
       )
 
+    # Stub the movie pluck query
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/query/").
+      with(body: MontageRails::MovieResource.movie_query_pluck.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.pluck_response.to_json,
+        headers: { 'Content-Type' => 'application/json'}
+      )
+
     # Stub the movie relation query for actors
     #
     stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/actors/query/").

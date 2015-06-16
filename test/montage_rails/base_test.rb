@@ -83,6 +83,15 @@ class MontageRails::BaseTest < MiniTest::Test
       assert_equal "FOO", @movie.before_save_var
     end
 
+    should "call the before_create callback when created with .save!" do
+      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+
+      @movie.save!
+
+      assert_equal "FOO", @movie.before_save_var
+      assert_equal "BAR", @movie.before_create_var
+    end
+
     should "call the before_create callback on creation" do
       @movie = Movie.create(MontageRails::MovieResource.to_hash)
 

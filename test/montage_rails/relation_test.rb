@@ -71,6 +71,12 @@ class MontageRails::RelationTest < Minitest::Test
     end
   end
 
+  context "#pluck" do
+    should "return an array of plucked values" do
+      assert_equal ["The Jerk"], MontageRails::Relation.new(Movie).where(title: "The Jerk").pluck(:title)
+    end
+  end
+
   context "#reload" do
     setup do
       @movie = MontageRails::Relation.new(Movie).where(title: "The Jerk").limit(1)

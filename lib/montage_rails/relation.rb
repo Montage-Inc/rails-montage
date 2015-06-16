@@ -45,6 +45,15 @@ module MontageRails
       to_a.any?
     end
 
+    # Override the pluck method that resides in the Ruby Montage query object
+    # To conform with Rails convention, this method should return an array of
+    # the result set, not an array of the class instances
+    #
+    def pluck(column_name)
+      query.merge!(pluck: [column_name.to_s])
+      map { |r| r.send(column_name.to_sym) }
+    end
+
     # Utility method to allow viewing of the result set in a console
     #
     def inspect

@@ -105,6 +105,15 @@ module MontageRails
       }
     end
 
+    def self.movie_query_pluck
+      {
+        filter: {
+          title: "The Jerk"
+        },
+        pluck: ["title"]
+      }
+    end
+
     def self.query_result
       {
         data: [
@@ -120,6 +129,24 @@ module MontageRails
             title: "The Jerk",
             rank: 4,
             studio_id: "19442e09-5c2d-4e5d-8f34-675570e81414"
+          }
+        ],
+        cursors: {
+          previous: nil,
+          next: nil
+        }
+      }
+    end
+
+    def self.pluck_response
+      {
+        data: [
+          {
+            _meta: {
+              modified: "2015-04-20T18:39:50.095Z",
+              created: "2015-04-20T18:39:47.751Z"
+            },
+            title: "The Jerk",
           }
         ],
         cursors: {

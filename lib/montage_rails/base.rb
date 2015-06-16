@@ -219,13 +219,13 @@ module MontageRails
 
     # Save the record to the database
     #
-    # Will return nil if the attributes are not valid
+    # Will return false if the attributes are not valid
     #
-    # Upon successful creation or update, will return an instance of self, otherwise returns nil
+    # Upon successful creation or update, will return true, otherwise returns false
     #
     def save
       run_callbacks :save do
-        return nil unless valid? && attributes_valid?
+        return false unless valid? && attributes_valid?
 
         if persisted?
           @current_method = "Update"
@@ -253,7 +253,7 @@ module MontageRails
         end
       end
 
-      @response.success?
+      @response.success? ? self : false
     end
 
     # The bang method for save, which will raise an exception if saving is not successful
