@@ -54,6 +54,12 @@ module MontageRails
       map { |r| r.send(column_name.to_sym) }
     end
 
+    # Create a record based on the query relationship
+    #
+    def create(params)
+      klass.create(params.merge(query[:filter]))
+    end
+
     # Utility method to allow viewing of the result set in a console
     #
     def inspect
