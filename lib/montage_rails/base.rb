@@ -27,7 +27,7 @@ module MontageRails
       # Define a new instance of the query cache
       #
       def cache
-        @cache ||= QueryCache.new
+        @cache ||= QueryCache.new(MontageRails.no_caching)
       end
 
       # Hook into the Rails logger

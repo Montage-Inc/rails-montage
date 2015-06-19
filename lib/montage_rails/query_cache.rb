@@ -1,13 +1,15 @@
 module MontageRails
   class QueryCache
     attr_reader :cache
+    attr_accessor :no_cache
 
-    def initialize
+    def initialize(no_cache = false)
       @cache = {}
+      @no_cache = no_cache
     end
 
     def get_or_set_query(klass, query)
-      cached = cache.keys.include?("#{klass}/#{query}")
+      cached = cache.keys.include?("#{klass}/#{query}") && !no_cache
       ActiveSupport::Notifications.instrument("reql.montage_rails", notification_payload(query, klass, cached)) do
         if cached
           cache["#{klass}/#{query}"]

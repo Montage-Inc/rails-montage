@@ -10,7 +10,7 @@ require 'montage_rails/query_cache'
 
 module MontageRails
   class << self
-    attr_accessor :username, :password, :token, :domain
+    attr_accessor :username, :password, :token, :domain, :no_caching
 
     def configure
       yield self
