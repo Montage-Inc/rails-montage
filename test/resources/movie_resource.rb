@@ -56,6 +56,20 @@ module MontageRails
       ]
     end
 
+    def self.update_votes
+      [
+        {
+          id: "69cc93af-1f0e-43bc-ac9a-19117111978e",
+          studio_id: "19442e09-5c2d-4e5d-8f34-675570e81414",
+          rank: 4,
+          rating: 2.0,
+          title: "The Jerk",
+          votes: 900,
+          year: 1983
+        }
+      ]
+    end
+
     def self.save_response
       {
         data: [
@@ -81,6 +95,26 @@ module MontageRails
         data: [
           {
             votes: 600,
+            _meta: {
+              modified: "2015-04-20T18:39:47.751Z",
+              created: "2015-04-20T18:39:47.751Z"
+            },
+            rating: 2.0,
+            year: 1983,
+            id: "69cc93af-1f0e-43bc-ac9a-19117111978e",
+            title:"The Jerk",
+            rank: 4,
+            studio_id: "19442e09-5c2d-4e5d-8f34-675570e81414"
+          }
+        ]
+      }
+    end
+
+    def self.update_votes_response
+      {
+        data: [
+          {
+            votes: 900,
             _meta: {
               modified: "2015-04-20T18:39:47.751Z",
               created: "2015-04-20T18:39:47.751Z"

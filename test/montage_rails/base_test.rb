@@ -113,7 +113,7 @@ class MontageRails::BaseTest < MiniTest::Test
       @movie.after_create_var = nil
       @movie.after_save_var = nil
 
-      @movie.votes = 600
+      @movie.votes = 900
       @movie.save
 
       assert_nil @movie.after_create_var
@@ -345,6 +345,14 @@ class MontageRails::BaseTest < MiniTest::Test
         assert !@movie.persisted?
       end
     end
+
+    should "not save anything if attributes haven't changed" do
+      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+
+      Movie.connection.expects(:create_or_update_documents).never
+
+      @movie.save
+    end
   end
 
   context "#update_attributes" do
@@ -406,6 +414,22 @@ class MontageRails::BaseTest < MiniTest::Test
         MontageRails.connection.expects(:update_document).never
         @movie.update_attributes(rank: "4", rating: "2.0")
       end
+    end
+  end
+
+  context "#dirty?" do
+    should "return true if the model is dirty" do
+      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+
+      @movie.title = "FOOOOOBar"
+
+      assert @movie.dirty?
+    end
+
+    should "return false if the model is not dirty" do
+      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+
+      refute @movie.dirty?
     end
   end
 end

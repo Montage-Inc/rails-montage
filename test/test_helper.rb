@@ -78,6 +78,14 @@ class MiniTest::Test
         headers: { 'Content-Type' => 'application/json' }
       )
 
+    # Stub the update movie request for votes only
+    #
+    stub_request(:post, "http://testco.dev.montagehot.club/api/v1/schemas/movies/save/").
+      with(body: MontageRails::MovieResource.update_votes.to_json, headers: @@default_headers).to_return(
+        body: MontageRails::MovieResource.update_votes_response.to_json,
+        headers: { 'Content-Type' => 'application/json' }
+      )
+
     # Stub the request for getting the actor schema definition
     #
     stub_request(:get, "http://testco.dev.montagehot.club/api/v1/schemas/actors/")

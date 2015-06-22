@@ -215,6 +215,7 @@ module MontageRails
       @current_method = "Load"
       @errors = ActiveModel::Errors.new(self)
       super(params)
+      @old_attributes = attributes.clone
     end
 
     # Save the record to the database
@@ -230,11 +231,15 @@ module MontageRails
         if persisted?
           @current_method = "Update"
 
-          @response = notify(self) do
-            connection.create_or_update_documents(self.class.table_name, [updateable_attributes(true)])
-          end
+          if dirty?
+            @response = notify(self) do
+              connection.create_or_update_documents(self.class.table_name, [updateable_attributes(true)])
+            end
 
-          initialize(attributes_from_response(@response))
+            initialize(attributes_from_response(@response))
+          else
+            return initialize(@old_attributes)
+          end
         else
           run_callbacks :create do
             @current_method = "Create"
@@ -275,7 +280,7 @@ module MontageRails
     # Returns a copy of self if updating is successful
     #
     def update_attributes(params)
-      old_attributes = attributes.clone
+      @old_attributes = attributes.clone
 
       params.each do |key, value|
         if respond_to?(key.to_sym)
@@ -284,7 +289,7 @@ module MontageRails
         end
       end
 
-      return self if old_attributes == attributes
+      return self unless dirty?
 
       if valid? && attributes_valid?
         @current_method = id.nil? ? "Create" : "Update"
@@ -297,9 +302,15 @@ module MontageRails
         @persisted = true
         self
       else
-        initialize(old_attributes)
+        initialize(@old_attributes)
         false
       end
+    end
+
+    # Checks if the attributes have changed, and returns true if they are "dirty"
+    #
+    def dirty?
+      @old_attributes != attributes
     end
 
     # Destroy the copy of this record from the database
