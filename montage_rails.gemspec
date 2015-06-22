@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2", ">= 4.2.1"
-  s.add_dependency "ruby-montage", "~> 0.4", ">= 0.4.7"
+  s.add_dependency "ruby-montage", "~> 0.4", ">= 0.4.9"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"
 
