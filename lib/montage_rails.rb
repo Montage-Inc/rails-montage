@@ -8,6 +8,8 @@ require 'montage_rails/errors'
 require 'montage_rails/base'
 require 'montage_rails/query_cache'
 
+require 'montage_rails/railtie' if defined?(Rails)
+
 module MontageRails
   class << self
     attr_accessor :username, :password, :token, :domain, :no_caching

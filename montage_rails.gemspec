@@ -21,6 +21,8 @@ Gem::Specification.new do |s|
   s.add_dependency "ruby-montage", "~> 0.4", ">= 0.4.9"
   s.add_dependency "json", "~> 1.8"
   s.add_dependency "virtus", "~> 1.0", ">= 1.0"
+  s.add_dependency "webmock", "~> 1.0"
+  s.add_dependency "sinatra", "~> 1.4"
 
   s.add_development_dependency "sqlite3", "~> 1.3"
   s.add_development_dependency "bundler", "~> 1.7"
@@ -29,7 +31,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "mocha", "~> 1.1"
   s.add_development_dependency "simplecov", "~> 0.10"
   s.add_development_dependency "codecov", "~> 0.0"
-  s.add_development_dependency "webmock", "~> 1.0"
   s.add_development_dependency "pry-rails", "~> 0.0"
   s.add_development_dependency "will_paginate", "~> 3.0", ">= 3.0"
   s.add_development_dependency "kaminari", "~> 0.16"
