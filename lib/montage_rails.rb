@@ -20,11 +20,16 @@ module MontageRails
       get_token unless token
     end
 
+    def url_prefix
+      Rails.env.test? ? "http://localhost:3000/montage_rails_mock" : nil
+    end
+
     def connection
       @connection ||= begin
         Montage::Client.new do |c|
           c.token = token
           c.domain = domain
+          c.url_prefix = url_prefix
         end
       end
     end
