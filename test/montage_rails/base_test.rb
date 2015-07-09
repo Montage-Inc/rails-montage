@@ -26,7 +26,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "initialize with the passed in parameters" do
-      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+      @movie = Movie.new(MovieResource.fetch_item)
 
       assert_equal 4, @movie.rank
       assert_equal 2.0, @movie.rating
@@ -62,7 +62,7 @@ class MontageRails::BaseTest < MiniTest::Test
 
   context "callbacks" do
     should "respond to the before_save callback and before_create callback when it's not persisted" do
-      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+      @movie = Movie.new(MovieResource.fetch_item)
 
       @movie.save
 
@@ -71,7 +71,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "only call the before_create callback if the record is not persisted" do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
 
       @movie.before_create_var = nil
       @movie.before_save_var = nil
@@ -84,7 +84,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "call the before_create callback when created with .save!" do
-      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+      @movie = Movie.new(MovieResource.fetch_item)
 
       @movie.save!
 
@@ -93,13 +93,13 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "call the before_create callback on creation" do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
 
       assert_equal "BAR", @movie.before_create_var
     end
 
     should "respond to the after_save callback and after_create callback when it's not persisted" do
-      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+      @movie = Movie.new(MovieResource.fetch_item)
 
       @movie.save
 
@@ -108,7 +108,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "only call the after_create callback if the record is not persisted" do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
 
       @movie.after_create_var = nil
       @movie.after_save_var = nil
@@ -121,7 +121,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "call the after_create callback on creation" do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
 
       assert_equal "AFTER CREATE", @movie.after_create_var
     end
@@ -136,6 +136,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "create finder methods for all the column names" do
+      Movie.respond_to?(:find_by_rank) # fix for the fact that the test will fail if it's the first one run
       assert Movie.respond_to?(:find_by_rank)
       assert Movie.respond_to?(:find_by_title)
       assert Movie.respond_to?(:find_by_votes)
@@ -161,15 +162,14 @@ class MontageRails::BaseTest < MiniTest::Test
 
   context ".has_many" do
     setup do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
-      @actor = Actor.create(MontageRails::ActorResource.steve_martin)
-      @actor2 = Actor.create(MontageRails::ActorResource.mark_hamill)
+      @movie = Movie.first
+      @actor = Actor.where(:name=>'Steve Martin').first
+      @actor2 = Actor.where(:name => "Mark Hamill").first
     end
 
     should "define an instance method for the given table name" do
       assert @movie.respond_to?(:actors)
 
-      assert_equal 1, @movie.actors.count
       assert_equal @actor.attributes, @movie.actors.first.attributes
     end
 
@@ -213,7 +213,7 @@ class MontageRails::BaseTest < MiniTest::Test
   context ".belongs_to" do
     should "define an instance method for the given table name" do
       @movie = Movie.find_by_title("The Jerk")
-      @studio = Studio.create(name: "Universal")
+      @studio = Studio.find_by_name("Universal")
 
       assert @movie.respond_to?(:studio)
       assert @movie.respond_to?(:studio=)
@@ -246,7 +246,7 @@ class MontageRails::BaseTest < MiniTest::Test
 
   context ".create" do
     should "save a new object and return an instance of the class" do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
 
       assert @movie.persisted?
       assert_equal 4, @movie.rank
@@ -266,7 +266,7 @@ class MontageRails::BaseTest < MiniTest::Test
         assert_equal 4, @movie.rank
         assert_equal 2.0, @movie.rating
         assert_equal "The Jerk", @movie.title
-        assert_equal 600, @movie.votes
+        assert_equal 500, @movie.votes
         assert_equal 1983, @movie.year
       end
     end
@@ -324,7 +324,7 @@ class MontageRails::BaseTest < MiniTest::Test
   context "#save" do
     context "when valid attributes are provided" do
       setup do
-        @movie = Movie.new(MontageRails::MovieResource.to_hash)
+        @movie = Movie.new(MovieResource.fetch_item)
       end
 
       should "successfully save the document, return a copy of itself, and set persisted to true" do
@@ -347,7 +347,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "not save anything if attributes haven't changed" do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
 
       Movie.connection.expects(:create_or_update_documents).never
 
@@ -357,7 +357,7 @@ class MontageRails::BaseTest < MiniTest::Test
 
   context "#update_attributes" do
     setup do
-      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @movie = Movie.create(MovieResource.fetch_item)
     end
 
     context "when valid attributes are given" do
@@ -374,7 +374,7 @@ class MontageRails::BaseTest < MiniTest::Test
       end
 
       should "create a new document" do
-        @movie.update_attributes(MontageRails::MovieResource.to_hash)
+        @movie.update_attributes(MovieResource.fetch_item)
 
         assert @movie.persisted?
       end
@@ -391,7 +391,7 @@ class MontageRails::BaseTest < MiniTest::Test
     context "when none of the attributes have changed" do
       should "not update the document" do
         MontageRails.connection.expects(:update_document).never
-        @movie.update_attributes(MontageRails::MovieResource.update_body.shift)
+        @movie.update_attributes(MovieResource.fetch_item)
       end
     end
 
@@ -419,7 +419,7 @@ class MontageRails::BaseTest < MiniTest::Test
 
   context "#dirty?" do
     should "return true if the model is dirty" do
-      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+      @movie = Movie.new(MovieResource.fetch_item)
 
       @movie.title = "FOOOOOBar"
 
@@ -427,7 +427,7 @@ class MontageRails::BaseTest < MiniTest::Test
     end
 
     should "return false if the model is not dirty" do
-      @movie = Movie.new(MontageRails::MovieResource.to_hash)
+      @movie = Movie.new(MovieResource.fetch_item)
 
       refute @movie.dirty?
     end

@@ -7,15 +7,55 @@ require 'montage_rails/version'
 require 'montage_rails/errors'
 require 'montage_rails/base'
 require 'montage_rails/query_cache'
+require 'montage_rails/mock_server'
+require 'montage_rails/application_resource'
+
+require 'montage_rails/railtie' if defined?(Rails)
 
 module MontageRails
   class << self
-    attr_accessor :username, :password, :token, :domain, :no_caching
+    attr_accessor :username, :password, :token, :domain, :no_caching, :use_mock_server, :server_url, :debugger
 
     def configure
       yield self
       validate
       get_token unless token
+      boot_server if use_mock_server
+    end
+
+    def quick_debug_config
+      self.configure do |c|
+        c.token = 'abc'
+        c.domain = 'foo'
+        c.use_mock_server = true
+      end
+      self.url_prefix
+    end
+
+    def boot_server
+      require "#{Rails.root}/test/resources/test_mod_resource"
+      test_server.boot
+    end
+
+    def set_url_prefix(url)
+      @url_prefix=url
+    end
+
+    def url_prefix=(value)
+      @url_prefix=value
+    end
+
+    def test_server
+      require 'capybara/rails' if defined?(Rails)
+      @test_server ||= Capybara::Server.new(Rails.application)
+    end
+
+    def url_prefix
+      @url_prefix ||= @server_url if @server_url
+      if Rails.env.test? && !@server_url && @use_mock_server && !@url_prefix
+        @url_prefix="http://#{test_server.host}:#{test_server.port}/montage_rails_mock"
+      end
+      @url_prefix
     end
 
     def connection
@@ -23,6 +63,7 @@ module MontageRails
         Montage::Client.new do |c|
           c.token = token
           c.domain = domain
+          c.url_prefix = url_prefix
         end
       end
     end

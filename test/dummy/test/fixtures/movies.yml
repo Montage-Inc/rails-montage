@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  studio_id: MyText
+  rank: 
+  rating: 
+  title: MyText
+  votes: 
+  year: 
+
+two:
+  studio_id: MyText
+  rank: 
+  rating: 
+  title: MyText
+  votes: 
+  year: 
