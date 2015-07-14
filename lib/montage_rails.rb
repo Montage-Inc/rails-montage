@@ -7,6 +7,7 @@ require 'montage_rails/version'
 require 'montage_rails/errors'
 require 'montage_rails/base'
 require 'montage_rails/query_cache'
+require 'montage_rails/mock_server'
 
 require 'montage_rails/railtie' if defined?(Rails)
 
@@ -21,7 +22,15 @@ module MontageRails
     end
 
     def url_prefix
-      Rails.env.test? ? "http://localhost:3000/montage_rails_mock" : nil
+      @server_endpoint_url ||= nil
+      if Rails.env.test?# && !@server_endpoint_url
+        Capybara::Discoball::Runner.new(MockServer) do |server|
+          debugger
+          @server_endpoint_url = server.url('/')
+        end
+      end
+      @server_endpoint_url
+      # @url_prefix ||= Rails.env.test? ? "http://localhost:3000/montage_rails_mock" : nil
     end
 
     def connection

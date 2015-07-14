@@ -94,4 +94,8 @@ class MontageRailsTest < ActiveSupport::TestCase
       end
     end
   end
+
+  should 'have a mock server while in testing' do
+    assert_equal "not nil", MontageRails.url_prefix
+  end
 end

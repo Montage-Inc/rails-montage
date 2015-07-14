@@ -11,4 +11,6 @@ gemspec
 # your gem to rubygems.org.
 
 # To use a debugger
-# gem 'byebug', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
+
+gem "capybara_discoball", :git => "git@github.com:thoughtbot/capybara_discoball.git"
