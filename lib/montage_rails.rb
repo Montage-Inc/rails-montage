@@ -24,7 +24,8 @@ module MontageRails
     def url_prefix
       @server_endpoint_url ||= nil
       if Rails.env.test?# && !@server_endpoint_url
-        Capybara::Discoball::Runner.new(MockServer) do |server|
+        debugger
+        Capybara::Discoball.spin(MockServer) do |server|
           debugger
           @server_endpoint_url = server.url('/')
         end
