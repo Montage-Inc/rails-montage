@@ -2,7 +2,7 @@ require 'sinatra/base'
 
 class MockServer < Sinatra::Base
   
-  get '/root' do
+  get '/' do
     "Successful test!"
   end
 
