@@ -33,6 +33,7 @@ require 'mocha/setup'
 require 'webmock/minitest'
 
 WebMock.disable_net_connect!(:allow => "codecov.io")
+WebMock.disable_net_connect!(:allow => "127.0.0.1")
 
 class MiniTest::Test
   @@default_headers = {

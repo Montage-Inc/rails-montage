@@ -13,7 +13,7 @@ require 'montage_rails/railtie' if defined?(Rails)
 
 module MontageRails
   class << self
-    attr_accessor :username, :password, :token, :domain, :no_caching
+    attr_accessor :username, :password, :token, :domain, :no_caching, :use_mock_server, :server_url
 
     def configure
       yield self
@@ -21,15 +21,21 @@ module MontageRails
       get_token unless token
     end
 
+    def set_url_prefix(url)
+      @url_prefix=url
+    end
+
+    def url_prefix=(value)
+      @url_prefix=value
+    end
+
     def url_prefix
-      @server_endpoint_url ||= nil
-      if Rails.env.test?# && !@server_endpoint_url
+      if Rails.env.test? && !@server_url && @use_mock_server
         Capybara::Discoball.spin(MockServer) do |server|
-          @server_endpoint_url = server.url('/')
+          @server_url = server.url('/')
         end
       end
-      @server_endpoint_url
-      # @url_prefix ||= Rails.env.test? ? "http://localhost:3000/montage_rails_mock" : nil
+      @server_url
     end
 
     def connection

@@ -13,6 +13,8 @@ class MontageRailsTest < ActiveSupport::TestCase
       MontageRails.configure do |c|
         c.token = "fb761e07-a12b-40bb-a42f-2202ecfd1046"
         c.domain = "testco"
+        c.use_mock_server = nil
+        c.server_url = nil
       end
     end
 
@@ -93,9 +95,54 @@ class MontageRailsTest < ActiveSupport::TestCase
         end
       end
     end
-  end
 
-  should 'have a mock server while in testing' do
-    assert_equal "not nil", MontageRails.url_prefix
+    should 'accept server url' do
+      MontageRails.configure do |c|
+        c.server_url = 'foobar'
+        c.domain = 'foo'
+        c.token = 'abc'
+      end
+    end
+
+    should 'accept server url even if use mock set to false' do
+      MontageRails.configure do |c|
+        c.use_mock_server = false
+        c.server_url = 'foobar'
+        c.domain = 'foo'
+        c.token = 'abc'
+      end
+
+      assert_equal MontageRails.url_prefix, 'foobar'
+    end
+
+    should 'accept boolean controling mock server use' do
+      MontageRails.configure do |c|
+        c.use_mock_server = true
+        c.domain = 'foo'
+        c.token = 'abc'
+      end
+
+      assert_equal MontageRails.use_mock_server, true
+    end
+
+    should 'have nil url_prefix if use mock server set to false' do
+      MontageRails.configure do |c|
+        c.use_mock_server = false
+        c.domain = 'foo'
+        c.token = 'abc'
+      end
+
+      assert_equal nil, MontageRails.url_prefix
+    end
+
+    should 'have url_prefix if mock server set to true' do
+      MontageRails.configure do |c|
+        c.use_mock_server = true
+        c.domain = 'foo'
+        c.token = 'abc'
+      end
+
+      assert_not_equal nil, MontageRails.url_prefix
+    end
   end
 end
