@@ -7,7 +7,7 @@ module MontageRails
     end
 
     get "/api/v1/schemas/:schema" do
-      klass = "#{params[:schema].classify}Resource".constantize
+      klass = "#{params[:schema].classify}".constantize
       klass.schema_definition.to_json
     end
 
