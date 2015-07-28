@@ -38,6 +38,7 @@ class MontageRails::ModelGenerator < ::Rails::Generators::NamedBase
     when :numeric
       Faker::Number.number(10)
     else
+      # TODO
     end
       
   end

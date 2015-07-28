@@ -8,6 +8,7 @@ require 'montage_rails/errors'
 require 'montage_rails/base'
 require 'montage_rails/query_cache'
 require 'montage_rails/mock_server'
+require 'montage_rails/application_resource'
 
 require 'montage_rails/railtie' if defined?(Rails)
 
