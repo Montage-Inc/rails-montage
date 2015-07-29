@@ -20,6 +20,12 @@ module MontageRails
       yield self
       validate
       get_token unless token
+      boot_server if use_mock_server
+    end
+
+    def boot_server
+      require "#{Rails.root}/test/resources/test_mod_resource"
+      test_server.boot
     end
 
     def set_url_prefix(url)
@@ -30,14 +36,14 @@ module MontageRails
       @url_prefix=value
     end
 
+    def test_server
+      @test_server ||= Capybara::Server.new(Rails.application)
+    end
+
     def url_prefix
       if Rails.env.test? && !@server_url && @use_mock_server
-        @server_url = 'localhost:3000'
-        # Capybara::Discoball.spin(MockServer) do |server|
-        #   @server_url = server.url('/')
-        # end
+        "http://#{test_server.host}:#{test_server.port}/montage_rails_mock"
       end
-      @server_url
     end
 
     def connection
