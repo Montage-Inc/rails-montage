@@ -142,7 +142,7 @@ class MontageRailsTest < ActiveSupport::TestCase
         c.token = 'abc'
       end
 
-      assert_not_equal nil, MontageRails.url_prefix
+      assert_equal 'localhost:3000', MontageRails.url_prefix
     end
   end
 end

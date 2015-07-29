@@ -32,9 +32,10 @@ module MontageRails
 
     def url_prefix
       if Rails.env.test? && !@server_url && @use_mock_server
-        Capybara::Discoball.spin(MockServer) do |server|
-          @server_url = server.url('/')
-        end
+        @server_url = 'localhost:3000'
+        # Capybara::Discoball.spin(MockServer) do |server|
+        #   @server_url = server.url('/')
+        # end
       end
       @server_url
     end
