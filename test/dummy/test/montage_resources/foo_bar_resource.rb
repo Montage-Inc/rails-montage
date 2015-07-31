@@ -1,4 +1,4 @@
-class FooBarResource
+class FooBarResource < MontageRails::ApplicationResource
   def self.schema_definition
     {
       name: "foobars",

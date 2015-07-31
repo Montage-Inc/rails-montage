@@ -1,5 +1,5 @@
 <% module_namespacing do -%>
-class <%= class_name %>Resource
+class <%= class_name %>Resource < MontageRails::ApplicationResource
   def self.schema_definition
     {
       name: "<%= class_name.downcase.pluralize %>",
