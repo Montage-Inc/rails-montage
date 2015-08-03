@@ -2,23 +2,6 @@ require 'test_helper'
 
 class MontageRailsTest < ActiveSupport::TestCase
   context ".configure" do
-    setup do
-      MontageRails.username = nil
-      MontageRails.password = nil
-      MontageRails.token = nil
-      MontageRails.domain = nil
-    end
-
-    teardown do
-      MontageRails.configure do |c|
-        c.token = "fb761e07-a12b-40bb-a42f-2202ecfd1046"
-        c.domain = "testco"
-        c.use_mock_server = nil
-        c.server_url = nil
-        c.url_prefix = nil
-      end
-    end
-
     should "accept a username, password, token, and domain" do
       MontageRails.configure do |c|
         c.username = "darin"
@@ -38,6 +21,7 @@ class MontageRailsTest < ActiveSupport::TestCase
         MontageRails.configure do |c|
           c.username = "darin"
           c.password = "foo"
+          c.domain = nil
         end
       end
     end
@@ -46,6 +30,9 @@ class MontageRailsTest < ActiveSupport::TestCase
       assert_raises(MontageRails::AttributeMissingError, "You must include a username and password if no token is given") do
         MontageRails.configure do |c|
           c.domain = "foo"
+          c.username = nil
+          c.password = nil
+          c.token = nil
         end
       end
     end
@@ -72,6 +59,7 @@ class MontageRailsTest < ActiveSupport::TestCase
         c.domain = "foo"
         c.username = "darin"
         c.password = "foo"
+        c.token = nil
       end
 
       assert_equal "foobar", MontageRails.token
@@ -93,6 +81,7 @@ class MontageRailsTest < ActiveSupport::TestCase
           c.domain = "foo"
           c.username = "darin"
           c.password = "bar"
+          c.token = nil
         end
       end
     end
