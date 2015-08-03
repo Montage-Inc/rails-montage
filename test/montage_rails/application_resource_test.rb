@@ -4,11 +4,11 @@ require 'montage_rails/application_resource'
 class MontageRails::ApplicationResourceTest < Minitest::Test
   context 'reading yaml data' do
     setup do
-      @resource = MontageRails::ApplicationResource.new
+      @resource = MontageRails::ApplicationResource
     end
     should 'generate filename from class' do
       expected = File.join(Rails.root, 'test','montage_resources','test_data',
-        'montage_rails','application_resource_test_data.yml')
+        'montage_rails','application_test_data.yml')
       assert_equal expected, @resource.class_to_filename
     end
     should 'call class_to_filename when loading YAML' do
