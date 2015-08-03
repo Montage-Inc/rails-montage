@@ -14,7 +14,7 @@ require 'montage_rails/railtie' if defined?(Rails)
 
 module MontageRails
   class << self
-    attr_accessor :username, :password, :token, :domain, :no_caching, :use_mock_server, :server_url
+    attr_accessor :username, :password, :token, :domain, :no_caching, :use_mock_server, :server_url, :debugger
 
     def configure
       yield self
@@ -41,9 +41,11 @@ module MontageRails
     end
 
     def url_prefix
-      if Rails.env.test? && !@server_url && @use_mock_server
-        "http://#{test_server.host}:#{test_server.port}/montage_rails_mock"
+      @url_prefix ||= @server_url if @server_url
+      if Rails.env.test? && !@server_url && @use_mock_server && !@url_prefix
+        @url_prefix="http://#{test_server.host}:#{test_server.port}/montage_rails_mock"
       end
+      @url_prefix
     end
 
     def connection

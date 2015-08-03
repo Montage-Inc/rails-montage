@@ -15,6 +15,7 @@ class MontageRailsTest < ActiveSupport::TestCase
         c.domain = "testco"
         c.use_mock_server = nil
         c.server_url = nil
+        c.url_prefix = nil
       end
     end
 
@@ -111,8 +112,9 @@ class MontageRailsTest < ActiveSupport::TestCase
         c.domain = 'foo'
         c.token = 'abc'
       end
-
-      assert_equal MontageRails.url_prefix, 'foobar'
+      MontageRails.debugger = true
+      MontageRails.url_prefix
+      assert_equal 'foobar', MontageRails.url_prefix, "url_prefix was #{MontageRails.url_prefix} instead of foobar"
     end
 
     should 'accept boolean controling mock server use' do
@@ -142,7 +144,8 @@ class MontageRailsTest < ActiveSupport::TestCase
         c.token = 'abc'
       end
 
-      assert_equal 'localhost:3000', MontageRails.url_prefix
+      url_prefix = MontageRails.url_prefix
+      assert (url_prefix.include?('localhost') or url_prefix.include? ('http://127.0.0.1:')), 'Url prefix should resolve to localhost, resolved to ' + MontageRails.url_prefix
     end
   end
 end
