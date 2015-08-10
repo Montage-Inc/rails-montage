@@ -23,6 +23,15 @@ module MontageRails
       boot_server if use_mock_server
     end
 
+    def quick_debug_config
+      self.configure do |c|
+        c.token = 'abc'
+        c.domain = 'foo'
+        c.use_mock_server = true
+      end
+      self.url_prefix
+    end
+
     def boot_server
       require "#{Rails.root}/test/resources/test_mod_resource"
       test_server.boot

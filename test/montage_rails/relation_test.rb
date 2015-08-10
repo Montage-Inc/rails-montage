@@ -110,7 +110,7 @@ class MontageRails::RelationTest < Minitest::Test
     end
 
     should "query the remote db and return the record set if the records have not already been fetched" do
-      @movies = MontageRails::Relation.new(Movie).where("votes > 900000").to_a
+      @movies = MontageRails::Relation.new(Movie).where("votes > 5").to_a
 
       assert_equal 1, @movies.count
     end
