@@ -3,16 +3,16 @@ require 'montage_rails/relation'
 require 'montage_rails/base'
 
 class MontageRails::BaseTest < MiniTest::Test
-  context "validation" do
-    setup do
-      @movie = Movie.new
-    end
+  # context "validation" do
+  #   setup do
+  #     @movie = Movie.new
+  #   end
 
-    should "not save if a title is not present" do
-      assert !@movie.save
-      assert_equal "Title can't be blank", @movie.errors.full_messages.first
-    end
-  end
+  #   should "not save if a title is not present" do
+  #     assert !@movie.save
+  #     assert_equal "Title can't be blank", @movie.errors.full_messages.first
+  #   end
+  # end
 
   # context "initialization" do
   #   should "initialize all the variables with nil when nothing is passed in" do
@@ -127,23 +127,24 @@ class MontageRails::BaseTest < MiniTest::Test
   #   end
   # end
 
-  # context "delegation" do
-  #   should "delegate the first query method called to a Relation object and return a relation" do
-  #     assert_equal MontageRails::Relation, Movie.where(foo: "bar").class
-  #     assert_equal MontageRails::Relation, Movie.limit(10).class
-  #     assert_equal MontageRails::Relation, Movie.offset(10).class
-  #     assert_equal MontageRails::Relation, Movie.order(foo: :asc).class
-  #   end
+  context "delegation" do
+    should "delegate the first query method called to a Relation object and return a relation" do
+      assert_equal MontageRails::Relation, Movie.where(foo: "bar").class
+      assert_equal MontageRails::Relation, Movie.limit(10).class
+      assert_equal MontageRails::Relation, Movie.offset(10).class
+      assert_equal MontageRails::Relation, Movie.order(foo: :asc).class
+    end
 
-  #   should "create finder methods for all the column names" do
-  #     assert Movie.respond_to?(:find_by_rank)
-  #     assert Movie.respond_to?(:find_by_title)
-  #     assert Movie.respond_to?(:find_by_votes)
-  #     assert Movie.respond_to?(:find_by_id)
-  #     assert Movie.respond_to?(:find_by_year)
-  #     assert Movie.respond_to?(:find_by_rating)
-  #   end
-  # end
+    should "create finder methods for all the column names" do
+      debugger
+      assert Movie.respond_to?(:find_by_rank)
+      assert Movie.respond_to?(:find_by_title)
+      assert Movie.respond_to?(:find_by_votes)
+      assert Movie.respond_to?(:find_by_id)
+      assert Movie.respond_to?(:find_by_year)
+      assert Movie.respond_to?(:find_by_rating)
+    end
+  end
 
   # context "column methods" do
   #   setup do
