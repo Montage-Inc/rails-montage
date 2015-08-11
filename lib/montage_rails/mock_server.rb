@@ -22,10 +22,14 @@ module MontageRails
       require Rails.root.join('test','montage_resources',(schema.singularize+'_resource.rb')).to_s
       klass = "#{schema.singularize.classify}Resource".constantize
       data = klass.read_yaml
+      puts "Params: " + (@request_payload.to_json)
       @request_payload['filter'].each do |key, value|
         if key =~ /__gt/
           new_key = key.chomp('__gt')
           data = data.select {|x| x.has_key?(new_key) && x[new_key] > value }
+        elsif key =~ /__lt/
+          new_key = key.chomp('__lt')
+          data = data.select {|x| x.has_key?(new_key) && x[new_key] < value }
         else
           data = data.select {|x| x.has_key?(key) && x[key] == value }
         end
@@ -39,6 +43,11 @@ module MontageRails
 
     post '/api/v1/schemas/:schema/query' do
       get_query(params[:schema])
+    end
+
+    post '/api/v1/schemas/:schema/save' do
+      puts 'save route called'
+      puts @request_payload.to_json
     end
 
 #    get '/' do
