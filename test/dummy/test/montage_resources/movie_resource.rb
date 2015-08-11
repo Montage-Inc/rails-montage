@@ -10,22 +10,27 @@ class MovieResource < MontageRails::ApplicationResource
         {
           name: "rank",
           datatype: "numeric",
+          required: true,
         },
         {
           name: "rating",
           datatype: "numeric",
+          required: true,
         },
         {
           name: "title",
           datatype: "text",
+          required: true,
         },
         {
           name: "votes",
           datatype: "numeric",
+          required: true,
         },
         {
           name: "year",
           datatype: "numeric",
+          required: true,
         },
       ],
       links: {
