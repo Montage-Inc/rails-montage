@@ -6,10 +6,14 @@ class ActorResource < MontageRails::ApplicationResource
         {
           name: "movie_id",
           datatype: "text",
+          indexed: false,
+          required: false
         },
         {
           name: "name",
           datatype: "text",
+          indexed: false,
+          required: false
         },
       ],
       links: {

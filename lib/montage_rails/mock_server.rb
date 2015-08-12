@@ -11,7 +11,7 @@ module MontageRails
 
     before do
       content_type :json
-      # puts 'request full path for method ' + request.request_method + ' is: ' + request.fullpath
+      puts 'request full path for method ' + request.request_method + ' is: ' + request.fullpath
       if request.request_method == "POST" && request.body.length > 0
         request.body.rewind if request.body
         @request_payload = JSON.parse request.body.read
@@ -27,7 +27,8 @@ module MontageRails
       data = load_schema(params[:schema]).read_yaml
       #note: only handles POST queries properly
       puts "Params: " + (@request_payload.to_json)
-      @request_payload['filter'].each do |key, value|
+      filters = @request_payload['filter'].select { |key, value| !value.nil? && !value.empty?}
+      filters.each do |key, value|
         if key =~ /__gt/
           new_key = key.chomp('__gt')
           data = data.select {|x| x.has_key?(new_key) && x[new_key] > value }

@@ -127,24 +127,24 @@ class MontageRails::BaseTest < MiniTest::Test
   #   end
   # end
 
-  context "delegation" do
-    should "delegate the first query method called to a Relation object and return a relation" do
-      assert_equal MontageRails::Relation, Movie.where(foo: "bar").class
-      assert_equal MontageRails::Relation, Movie.limit(10).class
-      assert_equal MontageRails::Relation, Movie.offset(10).class
-      assert_equal MontageRails::Relation, Movie.order(foo: :asc).class
-    end
+  # context "delegation" do
+  #   should "delegate the first query method called to a Relation object and return a relation" do
+  #     assert_equal MontageRails::Relation, Movie.where(foo: "bar").class
+  #     assert_equal MontageRails::Relation, Movie.limit(10).class
+  #     assert_equal MontageRails::Relation, Movie.offset(10).class
+  #     assert_equal MontageRails::Relation, Movie.order(foo: :asc).class
+  #   end
 
-    should "create finder methods for all the column names" do
-      debugger
-      assert Movie.respond_to?(:find_by_rank)
-      assert Movie.respond_to?(:find_by_title)
-      assert Movie.respond_to?(:find_by_votes)
-      assert Movie.respond_to?(:find_by_id)
-      assert Movie.respond_to?(:find_by_year)
-      assert Movie.respond_to?(:find_by_rating)
-    end
-  end
+  #   should "create finder methods for all the column names" do
+  #     Movie.respond_to?(:find_by_rank) # fix for the fact that the test will fail if it's the first one run
+  #     assert Movie.respond_to?(:find_by_rank)
+  #     assert Movie.respond_to?(:find_by_title)
+  #     assert Movie.respond_to?(:find_by_votes)
+  #     assert Movie.respond_to?(:find_by_id)
+  #     assert Movie.respond_to?(:find_by_year)
+  #     assert Movie.respond_to?(:find_by_rating)
+  #   end
+  # end
 
   # context "column methods" do
   #   setup do
@@ -160,56 +160,56 @@ class MontageRails::BaseTest < MiniTest::Test
   #   end
   # end
 
-  # context ".has_many" do
-  #   setup do
-  #     @movie = Movie.create(MontageRails::MovieResource.to_hash)
-  #     @actor = Actor.create(MontageRails::ActorResource.steve_martin)
-  #     @actor2 = Actor.create(MontageRails::ActorResource.mark_hamill)
-  #   end
+  context ".has_many" do
+    setup do
+      @movie = Movie.create(MontageRails::MovieResource.to_hash)
+      @actor = Actor.create(MontageRails::ActorResource.steve_martin)
+      @actor2 = Actor.create(MontageRails::ActorResource.mark_hamill)
+    end
 
-  #   should "define an instance method for the given table name" do
-  #     assert @movie.respond_to?(:actors)
+    should "define an instance method for the given table name" do
+      assert @movie.respond_to?(:actors)
 
-  #     assert_equal 1, @movie.actors.count
-  #     assert_equal @actor.attributes, @movie.actors.first.attributes
-  #   end
+      assert_equal 1, @movie.actors.count
+      assert_equal @actor.attributes, @movie.actors.first.attributes
+    end
 
-  #   should "allow the resulting relation to be chainable" do
-  #     assert_equal @actor.attributes, @movie.actors.where(name: "Steve Martin").first.attributes
-  #   end
+    # should "allow the resulting relation to be chainable" do
+    #   assert_equal @actor.attributes, @movie.actors.where(name: "Steve Martin").first.attributes
+    # end
 
-  #   context "when the table name has been overridden" do
-  #     setup do
-  #       class TestClass < MontageRails::Base
-  #         self.table_name = "movies"
+    # context "when the table name has been overridden" do
+    #   setup do
+    #     class TestClass < MontageRails::Base
+    #       self.table_name = "movies"
 
-  #         has_many :actors
-  #       end
+    #       has_many :actors
+    #     end
 
-  #       @test = TestClass.where(title: "The Jerk").first
-  #     end
+    #     @test = TestClass.where(title: "The Jerk").first
+    #   end
 
-  #     should "use the new table name to define the methods" do
-  #       assert_equal "Steve Martin", @test.actors.first.name
-  #     end
-  #   end
+    #   should "use the new table name to define the methods" do
+    #     assert_equal "Steve Martin", @test.actors.first.name
+    #   end
+    # end
 
-  #   context "when a polymorphic relationship is defined" do
-  #     setup do
-  #       class TestClass < MontageRails::Base
-  #         self.table_name = "movies"
+    context "when a polymorphic relationship is defined" do
+      setup do
+        class TestClass < MontageRails::Base
+          self.table_name = "movies"
 
-  #         has_many :actors, as: :subject
-  #       end
+          has_many :actors, as: :subject
+        end
 
-  #       @movie = TestClass.where(title: "The Jerk").first
-  #     end
+        @movie = TestClass.where(title: "The Jerk").first
+      end
 
-  #     should "lookup the id and type using the name given" do
-  #       assert_equal({:filter => {:subject_id => "69cc93af-1f0e-43bc-ac9a-19117111978e", :subject_type => "TestClass"}}, @movie.actors.query)
-  #     end
-  #   end
-  # end
+      should "lookup the id and type using the name given" do
+        assert_equal({:filter => {:subject_id => "69cc93af-1f0e-43bc-ac9a-19117111978e", :subject_type => "TestClass"}}, @movie.actors.query)
+      end
+    end
+  end
 
   # context ".belongs_to" do
   #   should "define an instance method for the given table name" do
