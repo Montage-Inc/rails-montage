@@ -27,7 +27,7 @@ module MontageRails
       data = load_schema(params[:schema]).read_yaml
       #note: only handles POST queries properly
       puts "Params: " + (@request_payload.to_json)
-      filters = @request_payload['filter'].select { |key, value| !value.nil? && !value.empty?}
+      filters = @request_payload['filter'].select { |key, value| !value.blank?}
       filters.each do |key, value|
         if key =~ /__gt/
           new_key = key.chomp('__gt')
@@ -40,6 +40,11 @@ module MontageRails
         end
       end
       { data: data, cursors:{next:nil, previous:nil}}.to_json
+    end
+
+    get '/api/v1/schemas/:schema/:uuid' do
+      data = load_schema(params[:schema]).read_yaml
+      (data.select{ |item| item['id']==params[:uuid]}).first.to_json
     end
 
     post '/api/v1/schemas/:schema/save' do
