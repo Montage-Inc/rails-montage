@@ -9,8 +9,3 @@ gemspec
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-
-# To use a debugger
-gem 'byebug', group: [:development, :test]
-
-gem "capybara_discoball", :git => "git@github.com:thoughtbot/capybara_discoball.git"
