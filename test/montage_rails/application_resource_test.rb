@@ -63,30 +63,41 @@ class MontageRails::ApplicationResourceTest < Minitest::Test
       @item3 = {"name"=>'foobar', 'votes'=>10, 'id'=>3} 
       @resource.data = [ @item1, @item2, @item3]
     end
+
     should 'handle equal to relations' do
       @resource.params={'filter'=>{'name'=>'bar'}}
       @resource.execute_filters
       assert_equal [@item2], @resource.data
     end
+    
     should 'handle equal lt relations' do
       @resource.params={'filter'=>{'votes__lt'=>5}}
       @resource.execute_filters
       assert_equal [@item1], @resource.data
     end
+
     should 'handle equal lte relations' do
       @resource.params={'filter'=>{'votes__lte'=>5}}
       @resource.execute_filters
       assert_equal [@item1,@item2], @resource.data
     end
+
     should 'handle equal gt relations' do
       @resource.params={'filter'=>{'votes__gt'=>5}}
       @resource.execute_filters
       assert_equal [@item3], @resource.data
     end
+
     should 'handle equal gte relations' do
       @resource.params={'filter'=>{'votes__gte'=>5}}
       @resource.execute_filters
       assert_equal [@item2,@item3], @resource.data
+    end
+
+    should "handle in relations" do
+      @resource.params={'filter' => { "id__in" => [1, 2] } }
+      @resource.execute_filters
+      assert_equal [@item1, @item2], @resource.data
     end
   end
 end

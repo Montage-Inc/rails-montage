@@ -39,6 +39,7 @@ module MontageRails
         when "contains" # value in field
         when "icontains" # case insensitive version of contains
         when "in" # field in value
+          @data = @data.select { |item| value.include?(item[parameter]) }
         when "notin" # field not in value
         when "gt" # field > value
           @data = @data.select{ |item| item[parameter] > value}
