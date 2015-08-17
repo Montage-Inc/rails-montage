@@ -218,6 +218,10 @@ module MontageRails
       @old_attributes = attributes.clone
     end
 
+    def ==(other)
+      attributes == other.attributes
+    end
+
     # Save the record to the database
     #
     # Will return false if the attributes are not valid

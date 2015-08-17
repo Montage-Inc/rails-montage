@@ -321,6 +321,22 @@ class MontageRails::BaseTest < MiniTest::Test
     end
   end
 
+  context "#==" do
+    should "return false if the models aren't equal" do
+      movie1 = Movie.first
+      movie2 = Movie.all.last
+
+      refute movie1 == movie2
+    end
+
+    should "return true if the models are equal" do
+      movie1 = Movie.first
+      movie2 = Movie.first
+
+      assert movie1 == movie2
+    end
+  end
+
   context "#save" do
     context "when valid attributes are provided" do
       setup do
