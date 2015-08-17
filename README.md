@@ -185,8 +185,24 @@ In order to support testing of your MontageRails models without needing to
 create a mock for every request sent, we provide a `mock server` that
 you can use for testing purposes.
 
-The first thing you'll need to do is generate your MontageRails models using
-our provided generator.
+The first thing you'll need to do is tell MontageRails to use the mock server
+for testing purposes. Add the flag to your configuration:
+
+```ruby
+MontageRails.configure do |c|
+  c.use_mock_server = true
+end
+```
+
+Next you'll need to mount the server inside of your Rails app. Add the following
+line to the top of your `routes.rb` file:
+
+```ruby
+mount MontageRails::MockServer => "/montage_rails_mock"
+```
+
+Next you'll need to generate your MontageRails models using
+our provided generator:
 
 ```bash
 $ rails g montage_rails:model User email:text first_name:text last_name:text
@@ -206,11 +222,6 @@ nil if no matching data is found.
 
 In order to turn on the mock server, just add the following to your configuration:
 
-```ruby
-MontageRails.configure do |c|
-  c.use_mock_server = true
-end
-```
 
 ## Contributing
 
