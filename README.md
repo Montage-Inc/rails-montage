@@ -179,6 +179,39 @@ user.reload
 user.new_record?
 ```
 
+## Testing 
+
+In order to support testing of your MontageRails models without needing to 
+create a mock for every request sent, we provide a `mock server` that
+you can use for testing purposes.
+
+The first thing you'll need to do is generate your MontageRails models using
+our provided generator.
+
+```bash
+$ rails g montage_rails:model User email:text first_name:text last_name:text
+```
+
+Aside from the model, this will generate several files that will be used to for the test server to
+query against. The first file it creates is a resource file under `test/montage_resources`.
+This file is used to define the schema, and will be queried when MontageRails
+needs to know anything about the model's schema.
+
+Next it will create a YML file that the server will query against. This is where you will store
+all of your test data. By default, the generator will create one sample record using the
+Faker gem to create randomized seed data. This will serve as a template for you to add in any
+other test data that you may need. These files are located at `test/montage_resources/test_data`.
+The resource file for each model will perform the queries against this data, and will return
+nil if no matching data is found.
+
+In order to turn on the mock server, just add the following to your configuration:
+
+```ruby
+MontageRails.configure do |c|
+  c.use_mock_server = true
+end
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/EditLLC/montage_rails/fork )

@@ -24,7 +24,7 @@ module MontageRails
     end
 
     def boot_server
-      test_server.boot
+      test_server.boot if Rails.env.test?
     end
 
     def set_url_prefix(url)
