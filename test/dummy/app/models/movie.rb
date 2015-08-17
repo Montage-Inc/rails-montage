@@ -29,4 +29,5 @@ class Movie < MontageRails::Base
     self.votes = 600
     save!
   end
+
 end
