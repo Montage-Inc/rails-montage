@@ -125,6 +125,12 @@ class MontageRails::BaseTest < MiniTest::Test
 
       assert_equal "AFTER CREATE", @movie.after_create_var
     end
+
+    should "call the after_initialize callback on new" do
+      @movie = Movie.new(MovieResource.fetch_item)
+
+      assert_equal "AFTER INIT", @movie.after_init_var
+    end
   end
 
   context "delegation" do

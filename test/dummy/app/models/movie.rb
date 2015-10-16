@@ -3,12 +3,14 @@ class Movie < MontageRails::Base
 
   belongs_to :studio
 
-  attr_accessor :before_save_var, :before_create_var, :after_save_var, :after_create_var
+  attr_accessor :before_save_var, :before_create_var, :after_save_var, 
+    :after_create_var, :after_init_var
 
   before_save :do_stuff
   before_create :do_other_stuff
   after_save :do_stuff_after_save
   after_create :do_stuff_after_create
+  after_initialize :do_stuff_after_init
 
   validates :title, presence: true
 
@@ -30,4 +32,7 @@ class Movie < MontageRails::Base
     save!
   end
 
+  def do_stuff_after_init
+    @after_init_var = "AFTER INIT" 
+  end
 end

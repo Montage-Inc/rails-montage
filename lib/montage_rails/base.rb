@@ -11,7 +11,7 @@ module MontageRails
     include ActiveModel::Model
     include Virtus.model
 
-    define_model_callbacks :save, :create
+    define_model_callbacks :save, :create, :initialize
 
     class << self
       # Delegates all of the relation methods to the class level object, so they can be called on the base class
@@ -210,12 +210,14 @@ module MontageRails
     delegate :attributes_from_response, to: "self.class"
 
     def initialize(params = {})
-      initialize_columns
-      @persisted = params[:persisted] ? params[:persisted] : false
-      @current_method = "Load"
-      @errors = ActiveModel::Errors.new(self)
-      super(params)
-      @old_attributes = attributes.clone
+      run_callbacks :initialize do
+        initialize_columns
+        @persisted = params[:persisted] ? params[:persisted] : false
+        @current_method = "Load"
+        @errors = ActiveModel::Errors.new(self)
+        super(params)
+        @old_attributes = attributes.clone
+      end
     end
 
     def ==(other)
