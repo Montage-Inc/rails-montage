@@ -34,6 +34,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-rails", "~> 0.0"
   s.add_development_dependency "will_paginate", "~> 3.0", ">= 3.0"
   s.add_development_dependency "kaminari", "~> 0.16"
-  s.add_dependency "capybara", "~> 1.1"
+  s.add_dependency "capybara", ">= 2.2.0"
   s.add_dependency "faker", "~> 1.4"
 end
