@@ -99,6 +99,46 @@ class MontageRails::RelationTest < Minitest::Test
     end
   end
 
+  context "#loadable?" do
+    setup do
+      @relation = MontageRails::Relation.new(Movie)
+    end
+
+    should "be loadable in the test enviroment" do
+      Rails.stubs(:env).returns("test")
+      assert @relation.loadable?
+    end
+
+    should "be loadable in the development environment" do
+      Rails.stubs(:env).returns("development")
+      assert @relation.loadable?
+    end
+
+    should "be loadable in the production env when not loaded" do
+      Rails.stubs(:env).returns("production")
+      @relation.stubs(:loaded?).returns(false)
+      assert @relation.loadable?
+    end
+
+    should "not be loadable in the production env when loaded" do
+      Rails.stubs(:env).returns("production")
+      @relation.stubs(:loaded?).returns(true)
+      refute @relation.loadable?
+    end
+
+    should "be loadable in the test env when loaded" do
+      Rails.stubs(:env).returns("test")
+      @relation.stubs(:loaded?).returns(true)
+      assert @relation.loadable?
+    end
+
+    should "be loadable in the dev env when loaded" do
+      Rails.stubs(:env).returns("development")
+      @relation.stubs(:loaded?).returns(true)
+      assert @relation.loadable?
+    end
+  end
+
   context "#to_a" do
     should "return the record set without a query if the records have already been fetched" do
       @relation = MontageRails::Relation.new(Movie)
