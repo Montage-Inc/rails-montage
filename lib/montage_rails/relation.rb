@@ -66,11 +66,19 @@ module MontageRails
       to_a.inspect
     end
 
+    # Checks to see if the relation is loadable
+    # If we are in test or dev environment, this is always true, otherwise
+    # it falls back to checking the loaded? instance variable
+    #
+    def loadable?
+      %w(test development).include?(Rails.env) || !loaded?
+    end
+
     # Returns the set of records if they have already been fetched, otherwise
     # gets the records and returns them
     #
     def to_a
-      return @records if loaded?
+      return @records unless loadable?
 
       @response = cache.get_or_set_query(klass, query) do
         connection.documents(klass.table_name, query)
