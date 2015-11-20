@@ -29,17 +29,18 @@ module MontageRails
       # Returns true or false
       #
       def is_i?(value)
-        /\A\d+\z/ =~ value
+        /\A\d+\z/ =~ value.to_s
       end
 
       # Determines if the string value passed in is a float
       # Returns true or false
       #
       def is_f?(value)
-        /\A\d+\.\d+\z/ =~ value
+        /\A\d+\.\d+\z/ =~ value.to_s
       end
 
       def coerce(value)
+        return nil unless value
         return value if value.is_a?(TYPE_MAP[type])
 
         if is_i?(value)
