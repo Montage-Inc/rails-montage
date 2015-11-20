@@ -1,3 +1,5 @@
+require 'montage_rails/boolean'
+
 module MontageRails
   class Base
     class Column
@@ -8,7 +10,8 @@ module MontageRails
         "date" => Date,
         "time" => Time,
         "datetime" => DateTime,
-        "numeric" => Numeric
+        "numeric" => Numeric,
+        "boolean" => Boolean
       }
 
       attr_accessor :name, :type, :required
@@ -39,6 +42,13 @@ module MontageRails
         /\A\d+\.\d+\z/ =~ value.to_s
       end
 
+      # Determines if the string is a Boolean
+      # Returns true or false
+      #
+      def is_boolean?(value)
+        Boolean.is_me?(value)        
+      end
+
       def coerce(value)
         return nil unless value
         return value if value.is_a?(TYPE_MAP[type])
@@ -47,6 +57,8 @@ module MontageRails
           coerce_to = Integer
         elsif is_f?(value)
           coerce_to = Float
+        elsif is_boolean?(value)
+          coerce_to = Axiom::Types::Boolean
         else
           coerce_to = TYPE_MAP[type]
         end

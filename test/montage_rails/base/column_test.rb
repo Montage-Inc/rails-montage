@@ -60,6 +60,27 @@ class MontageRails::Base::ColumnTest < Minitest::Test
       column = MontageRails::Base::Column.new("foo", "numeric")
       assert_equal 60.0, column.coerce(60.000000)
     end
+
+    should "coerce a 'true' string to a boolean" do
+      column = MontageRails::Base::Column.new("foo", "boolean")
+      assert column.coerce('true') 
+    end
+
+    should "coerce a 'false' string to a boolean" do
+      column = MontageRails::Base::Column.new("foo", "boolean")
+      puts column.coerce('false')
+      refute column.coerce('false') 
+    end
+
+    should "handle a TrueClass" do
+      column = MontageRails::Base::Column.new("foo", "boolean")
+      assert column.coerce(true)
+    end
+
+    should "handle a FalseClass" do
+      column = MontageRails::Base::Column.new("foo", "boolean")
+      refute column.coerce(false)
+    end
   end
 
   context "is_i?" do
