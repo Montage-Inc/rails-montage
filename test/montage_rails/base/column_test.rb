@@ -55,5 +55,32 @@ class MontageRails::Base::ColumnTest < Minitest::Test
       column = MontageRails::Base::Column.new("foo", "float")
       assert_equal "foo", column.coerce("foo")
     end
+
+    should "coerce a float to a float when the float is not a string" do
+      column = MontageRails::Base::Column.new("foo", "numeric")
+      assert_equal 60.0, column.coerce(60.000000)
+    end
+  end
+
+  context "is_i?" do
+    setup do
+      @column = MontageRails::Base::Column.new("foo", "numeric")
+    end
+
+    should "properly handle Fixnum and Floats" do
+      assert @column.is_i?(60)
+      refute @column.is_i?(60.45)
+    end
+  end
+
+  context "is_f?" do
+    setup do
+      @column = MontageRails::Base::Column.new("foo", "numeric")
+    end
+
+    should "properly handle Fixnum and floats" do
+      assert @column.is_f?(60.45)
+      refute @column.is_f?(60)
+    end
   end
 end
