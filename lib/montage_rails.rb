@@ -14,7 +14,7 @@ require 'montage_rails/railtie' if defined?(Rails)
 
 module MontageRails
   class << self
-    attr_accessor :username, :password, :token, :domain, :no_caching, :use_mock_server, :server_url, :debugger
+    attr_accessor :username, :password, :token, :domain, :no_caching, :use_mock_server, :debugger
 
     def configure
       yield self
@@ -27,27 +27,9 @@ module MontageRails
       test_server.boot if Rails.env.test?
     end
 
-    def set_url_prefix(url)
-      @url_prefix=url
-    end
-
-    def url_prefix=(value)
-      @url_prefix=value
-    end
-
     def test_server
       require 'capybara/rails' if defined?(Rails)
       @test_server ||= Capybara::Server.new(Rails.application)
-    end
-
-    def url_prefix
-      @url_prefix ||= @server_url if @server_url
-
-      if Rails.env.test? && !@server_url && @use_mock_server && !@url_prefix
-        @url_prefix="http://#{test_server.host}:#{test_server.port}/montage_rails_mock"
-      end
-
-      @url_prefix
     end
 
     def connection
@@ -55,7 +37,8 @@ module MontageRails
         Montage::Client.new do |c|
           c.token = token
           c.domain = domain
-          c.url_prefix = url_prefix
+          c.environment = Rails.env
+          c.test_url = "http://#{test_server.host}:#{test_server.port}/montage_rails_mock"
         end
       end
     end

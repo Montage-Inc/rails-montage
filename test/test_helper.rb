@@ -48,8 +48,6 @@ class MiniTest::Test
       c.token = "fb761e07-a12b-40bb-a42f-2202ecfd1046"
       c.domain = "testco"
       c.use_mock_server = true
-      c.url_prefix = nil
-      c.server_url = nil
     end
   end
 end

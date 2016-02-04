@@ -127,13 +127,7 @@ module MontageRails
       # Find a record by the id
       #
       def find_by_id(value)
-        response = cache.get_or_set_query(self, value) { connection.document(table_name, value) }
-
-        if response.success?
-          new(response.document.items.merge(persisted: true))
-        else
-          nil
-        end
+        relation.where(id: value).first
       end
 
       alias_method :find, :find_by_id
@@ -142,16 +136,7 @@ module MontageRails
       #
       def find_or_initialize_by(params = {})
         return nil if params.empty?
-
-        query = relation.where(params)
-
-        response = cache.get_or_set_query(self, query) { connection.documents(table_name, query) }
-
-        if response.success? && response.documents.any?
-          new(attributes_from_response(response).merge(persisted: true))
-        else
-          new(params)
-        end
+        relation.where(params).first || new(params)
       end
 
       # Returns an array of the column names for the table

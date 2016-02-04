@@ -47,55 +47,89 @@ class MontageRails::ApplicationResourceTest < Minitest::Test
     end
   end
 
-  context 'execute_filter' do
-    setup do
-      @resource = MontageRails::ApplicationResource.new
-    end
-    should 'parse filter' do
-    end
-  end
-
   context 'execute_filters' do
     setup do
       @resource = MontageRails::ApplicationResource.new
       @item1 = {"name"=>'foo', 'votes'=>1, 'id'=>1}
-      @item2 = {"name"=>'bar', 'votes'=>5, 'id'=>2} 
-      @item3 = {"name"=>'foobar', 'votes'=>10, 'id'=>3} 
+      @item2 = {"name"=>'bar', 'votes'=>5, 'id'=>2}
+      @item3 = {"name"=>'foobar', 'votes'=>10, 'id'=>3}
       @resource.data = [ @item1, @item2, @item3]
     end
 
     should 'handle equal to relations' do
-      @resource.params={'filter'=>{'name'=>'bar'}}
+      @resource.params = {
+        "$schema" => "movies",
+        "$query" => [
+          ["$filter", [
+            ["name", "bar"]
+          ]]
+        ]
+      }
       @resource.execute_filters
       assert_equal [@item2], @resource.data
     end
-    
+
     should 'handle equal lt relations' do
-      @resource.params={'filter'=>{'votes__lt'=>5}}
+      @resource.params = {
+        "$schema" => "movies",
+        "$query" => [
+          ["$filter", [
+            ["votes", ["$lt", 5]]
+          ]]
+        ]
+      }
       @resource.execute_filters
       assert_equal [@item1], @resource.data
     end
 
     should 'handle equal lte relations' do
-      @resource.params={'filter'=>{'votes__lte'=>5}}
+      @resource.params = {
+        "$schema" => "movies",
+        "$query" => [
+          ["$filter", [
+            ["votes", ["$lte", 5]]
+          ]]
+        ]
+      }
       @resource.execute_filters
       assert_equal [@item1,@item2], @resource.data
     end
 
     should 'handle equal gt relations' do
-      @resource.params={'filter'=>{'votes__gt'=>5}}
+      @resource.params = {
+        "$schema" => "movies",
+        "$query" => [
+          ["$filter", [
+            ["votes", ["$gt", 5]]
+          ]]
+        ]
+      }
       @resource.execute_filters
       assert_equal [@item3], @resource.data
     end
 
     should 'handle equal gte relations' do
-      @resource.params={'filter'=>{'votes__gte'=>5}}
+      @resource.params = {
+        "$schema" => "movies",
+        "$query" => [
+          ["$filter", [
+            ["votes", ["$gte", 5]]
+          ]]
+        ]
+      }
       @resource.execute_filters
       assert_equal [@item2,@item3], @resource.data
     end
 
     should "handle in relations" do
-      @resource.params={'filter' => { "id__in" => [1, 2] } }
+      @resource.params = {
+        "$schema" => "movies",
+        "$query" => [
+          ["$filter", [
+            ["votes", ["$in", [1, 5]]]
+          ]]
+        ]
+      }
       @resource.execute_filters
       assert_equal [@item1, @item2], @resource.data
     end

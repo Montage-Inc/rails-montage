@@ -12,13 +12,13 @@ module MontageRails
     delegate :map, :each, :sort_by, :find, :each_slice, to: :to_a
 
     def initialize(klass)
-      super()
+      super(schema: klass.table_name)
       @klass = klass
       @loaded = false
       @response = {}
     end
 
-    # Support for WillPaginate, if it is defined. If not, returns self
+    # Support for WillPaginate and Kaminari, if it is defined. If not, returns self
     #
     def paginate(page = 1, per_page = 25)
       if Object.const_defined?("WillPaginate")
@@ -50,14 +50,14 @@ module MontageRails
     # the result set, not an array of the class instances
     #
     def pluck(column_name)
-      query.merge!(pluck: [column_name.to_s])
+      merge_array(["$pluck", [column_name.to_s]])
       map { |r| r.send(column_name.to_sym) }
     end
 
     # Create a record based on the query relationship
     #
     def create(params)
-      klass.create(params.merge(query[:filter]))
+      klass.create(params.merge(options["$query"]["$filter"]))
     end
 
     # Utility method to allow viewing of the result set in a console
@@ -80,15 +80,17 @@ module MontageRails
     def to_a
       return @records unless loadable?
 
-      @response = cache.get_or_set_query(klass, query) do
-        connection.documents(klass.table_name, query)
+      @response = cache.get_or_set_query(klass, options) do
+        connection.documents({ query: options })
       end
 
       @records = []
 
       if @response.success?
-        @response.members.each do |member|
-          @records << klass.new(member.attributes.merge(persisted: true))
+        records = @response.members.attributes["query"]
+
+        records.each do |record|
+          @records << klass.new(record.merge(persisted: true))
         end
 
         @loaded = true
@@ -108,7 +110,7 @@ module MontageRails
     # Reset the whole shebang
     #
     def reset
-      cache.remove("#{klass}/#{query}")
+      cache.remove("#{klass}/#{options}")
       @records = []
       @loaded = nil
       self

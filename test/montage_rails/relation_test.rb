@@ -95,7 +95,7 @@ class MontageRails::RelationTest < Minitest::Test
     end
 
     should "parse the relation to a json format" do
-      assert_equal "{\"filter\":{\"foo\":1.0,\"bar__gt\":2},\"order_by\":\"created_at\",\"ordering\":\"desc\",\"limit\":10}", @relation.where(foo: 1.0).where("bar > 2").order(created_at: :desc).limit(10).to_json
+      assert_equal "{\"$schema\":\"movies\",\"$query\":[[\"$filter\",[[\"bar\",[\"$gt\",2]]]],[\"$order_by\",[\"$desc\",\"created_at\"]],[\"$limit\",10]]}", @relation.where(foo: 1.0).where("bar > 2").order(created_at: :desc).limit(10).to_json
     end
   end
 

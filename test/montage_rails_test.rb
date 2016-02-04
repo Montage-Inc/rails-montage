@@ -86,26 +86,6 @@ class MontageRailsTest < ActiveSupport::TestCase
       end
     end
 
-    should 'accept server url' do
-      MontageRails.configure do |c|
-        c.server_url = 'foobar'
-        c.domain = 'foo'
-        c.token = 'abc'
-      end
-    end
-
-    should 'accept server url even if use mock set to false' do
-      MontageRails.configure do |c|
-        c.use_mock_server = false
-        c.server_url = 'foobar'
-        c.domain = 'foo'
-        c.token = 'abc'
-      end
-      MontageRails.debugger = true
-      MontageRails.url_prefix
-      assert_equal 'foobar', MontageRails.url_prefix, "url_prefix was #{MontageRails.url_prefix} instead of foobar"
-    end
-
     should 'accept boolean controling mock server use' do
       MontageRails.configure do |c|
         c.use_mock_server = true
@@ -114,27 +94,6 @@ class MontageRailsTest < ActiveSupport::TestCase
       end
 
       assert_equal MontageRails.use_mock_server, true
-    end
-
-    should 'have nil url_prefix if use mock server set to false' do
-      MontageRails.configure do |c|
-        c.use_mock_server = false
-        c.domain = 'foo'
-        c.token = 'abc'
-      end
-
-      assert_equal nil, MontageRails.url_prefix
-    end
-
-    should 'have url_prefix if mock server set to true' do
-      MontageRails.configure do |c|
-        c.use_mock_server = true
-        c.domain = 'foo'
-        c.token = 'abc'
-      end
-
-      url_prefix = MontageRails.url_prefix
-      assert (url_prefix.include?('localhost') or url_prefix.include? ('http://127.0.0.1:')), 'Url prefix should resolve to localhost, resolved to ' + MontageRails.url_prefix
     end
   end
 end
